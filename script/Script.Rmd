@@ -104,6 +104,9 @@ library(rio); library(here); library(tidyverse); library(knitr); library(janitor
 ```
 
 # Data Preparation
+
+## Load data and clean names
+We first load the datasets and clean the variable names.
 ```{r load data}
 election <- import(here("data", "countypres_2000-2016.csv")) %>% 
   clean_names() #load election results
@@ -121,6 +124,23 @@ s_capital_14 <- import(here("data", "social-capital-variables-spreadsheet-for-20
   clean_names()#load social capital data for 2014
 ```
 
+## Clean data
+### Election data
+- We start with the election data as it is more comprehensive in terms of the number of counties. First, we select the variables of interests. Then, we select the election year (i.e., 2000, 2008, 2012, 2016) that we will match with social capital data.  
+
+- The name of the year variable is changed in a way that shows it is the year of election (so that it is not mixed with the same year variable in social capital data).  
+
+- We create new datasets for each presidential election we are interested in. These will be later merged with corresponding social capital data.  
+
+### Social capital data
+- For each social capital dataset (i.e., 1997, 2005, 2009, 2014), we first add state code for some counties that do not readily contain that information. Then, we create two variables out of the area name such that we have different variables for county names and state codes.  
+
+- We select the relevant variables and clean the variable names.  
+
+- We create a year variable indicating when the data were collected.  
+
+- Finally, we reorder variables so that the order of the variables is the same across datasets. This will be useful when we want to merge social capital data across year so that we can get descriptive statistics for each year simultaneously and that we can visualize the changes across years in social capital.  
+
 ```{r clean datasets}
 #select, filter, and clean data
 ##election
@@ -128,7 +148,14 @@ election %<>%
   select(-office, -version, -candidate, -state) %>% #select relevant variables
   filter(year %in% c(2000, 2008, 2012, 2016)) #select relevant years
 
-#social capital 1997
+colnames(election)[1] <- "year_elctn" #rename year variable for merging
+
+elctn_00 <- election %>% filter(year_elctn == 2000) #create a df for each election of interest so that it's easier to match them with sc dfs
+elctn_08 <- election %>% filter(year_elctn == 2008)
+elctn_12 <- election %>% filter(year_elctn == 2012)
+elctn_16 <- election %>% filter(year_elctn == 2016)
+
+##social capital 1997
 s_capital_97[290, 2] <- "District of Columbia, DC" #add DC's code
 
 s_capital_97 %<>% #create county and state variables
@@ -139,9 +166,10 @@ s_capital_97 %<>% #select relevant variables
 
 colnames(s_capital_97)[4:18] <- str_sub(colnames(s_capital_97)[4:18], end=-3) #remove the year from the variable names
 
-s_capital_97$year <- 1997 #create year variable before merging
+s_capital_97 %<>% #create year variable before merging
+  mutate(year_sc = 1997)
 
-#social capital 2005
+##social capital 2005
 s_capital_05[290, 2] <- "District of Columbia, DC" #add DC's code
 
 s_capital_05 %<>% #create county and state variables
@@ -154,9 +182,9 @@ colnames(s_capital_05)[4:18] <- str_sub(colnames(s_capital_05)[4:18], end=-3) #r
 
 s_capital_05 <- s_capital_05[,c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 15, 14, 13, 16, 17:18)] #reorder the variables
 
-s_capital_05$year <- 2005 #create year variable before merging
+s_capital_05$year_sc <- 2005 #create year variable before merging
 
-#social capital 2009
+##social capital 2009
 s_capital_09[290, 2] <- "District of Columbia, DC" #add DC's code
 
 s_capital_09 %<>% #create county and state variables
@@ -169,9 +197,10 @@ colnames(s_capital_09)[4:18] <- str_sub(colnames(s_capital_09)[4:18], end=-3) #r
 
 s_capital_09 <- s_capital_09[,c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 14:15, 13, 16:18)] #reorder the variables
 
-s_capital_09$year <- 2009 #create year variable before merging
+s_capital_09 %<>% #create year variable before merging
+  mutate(year_sc = 2009)
 
-#social capital 2014
+##social capital 2014
 s_capital_14[77, 2] <- "Hoonah-Angoon Census Area, AK" #remove the repeated state code
 
 s_capital_14 %<>% #create county and state variables
@@ -186,9 +215,40 @@ colnames(s_capital_14)[4:18] <- str_sub(colnames(s_capital_14)[4:18], end=-5) #r
 
 s_capital_14 <- s_capital_14[, c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 16, 15, 13, 17, 14, 18)] #reorder the variables
 
-s_capital_14$year <- 2014 #create year variable before merging
+s_capital_14 %<>% #create year variable before merging
+  mutate(year_sc = 2014)
 
 colnames(s_capital_14) <- colnames(s_capital_09) #rename variables to make it compatible with previous years' datasets
+```
+
+## Merge Datasets
+
+- First, we merge social capital data across years for reasons explained above, and call it `s_capital`.  
+
+- Next, we merge corresponding election and social capital data for 4 time points. **In doing so,** we keep the rows that exist in both election and social capital data. For instance, if we do not have the election information for a county, we do not include it in the merged dataset even if we have that county's social capital data. These datasets are called `df_year`. *Year* denotes the year of election. Also, we remove the duplicate variables (i.e., state and county names) and fix the names. We did not remove them earlier because we first wanted to merge the social capital data with all the variables.  
+
+- Finally, we merge all election and social capital data in the same dataset (i.e., `df`). 
+
+```{r merge datasets}
+s_capital <- bind_rows(s_capital_97, s_capital_05, s_capital_09, s_capital_14) #merge social capital data
+
+df_00 <- inner_join(elctn_00, s_capital_97, by = "fips") #merge election 2000 & social capital 1997
+df_00 <- df_00[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
+colnames(df_00)[3:4] <- c("state_po", "county") #rename variables
+
+df_08 <- inner_join(elctn_08, s_capital_05, by = "fips") #merge election 2008 & social capital 2005
+df_08 <- df_08[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
+colnames(df_08)[3:4] <- c("state_po", "county") #rename variables
+
+df_12 <- inner_join(elctn_12, s_capital_09, by = "fips") #merge election 2012 & social capital 2009
+df_12 <- df_12[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
+colnames(df_12)[3:4] <- c("state_po", "county") #rename variables
+
+df_16 <- inner_join(elctn_16, s_capital_14, by = "fips") #merge election 2016 & social capital 2014
+df_16 <- df_16[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
+colnames(df_16)[3:4] <- c("state_po", "county") #rename variables
+
+df <- bind_rows(df_00, df_08, df_12, df_16) #merged dataset: contains all election and corresponding social capital data
 ```
 
 
