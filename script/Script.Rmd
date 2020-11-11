@@ -100,19 +100,98 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed,
 ```
 
 ```{r packages}
-library(rio); library(here); library(tidyverse); library(knitr); library(janitor)
+library(rio); library(here); library(tidyverse); library(knitr); library(janitor); library(magrittr); library(stringr)
 ```
 
+# Data Preparation
 ```{r load data}
 election <- import(here("data", "countypres_2000-2016.csv")) %>% 
   clean_names() #load election results
 
-s_capital_97_04 <- import(here("data", "social-capital-variables-for-1997-2005-2009.xlsx")) %>% 
-  clean_names() #load social capital data for 1997 through 2009
+s_capital_97 <- import(here("data", "social-capital-variables-for-1997.xlsx")) %>% 
+  clean_names() #load social capital data for 1997
 
-s_capital_09 <- import(here("data", "social_capital_2014.xlsx")) %>% 
+s_capital_05 <- import(here("data", "social-capital-variables-for-2005.xlsx")) %>% 
+  clean_names() #load social capital data for 2005
+
+s_capital_09 <- import(here("data", "social-capital-variables-for-2009.xlsx")) %>% 
+  clean_names() #load social capital data for 2009
+
+s_capital_14 <- import(here("data", "social-capital-variables-spreadsheet-for-2014.xlsx")) %>% 
   clean_names()#load social capital data for 2014
 ```
+
+```{r clean datasets}
+#select, filter, and clean data
+##election
+election %<>%
+  select(-office, -version, -candidate, -state) %>% #select relevant variables
+  filter(year %in% c(2000, 2008, 2012, 2016)) #select relevant years
+
+#social capital 1997
+s_capital_97[290, 2] <- "District of Columbia, DC" #add DC's code
+
+s_capital_97 %<>% #create county and state variables
+  separate(areaname, c("county","state_po"), sep = ', ')
+
+s_capital_97 %<>% #select relevant variables
+  select(-fitnes97, -memspt97, -memnec97)
+
+colnames(s_capital_97)[4:18] <- str_sub(colnames(s_capital_97)[4:18], end=-3) #remove the year from the variable names
+
+s_capital_97$year <- 1997 #create year variable before merging
+
+#social capital 2005
+s_capital_05[290, 2] <- "District of Columbia, DC" #add DC's code
+
+s_capital_05 %<>% #create county and state variables
+  separate(areaname, c("county","state_po"), sep = ', ')
+
+s_capital_05 %<>% #select relevant variables
+  select(-fitns05)
+
+colnames(s_capital_05)[4:18] <- str_sub(colnames(s_capital_05)[4:18], end=-3) #remove the year from the variable names
+
+s_capital_05 <- s_capital_05[,c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 15, 14, 13, 16, 17:18)] #reorder the variables
+
+s_capital_05$year <- 2005 #create year variable before merging
+
+#social capital 2009
+s_capital_09[290, 2] <- "District of Columbia, DC" #add DC's code
+
+s_capital_09 %<>% #create county and state variables
+  separate(areaname, c("county","state_po"), sep = ', ')
+
+s_capital_09 %<>% #select relevant variables
+  select(-fitns09)
+
+colnames(s_capital_09)[4:18] <- str_sub(colnames(s_capital_09)[4:18], end=-3) #remove the year from the variable names
+
+s_capital_09 <- s_capital_09[,c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 14:15, 13, 16:18)] #reorder the variables
+
+s_capital_09$year <- 2009 #create year variable before merging
+
+#social capital 2014
+s_capital_14[77, 2] <- "Hoonah-Angoon Census Area, AK" #remove the repeated state code
+
+s_capital_14 %<>% #create county and state variables
+  separate(county_name, c("county","state_po"), sep = ', ') 
+
+s_capital_14$county <- word(s_capital_14$county, 1) #remove the word 'county' and keep only the name
+
+s_capital_14 %<>% #select relevant variables
+  select(-recreational2014)
+
+colnames(s_capital_14)[4:18] <- str_sub(colnames(s_capital_14)[4:18], end=-5) #remove the year from the variable names
+
+s_capital_14 <- s_capital_14[, c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 16, 15, 13, 17, 14, 18)] #reorder the variables
+
+s_capital_14$year <- 2014 #create year variable before merging
+
+colnames(s_capital_14) <- colnames(s_capital_09) #rename variables to make it compatible with previous years' datasets
+```
+
+
 
 # Introduction
 Social science literature has extensively examined the relationship between social capital and politics (e.g. Morales & Guigni, 2016; Jottier & Heyndels, 2012; La Due Lake & Huckfeldt, 1998). However, relatively little is known on the impact of social capital election results.
