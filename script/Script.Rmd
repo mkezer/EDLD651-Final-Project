@@ -274,6 +274,22 @@ aggregate_states %>%
        x="Year",
        y="Aggregate Capital")
 
+#Scatterplot of different types of social capital over time (individual points represent aggregate for entire country). Lines fitted for each type to show trends over time
+aggregate_country <- rowsum(df[9:17], df$year_sc)
+aggregate_country <- aggregate_country %>%
+  mutate(Year = c(1997,2005,2009,2014)) %>%
+  pivot_longer(cols=bowl:labor,names_to = "type_sc", values_to = "count")
+aggregate_country %>%
+  ggplot(mapping=aes(x=Year,y=count,color=type_sc)) +
+  geom_point() +
+  geom_smooth(se=FALSE,method=lm) +
+  labs(title="Types of Social Capital Over Time",
+       x="Year",
+       y="Count",
+       color="Type")
+
+
+
   
 ```
 
