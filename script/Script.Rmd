@@ -1,8 +1,8 @@
 ---
 title             : "Relationship between social capital and election results"
 shorttitle        : "Title"
-
 author: 
+      
   - name          : "Anisha Babu"
     affiliation   : "1"
     corresponding : yes    # Define only one corresponding author
@@ -12,7 +12,6 @@ author:
       - Data Analysis
       - Writing - Original Draft Preparation
       - Writing - Review & Editing
-      
   - name          : "Hyeonjin Cha"
     affiliation   : "1"
     email         : "hcha@uoregon.edu"
@@ -21,7 +20,6 @@ author:
       - Data Analysis
       - Writing - Original Draft Preparation
       - Writing - Review & Editing
-      
   - name          : "Diana DeWald"
     affiliation   : "1"
     email         : "ddewald@uoregon.edu"    
@@ -30,7 +28,6 @@ author:
       - Data Analysis
       - Writing - Original Draft Preparation
       - Writing - Review & Editing
-      
   - name          : "Murat Kezer"
     affiliation   : "1"
     email         : "mkezer@uoregon.edu"    
@@ -39,17 +36,12 @@ author:
       - Data Analysis
       - Writing - Original Draft Preparation
       - Writing - Review & Editing               
-
 affiliation:
   - id            : "1"
     institution   : "University of Oregon"
-
-
 authornote: |
   Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
-
   Enter author note here.
-
 abstract: |
   One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
   
@@ -65,13 +57,11 @@ abstract: |
   
   Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
   
-  <!-- https://tinyurl.com/ybremelq -->
   
+  <!-- https://tinyurl.com/ybremelq -->
 keywords          : "keywords"
 wordcount         : "X"
-
 bibliography      : ["r-references.bib"]
-
 floatsintext      : no
 figurelist        : no
 tablelist         : no
@@ -79,10 +69,11 @@ footnotelist      : no
 linenumbers       : no
 mask              : no
 draft             : no
-
 documentclass     : "apa6"
 classoption       : "man"
 output            : papaja::apa6_pdf
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -122,6 +113,7 @@ s_capital_09 <- import(here("data", "social-capital-variables-for-2009.xlsx")) %
 
 s_capital_14 <- import(here("data", "social-capital-variables-spreadsheet-for-2014.xlsx")) %>% 
   clean_names()#load social capital data for 2014
+
 ```
 
 ## Clean data
@@ -267,6 +259,23 @@ We report how we determined our sample size, all data exclusions (if any), all m
 
 ## Data analysis
 We used `r cite_r("r-references.bib")` for all our analyses.
+
+```{r}
+#Scatterplot of social capital over time (individual points represent states). Line fitted to show any trends over time
+aggregate_states <- df %>%
+  mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
+  group_by(state_po,year_sc) %>%
+  summarize(aggregate_capital=sum(aggregate_capital))
+aggregate_states %>%
+  ggplot(mapping=aes(x=year_sc,y=aggregate_capital)) +
+  geom_point() +
+  geom_smooth(se=FALSE,method=lm) +
+  labs(title="Aggregate Social Capital Over Time",
+       x="Year",
+       y="Aggregate Capital")
+
+  
+```
 
 
 # Results
