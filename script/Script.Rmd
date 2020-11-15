@@ -260,6 +260,45 @@ We report how we determined our sample size, all data exclusions (if any), all m
 ## Data analysis
 We used `r cite_r("r-references.bib")` for all our analyses.
 
+```{r descriptives set up, echo = FALSE, results = "hide"}
+
+library(kableExtra)
+
+(table_1 <- df %>% 
+  group_by(state_po) %>% 
+  summarize(n = n(),
+          m_totalvotes = mean(totalvotes),
+          sd_totalvotes = sd(totalvotes),
+          mean_pop = mean(pop), 
+          sd_pop = sd(pop)))
+
+(table_2 <- df %>% 
+  group_by(year_elctn, party) %>% 
+  summarize(n = n(),
+          m_totalvotes = mean(totalvotes),
+          sd_totalvotes = sd(totalvotes),
+          m_candidatevotes = mean(candidatevotes),
+          sd_candidatevotes = sd(candidatevotes), 
+          mean_pop = mean(pop), 
+          sd_pop = sd(pop)))
+```
+
+
+```{r descriptives tables}
+
+(table_3 <- table_1 %>% 
+  kbl(col.names = c("Sate", "N", "M", "SD",
+                    "M", "SD"), # renaming the columns
+      digits = 2,
+      caption = "<b>Table 1</b><br /> <i>A summary table for total votes and population by state.</i>",
+      align =  "c") %>% #align center 
+  kable_classic(full_width = FALSE) %>% 
+  add_header_above(c(" " = 2, "Total Votes" = 2, "Population" = 2)) %>% #adding headers. The 2's indicate how many columns are under each header
+  footnote(footnote_as_chunk = TRUE, 
+           general = "N = number of counties with recorded data per the four time points (2000, 2008, 2012, 2016).")) #adding a footnote
+
+```
+
 ```{r}
 #Scatterplot of social capital over time (individual points represent states). Line fitted to show any trends over time
 aggregate_states <- df %>%
