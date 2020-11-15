@@ -263,6 +263,10 @@ We used `r cite_r("r-references.bib")` for all our analyses.
 ```{r}
 #Scatterplot of social capital over time (individual points represent states). Line fitted to show any trends over time
 aggregate_states <- df %>%
+  filter((year_elctn == 2000 & party == "republican") | 
+           (year_elctn == 2008 & party == "democrat") | 
+           (year_elctn == 2012 & party == "democrat") | 
+           (year_elctn == 2016 & party == "republican")) %>%
   mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
   group_by(state_po,year_sc) %>%
   summarize(aggregate_capital=sum(aggregate_capital))
@@ -270,12 +274,17 @@ aggregate_states %>%
   ggplot(mapping=aes(x=year_sc,y=aggregate_capital)) +
   geom_point() +
   geom_smooth(se=FALSE,method=lm) +
-  labs(title="Aggregate Social Capital Over Time",
+  labs(title="Social Capital Trends in U.S. States",
        x="Year",
-       y="Aggregate Capital")
+       y="Aggregate Social Capital")
 
 #Scatterplot of different types of social capital over time (individual points represent aggregate for entire country). Lines fitted for each type to show trends over time
-aggregate_country <- rowsum(df[9:17], df$year_sc)
+filter_df <- df %>%
+    filter((year_elctn == 2000 & party == "republican") | 
+           (year_elctn == 2008 & party == "democrat") | 
+           (year_elctn == 2012 & party == "democrat") | 
+           (year_elctn == 2016 & party == "republican")) 
+aggregate_country <- rowsum(filter_df[9:17], filter_df$year_sc)
 aggregate_country <- aggregate_country %>%
   mutate(Year = c(1997,2005,2009,2014)) %>%
   pivot_longer(cols=bowl:labor,names_to = "type_sc", values_to = "count")
@@ -283,12 +292,30 @@ aggregate_country %>%
   ggplot(mapping=aes(x=Year,y=count,color=type_sc)) +
   geom_point() +
   geom_smooth(se=FALSE,method=lm) +
-  labs(title="Types of Social Capital Over Time",
+  labs(title="Changes in Social Capital in U.S.",
        x="Year",
        y="Count",
-       color="Type")
+       color="Type of Capital")
 
-
+#Scatterplot of proportion votes for winning party by social capital for each state
+aggregate_election <- df %>%
+  filter((year_elctn == 2000 & party == "republican") | 
+           (year_elctn == 2008 & party == "democrat") | 
+           (year_elctn == 2012 & party == "democrat") | 
+           (year_elctn == 2016 & party == "republican")) %>%
+  mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
+  group_by(state_po,year_elctn,party) %>%
+  summarize(aggregate_capital=sum(aggregate_capital), 
+            prop_votes = sum(candidatevotes) / sum(totalvotes))
+aggregate_election %>%
+  ggplot(mapping=aes(x=aggregate_capital,y=prop_votes,color=party)) +
+  geom_point() +
+  geom_smooth(se=FALSE,method=lm,color="black") +
+  facet_wrap(~year_elctn) +
+  labs(title="Votes for Winning Party by Social Capital in U.S. States",
+       x="Aggregate Social Capital",
+       y="Proportion of Votes",
+       color="Winning Party")
 
   
 ```
