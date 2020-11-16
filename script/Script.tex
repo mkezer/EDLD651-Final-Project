@@ -1,0 +1,440 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  english,
+  man]{apa6}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Relationship between social capital and election results},
+  pdfauthor={Anisha Babu1, Hyeonjin Cha1, Diana DeWald1, \& Murat Kezer1},
+  pdflang={en-EN},
+  pdfkeywords={keywords},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+% Manuscript styling
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+% Table formatting
+\usepackage{longtable}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\begin{center}\begin{threeparttable}}
+%   {\end{threeparttable}\end{center}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% \usepackage{etoolbox}
+\makeatletter
+\patchcmd{\HyOrg@maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\patchcmd{\HyOrg@maketitle}
+  {\section{\protect\normalfont{\@title}}}
+  {\section*{\protect\normalfont{\@title}}}
+  {}{\typeout{Failed to patch title.}}
+\makeatother
+\shorttitle{Title}
+\keywords{keywords\newline\indent Word count: X}
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
+\usepackage{csquotes}
+\ifxetex
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\else
+  \usepackage[shorthands=off,main=english]{babel}
+\fi
+
+\title{Relationship between social capital and election results}
+\author{Anisha Babu\textsuperscript{1}, Hyeonjin Cha\textsuperscript{1}, Diana DeWald\textsuperscript{1}, \& Murat Kezer\textsuperscript{1}}
+\date{}
+
+
+\authornote{
+
+Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
+Enter author note here.
+
+The authors made the following contributions. Anisha Babu: Conceptualization, Data Analysis, Writing - Original Draft Preparation, Writing - Review \& Editing; Hyeonjin Cha: Conceptualization, Data Analysis, Writing - Original Draft Preparation, Writing - Review \& Editing; Diana DeWald: Conceptualization, Data Analysis, Writing - Original Draft Preparation, Writing - Review \& Editing; Murat Kezer: Conceptualization, Data Analysis, Writing - Original Draft Preparation, Writing - Review \& Editing.
+
+}
+
+\affiliation{\vspace{0.5cm}\textsuperscript{1} University of Oregon}
+
+\abstract{
+One or two sentences providing a \textbf{basic introduction} to the field, comprehensible to a scientist in any discipline.
+
+Two to three sentences of \textbf{more detailed background}, comprehensible to scientists in related disciplines.
+
+One sentence clearly stating the \textbf{general problem} being addressed by this particular study.
+
+One sentence summarizing the main result (with the words ``\textbf{here we show}'' or their equivalent).
+
+Two or three sentences explaining what the \textbf{main result} reveals in direct comparison to what was thought to be the case previously, or how the main result adds to previous knowledge.
+
+One or two sentences to put the results into a more \textbf{general context}.
+
+Two or three sentences to provide a \textbf{broader perspective}, readily comprehensible to a scientist in any discipline.
+}
+
+
+
+\begin{document}
+\maketitle
+
+\begin{verbatim}
+## Warning: package 'rio' was built under R version 4.0.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'here' was built under R version 4.0.3
+\end{verbatim}
+
+\hypertarget{data-preparation}{%
+\section{Data Preparation}\label{data-preparation}}
+
+\hypertarget{load-data-and-clean-names}{%
+\subsection{Load data and clean names}\label{load-data-and-clean-names}}
+
+We first load the datasets and clean the variable names.
+
+\hypertarget{clean-data}{%
+\subsection{Clean data}\label{clean-data}}
+
+\hypertarget{election-data}{%
+\subsubsection{Election data}\label{election-data}}
+
+\begin{itemize}
+\item
+  We start with the election data as it is more comprehensive in terms of the number of counties. First, we select the variables of interests. Then, we select the election year (i.e., 2000, 2008, 2012, 2016) that we will match with social capital data.
+\item
+  The name of the year variable is changed in a way that shows it is the year of election (so that it is not mixed with the same year variable in social capital data).
+\item
+  We create new datasets for each presidential election we are interested in. These will be later merged with corresponding social capital data.
+\end{itemize}
+
+\hypertarget{social-capital-data}{%
+\subsubsection{Social capital data}\label{social-capital-data}}
+
+\begin{itemize}
+\item
+  For each social capital dataset (i.e., 1997, 2005, 2009, 2014), we first add state code for some counties that do not readily contain that information. Then, we create two variables out of the area name such that we have different variables for county names and state codes.
+\item
+  We select the relevant variables and clean the variable names.
+\item
+  We create a year variable indicating when the data were collected.
+\item
+  Finally, we reorder variables so that the order of the variables is the same across datasets. This will be useful when we want to merge social capital data across year so that we can get descriptive statistics for each year simultaneously and that we can visualize the changes across years in social capital.
+\end{itemize}
+
+\hypertarget{merge-datasets}{%
+\subsection{Merge Datasets}\label{merge-datasets}}
+
+\begin{itemize}
+\item
+  First, we merge social capital data across years for reasons explained above, and call it \texttt{s\_capital}.
+\item
+  Next, we merge corresponding election and social capital data for 4 time points. \textbf{In doing so,} we keep the rows that exist in both election and social capital data. For instance, if we do not have the election information for a county, we do not include it in the merged dataset even if we have that county's social capital data. These datasets are called \texttt{df\_year}. \emph{Year} denotes the year of election. Also, we remove the duplicate variables (i.e., state and county names) and fix the names. We did not remove them earlier because we first wanted to merge the social capital data with all the variables.
+\item
+  Finally, we merge all election and social capital data in the same dataset (i.e., \texttt{df}).
+\end{itemize}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Social science literature has extensively examined the relationship between social capital and politics (e.g.~Morales \& Guigni, 2016; Jottier \& Heyndels, 2012; La Due Lake \& Huckfeldt, 1998). However, relatively little is known on the impact of social capital election results.
+
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
+
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study.
+
+\hypertarget{participants}{%
+\subsection{Participants}\label{participants}}
+
+\hypertarget{material}{%
+\subsection{Material}\label{material}}
+
+\hypertarget{procedure}{%
+\subsection{Procedure}\label{procedure}}
+
+\hypertarget{data-analysis}{%
+\subsection{Data analysis}\label{data-analysis}}
+
+We used R (Version 4.0.2; R Core Team, 2020) and the R-package \emph{papaja} (Version 0.1.0.9997; Aust \& Barth, 2020) for all our analyses.
+
+\begin{verbatim}
+## Warning: package 'kableExtra' was built under R version 4.0.3
+\end{verbatim}
+
+\begin{table}
+
+\caption{(\#tab:descriptives tables)<b>Table 1</b><br /> <i>A summary table for total votes and population by state.</i>}
+\centering
+\begin{tabular}[t]{c|c|c|c|c|c}
+\hline
+\multicolumn{2}{c|}{ } & \multicolumn{2}{c|}{Total Votes} & \multicolumn{2}{c}{Population} \\
+\cline{3-4} \cline{5-6}
+Sate & N & M & SD & M & SD\\
+\hline
+AK & 9 & 7036.33 & 398.67 & 103141.67 & 147915.25\\
+\hline
+AL & 871 & 29358.00 & 44896.51 & 68879.68 & 100914.62\\
+\hline
+AR & 975 & 13892.38 & 21091.14 & 37270.45 & 53303.44\\
+\hline
+AZ & 195 & 142568.75 & 322061.96 & 388107.70 & 871560.05\\
+\hline
+CA & 754 & 220437.07 & 459793.34 & 616297.65 & 1378440.96\\
+\hline
+CO & 822 & 36534.26 & 73810.47 & 73782.09 & 148932.52\\
+\hline
+CT & 104 & 195334.13 & 149300.04 & 436422.76 & 343038.81\\
+\hline
+DC & 13 & 263094.69 & 45450.29 & 594503.38 & 38658.20\\
+\hline
+DE & 39 & 131234.72 & 82538.43 & 282679.28 & 173389.87\\
+\hline
+FL & 867 & 115569.11 & 169851.71 & 255262.47 & 407373.04\\
+\hline
+GA & 2067 & 22354.78 & 50236.18 & 56445.14 & 119007.58\\
+\hline
+HI & 12 & 107234.25 & 108642.95 & 355042.00 & 387066.96\\
+\hline
+IA & 1287 & 15009.59 & 25993.86 & 30213.59 & 50321.87\\
+\hline
+ID & 572 & 13985.49 & 27273.27 & 32808.63 & 60062.09\\
+\hline
+IL & 1326 & 51236.38 & 206026.82 & 123385.72 & 528244.83\\
+\hline
+IN & 1196 & 27699.71 & 45113.14 & 68418.50 & 113413.69\\
+\hline
+KS & 1365 & 11002.53 & 31921.51 & 26360.95 & 70262.47\\
+\hline
+KY & 1560 & 14628.43 & 32859.33 & 34966.85 & 71505.35\\
+\hline
+LA & 832 & 30059.10 & 40530.66 & 70716.44 & 97338.35\\
+\hline
+MA & 182 & 216389.62 & 187780.62 & 461166.55 & 393704.30\\
+\hline
+MD & 312 & 104048.16 & 124061.99 & 232447.60 & 279563.92\\
+\hline
+ME & 208 & 44052.68 & 39267.75 & 81514.40 & 69146.66\\
+\hline
+MI & 1079 & 56095.34 & 121992.73 & 119409.92 & 266775.54\\
+\hline
+MN & 1131 & 31945.15 & 79108.64 & 58910.11 & 140710.23\\
+\hline
+MO & 1495 & 22510.63 & 56794.59 & 50414.99 & 120810.53\\
+\hline
+MS & 1066 & 14371.77 & 15444.11 & 35349.43 & 40072.78\\
+\hline
+MT & 728 & 8345.33 & 14034.50 & 17034.98 & 28320.90\\
+\hline
+NC & 1300 & 40244.79 & 64517.00 & 88394.91 & 128695.40\\
+\hline
+ND & 689 & 5957.63 & 11697.79 & 12702.69 & 23887.01\\
+\hline
+NE & 1209 & 8360.31 & 26145.05 & 19120.89 & 59314.61\\
+\hline
+NH & 130 & 67499.35 & 59447.03 & 127580.54 & 113121.20\\
+\hline
+NJ & 273 & 171455.72 & 100108.52 & 409943.19 & 244355.26\\
+\hline
+NM & 429 & 22450.17 & 44792.76 & 58888.78 & 108629.00\\
+\hline
+NV & 221 & 53214.18 & 148530.09 & 139917.12 & 406977.56\\
+\hline
+NY & 806 & 117083.82 & 179489.89 & 309170.95 & 523250.44\\
+\hline
+OH & 1144 & 60443.97 & 100850.62 & 130137.30 & 213473.62\\
+\hline
+OK & 1001 & 17670.82 & 39644.91 & 46882.12 & 103203.69\\
+\hline
+OR & 468 & 49126.67 & 75535.16 & 101274.04 & 152891.78\\
+\hline
+PA & 871 & 83989.68 & 125900.85 & 186731.46 & 265666.67\\
+\hline
+RI & 65 & 88910.02 & 77935.85 & 209704.91 & 212422.38\\
+\hline
+SC & 598 & 39296.74 & 43408.67 & 94492.19 & 100129.77\\
+\hline
+SD & 858 & 5361.22 & 10471.78 & 11986.58 & 23049.10\\
+\hline
+TN & 1235 & 25105.19 & 48953.83 & 63588.26 & 121498.89\\
+\hline
+TX & 3302 & 30512.77 & 104069.65 & 91652.98 & 329870.93\\
+\hline
+UT & 377 & 32856.06 & 72857.02 & 87151.33 & 195645.86\\
+\hline
+VA & 1739 & 26244.28 & 52883.26 & 56799.13 & 110635.83\\
+\hline
+VT & 182 & 21953.14 & 17867.21 & 43996.45 & 34414.57\\
+\hline
+WA & 507 & 75085.97 & 156388.94 & 163042.76 & 324691.07\\
+\hline
+WI & 936 & 40049.40 & 67281.99 & 76911.79 & 129380.89\\
+\hline
+WV & 715 & 12424.23 & 12599.56 & 33325.18 & 32663.98\\
+\hline
+WY & 299 & 10555.98 & 9242.99 & 23186.42 & 21346.34\\
+\hline
+\multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note: } N = number of counties with recorded data per the four time points (2000, 2008, 2012, 2016).}\\
+\end{tabular}
+\end{table}
+
+\begin{table}
+
+\caption{(\#tab:descriptives tables)<b>Table 2</b><br /> <i>A summary table for votes by candidate and year of election.</i>}
+\centering
+\begin{tabular}[t]{c|c|c|c|c}
+\hline
+Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
+\hline
+2000 & democrat & 3107 & 16217.87 & 57150.19\\
+\hline
+2000 & green & 3107 & NA & NA\\
+\hline
+2000 & republican & 3107 & 16048.65 & 38632.37\\
+\hline
+2000 & NA & 3107 & 338.98 & 953.87\\
+\hline
+2008 & democrat & 3108 & 22156.76 & 76972.02\\
+\hline
+2008 & republican & 3108 & 19166.61 & 44839.53\\
+\hline
+2008 & NA & 3108 & 576.80 & 1848.41\\
+\hline
+2012 & democrat & 3108 & 20973.53 & 73998.15\\
+\hline
+2012 & republican & 3108 & 19409.48 & 44596.24\\
+\hline
+2012 & NA & 3108 & 838.35 & 2952.17\\
+\hline
+2016 & democrat & 3115 & 21070.80 & 80496.43\\
+\hline
+2016 & republican & 3115 & 20160.42 & 43156.86\\
+\hline
+2016 & NA & 3115 & 2449.34 & 7508.95\\
+\hline
+\multicolumn{5}{l}{\rule{0pt}{1em}\textit{Note: } N = total number of counties in the US reporting data.}\\
+\end{tabular}
+\end{table}
+
+\includegraphics{Script_files/figure-latex/unnamed-chunk-1-1.pdf} \includegraphics{Script_files/figure-latex/unnamed-chunk-1-2.pdf} \includegraphics{Script_files/figure-latex/unnamed-chunk-1-3.pdf}
+
+\begin{verbatim}
+## Warning: package 'usmap' was built under R version 4.0.3
+\end{verbatim}
+
+\includegraphics{Script_files/figure-latex/visualization part 2-1.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-2.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-3.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-4.pdf}
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+\newpage
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-R-papaja}{}%
+Aust, F., \& Barth, M. (2020). \emph{papaja: Create APA manuscripts with R Markdown}. Retrieved from \url{https://github.com/crsh/papaja}
+
+\leavevmode\hypertarget{ref-R-base}{}%
+R Core Team. (2020). \emph{R: A language and environment for statistical computing}. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from \url{https://www.R-project.org/}
+
+\endgroup
+
+
+\end{document}

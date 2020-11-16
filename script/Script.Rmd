@@ -261,7 +261,7 @@ We report how we determined our sample size, all data exclusions (if any), all m
 We used `r cite_r("r-references.bib")` for all our analyses.
 
 ```{r descriptives set up, echo = FALSE, results = "hide"}
-
+#install.packages("kableExtra")
 library(kableExtra)
 
 (table_01 <- df %>% 
@@ -365,6 +365,45 @@ aggregate_election %>%
   
 ```
 
+```{r visualization part 2}
+#install.packages("usmap")
+library(usmap)
+
+df2014 <- df %>% 
+  filter(year_sc == 2014, party == "democrat") %>% 
+    mutate(demratio = candidatevotes / totalvotes)
+
+#US Election Results 2016
+plot_usmap(data = df2014, regions = "counties", values = "demratio") +
+  scale_fill_continuous(low = "white", high = "blue", name = "Percentage of Democratic Votes (2016)", label = scales::comma
+  ) + 
+  theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
+  theme(legend.position = "bottom")
+
+#Oregon election 016
+plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "demratio") +
+  scale_fill_continuous(low = "white", high = "blue", name = "Percentage of Democratic Votes (2016)", label = scales::comma
+  ) + 
+  theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
+  theme(legend.position = "bottom")
+
+#US Social Capital 2014
+plot_usmap(data = df2014, regions = "counties", values = "assn") +
+  scale_fill_continuous(low = "white", high = "blue", name = "Social Capital Index (2014)", label = scales::comma
+  ) + 
+  theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
+  theme(legend.position = "bottom")
+
+
+#Oregon social capital 2014
+plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "assn") +
+  scale_fill_continuous(low = "white", high = "blue", name = "Social Capital Index (2014)", label = scales::comma
+  ) + 
+  theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
+  theme(legend.position = "bottom")
+
+
+```
 
 # Results
 
