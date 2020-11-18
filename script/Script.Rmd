@@ -91,7 +91,18 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed,
 ```
 
 ```{r packages}
-library(rio); library(here); library(tidyverse); library(knitr); library(janitor); library(magrittr); library(stringr)
+##### CL: for me, it's faster / more familiar for me to see packages all in one column, instead of a row
+library(rio) 
+library(here)
+library(tidyverse)
+library(knitr)
+library(janitor) 
+library(magrittr) 
+library(stringr)
+#install.packages("kableExtra")
+library(kableExtra)
+#install.packages("usmap")
+library(usmap)
 ```
 
 # Data Preparation
@@ -136,10 +147,11 @@ s_capital_14 <- import(here("data", "social-capital-variables-spreadsheet-for-20
 ```{r clean datasets}
 #select, filter, and clean data
 ##election
-election %<>%
+##### CL: wow, very cool! I had never seen this operator to modify an object in place
+election %<>% 
   select(-office, -version, -candidate, -state) %>% #select relevant variables
   filter(year %in% c(2000, 2008, 2012, 2016)) #select relevant years
-
+##### CL : good use of the %in% to make this prior line shorter
 colnames(election)[1] <- "year_elctn" #rename year variable for merging
 
 elctn_00 <- election %>% filter(year_elctn == 2000) #create a df for each election of interest so that it's easier to match them with sc dfs
@@ -241,6 +253,9 @@ df_16 <- df_16[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
 colnames(df_16)[3:4] <- c("state_po", "county") #rename variables
 
 df <- bind_rows(df_00, df_08, df_12, df_16) #merged dataset: contains all election and corresponding social capital data
+
+##### CL : My R crashed two times while working on this, and I noticed that you saved a lot of objects that you don't use again. To prevent that, we can use the command below to remove all objects EXCEPT your final df. Not required, but I like to do this if I make temporary objects
+rm(list=setdiff(ls(), "df"))
 ```
 
 
@@ -261,8 +276,7 @@ We report how we determined our sample size, all data exclusions (if any), all m
 We used `r cite_r("r-references.bib")` for all our analyses.
 
 ```{r descriptives set up, echo = FALSE, results = "hide"}
-#install.packages("kableExtra")
-library(kableExtra)
+##### CL : nice to put all library() calls in one place (moved to top)
 
 (table_01 <- df %>% 
   group_by(state_po) %>% 
@@ -282,7 +296,7 @@ library(kableExtra)
 
 
 ```{r descriptives tables}
-
+## CL : wow this table is beautiful! I'm so impressed by the formatting
 (table_1 <- table_01 %>% 
   kbl(col.names = c("Sate", "N", "M", "SD",
                     "M", "SD"), # renaming the columns
@@ -366,9 +380,9 @@ aggregate_election %>%
 ```
 
 ```{r visualization part 2}
-#install.packages("usmap")
-library(usmap)
+##### CL : I think it's helpful to put all library() calls in one place (put at top)
 
+##### CL : Wow, super cool graphing! I have never seen the code for overlaying to a map like this. I really like how you display your data.
 df2014 <- df %>% 
   filter(year_sc == 2014, party == "democrat") %>% 
     mutate(demratio = candidatevotes / totalvotes)
