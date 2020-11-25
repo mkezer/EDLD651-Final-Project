@@ -75,8 +75,13 @@ output            : papaja::apa6_pdf
 editor_options: 
   chunk_output_type: console
 ---
+Great header organization! Super easy to follow and edit 
 
 ```{r setup, include = FALSE}
+#install.packages("devtools")
+#devtools::install_github("crsh/papaja")
+#Sys.setenv(LANG = "en")
+
 library("papaja")
 r_refs("r-references.bib")
 ```
@@ -91,14 +96,19 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed,
 ```
 
 ```{r packages}
+#install.packages("here")  
+#set_here(path = "D:/Master/EDLD651/peerreview/EDLD651-Final-Project", verbose = T)
 library(rio); library(here); library(tidyverse); library(knitr); library(janitor); library(magrittr); library(stringr)
-```
 
+```
+This presentation is very handy, I usually install and load my packages line by line so will be using this notion for speed.
 # Data Preparation
 
 ## Load data and clean names
 We first load the datasets and clean the variable names.
 ```{r load data}
+#setwd("D:/Master/EDLD651/peerreview/EDLD651-Final-Project")
+
 election <- import(here("data", "countypres_2000-2016.csv")) %>% 
   clean_names() #load election results
 
@@ -211,6 +221,7 @@ s_capital_14 %<>% #create year variable before merging
   mutate(year_sc = 2014)
 
 colnames(s_capital_14) <- colnames(s_capital_09) #rename variables to make it compatible with previous years' datasets
+#Nice conservation of time and code! I would probably have retyped up everything and lament later 
 ```
 
 ## Merge Datasets
@@ -294,6 +305,8 @@ library(kableExtra)
   footnote(footnote_as_chunk = TRUE, 
            general = "N = number of counties with recorded data per the four time points (2000, 2008, 2012, 2016).")) #adding a footnote
 
+#Nicely organized charts! I was confised by the NAs since they likely indicate different things in different cells but works well to break up the space!
+#I cant assume theres data avilable on this but an * at the bottom of the charts indicating a brief overview of the Party NA subgroups would add more representation to the data but considering only major partys are relevant its very likely unnecessary.  
 (table_2 <- table_02 %>% 
   kbl(col.names = c("Year", "Party", "N", "Mean Candidate Votes", "SD Candidate Votes"),
       digits = 2,
@@ -302,6 +315,7 @@ library(kableExtra)
   kable_classic(full_width = FALSE) %>% 
   footnote(footnote_as_chunk = TRUE, 
            general = "N = total number of counties in the US reporting data.")) 
+
 
 ```
 
@@ -315,6 +329,7 @@ aggregate_states <- df %>%
   mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
   group_by(state_po,year_sc) %>%
   summarize(aggregate_capital=sum(aggregate_capital))
+
 aggregate_states %>%
   ggplot(mapping=aes(x=year_sc,y=aggregate_capital)) +
   geom_point() +
@@ -361,6 +376,7 @@ aggregate_election %>%
        x="Aggregate Social Capital",
        y="Proportion of Votes",
        color="Winning Party")
+#clean graphs! looks like theres a bottle neck somewhere in the mid aggregate social capital scores!
 
   
 ```
@@ -379,6 +395,8 @@ plot_usmap(data = df2014, regions = "counties", values = "demratio") +
   ) + 
   theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
   theme(legend.position = "bottom")
+
+#Very nice visualization! I half attempted a heat map of data our lab has on some covid questionnaires and this serves as a great reference
 
 #Oregon election 016
 plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "demratio") +
