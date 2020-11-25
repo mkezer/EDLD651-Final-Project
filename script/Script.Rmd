@@ -250,6 +250,8 @@ df <- bind_rows(df_00, df_08, df_12, df_16) #merged dataset: contains all electi
 # Introduction
 Social science literature has extensively examined the relationship between social capital and politics (e.g. Morales & Guigni, 2016; Jottier & Heyndels, 2012; La Due Lake & Huckfeldt, 1998). However, relatively little is known on the impact of social capital election results.
 
+<!-- Maybe a brief explanation here about what social capital is just so the reader has a framework for understanding the data and analysis? -->
+
 # Methods
 We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
 
@@ -307,7 +309,7 @@ library(kableExtra)
 
 ```
 
-```{r}
+```{r plots}
 #Scatterplot of social capital over time (individual points represent states). Line fitted to show any trends over time
 aggregate_states <- df %>%
   filter((year_elctn == 2000 & party == "republican") | 
@@ -320,7 +322,8 @@ aggregate_states <- df %>%
 aggregate_states %>%
   ggplot(mapping=aes(x=year_sc,y=aggregate_capital)) +
   geom_point() +
-  geom_smooth(se=FALSE,method=lm) +
+  p + scale_y_continuous(breaks=seq(0,2015,1)) +
+  # Here I was trying to make tick marks for each year so that it would be clearer which year the data was taken in. Or maybe just label the years you have data for?
   labs(title="Social Capital Trends in U.S. States",
        x="Year",
        y="Aggregate Social Capital")
@@ -342,7 +345,10 @@ aggregate_country %>%
   labs(title="Changes in Social Capital in U.S.",
        x="Year",
        y="Count",
-       color="Type of Capital")
+       color="Type of Capital") +
+  scale_fill_discrete(name = "Type of Capital",
+                      labels = c("bowling", "business", "civic", "golf", "labor", "political", "professional", "religious", "sport"))
+# Here I was trying to relabel the legend labels with full words. 
 
 #Scatterplot of proportion votes for winning party by social capital for each state
 aggregate_election <- df %>%
