@@ -77,7 +77,13 @@ editor_options:
 ---
 
 ```{r setup, include = FALSE}
-library("papaja")
+library(papaja)
+library(tidyverse)
+library(rio)
+library(knitr)
+library(janitor)
+library(magrittr)
+library(stringr)
 r_refs("r-references.bib")
 ```
 
@@ -88,10 +94,6 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed,
                       eval = TRUE,
                       echo = FALSE,
                       cache = FALSE)
-```
-
-```{r packages}
-library(rio); library(here); library(tidyverse); library(knitr); library(janitor); library(magrittr); library(stringr)
 ```
 
 # Data Preparation
