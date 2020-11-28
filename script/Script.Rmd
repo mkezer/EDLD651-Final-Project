@@ -84,6 +84,7 @@ library(knitr)
 library(janitor)
 library(magrittr)
 library(stringr)
+library(here)
 r_refs("r-references.bib")
 ```
 
@@ -244,37 +245,6 @@ colnames(df_16)[3:4] <- c("state_po", "county") #rename variables
 
 df <- bind_rows(df_00, df_08, df_12, df_16) #merged dataset: contains all election and corresponding social capital 
 
-df2 <-df  %>% 
-  pivot_wider(
-    names_from = party,
-    values_from = candidatevotes) %>% 
-  mutate(demmargin = (democrat - republican) / (democrat + republican))
-
-
-
-# social capital variables with per capita measures
-df_anal_2016 <- df2 %>%
-  filter(year_elctn == 2016) %>% 
-  select(bowl:demmargin) %>%
-  select(-democrat, -republican, -green, -"NA", -sk) %>% 
-  mutate(bowl =bowl/pop * 1000) %>%
-  mutate(civic = civic/pop * 1000) %>% 
-  mutate(golf = golf/pop * 1000) %>% 
-  mutate(relig = relig/pop * 1000) %>% 
-  mutate(sport = sport/pop * 1000) %>% 
-  mutate(pol = pol/pop * 1000) %>%
-  mutate(prof = prof/pop * 1000) %>% 
-  mutate(bus = bus/pop * 1000) %>% 
-  mutate(labor = labor/pop * 1000) %>%
-  mutate(nccs = nccs /pop * 1000)
-  
-
-df_anal_2016 %>% 
-  cor()
-
-#preliminary analysis
-mod1 <- lm(data = df_anal_2016, demmargin ~ 1 + bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop)
-summary(mod1)
 
 ```
 
@@ -339,6 +309,41 @@ library(kableExtra)
            general = "N = total number of counties in the US reporting data.")) 
 
 ```
+
+
+
+``` {r preliminary analysis}
+df2 <-df  %>% 
+  pivot_wider(
+    names_from = party,
+    values_from = candidatevotes) %>% 
+  mutate(demmargin = (democrat - republican) / (democrat + republican))
+
+# social capital variables with per capita measures
+df_anal_2016 <- df2 %>%
+  filter(year_elctn == 2016) %>% 
+  select(bowl:demmargin) %>%
+  select(-democrat, -republican, -green, -"NA", -sk) %>% 
+  mutate(bowl =bowl/pop * 1000) %>%
+  mutate(civic = civic/pop * 1000) %>% 
+  mutate(golf = golf/pop * 1000) %>% 
+  mutate(relig = relig/pop * 1000) %>% 
+  mutate(sport = sport/pop * 1000) %>% 
+  mutate(pol = pol/pop * 1000) %>%
+  mutate(prof = prof/pop * 1000) %>% 
+  mutate(bus = bus/pop * 1000) %>% 
+  mutate(labor = labor/pop * 1000) %>%
+  mutate(nccs = nccs /pop * 1000)
+
+df_anal_2016 %>% 
+  cor()
+
+#preliminary analysis
+mod1 <- lm(data = df_anal_2016, demmargin ~ 1 + bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop)
+summary(mod1)
+
+```
+
 
 ```{r}
 #Scatterplot of social capital over time (individual points represent states). Line fitted to show any trends over time
