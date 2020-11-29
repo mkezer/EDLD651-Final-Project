@@ -442,7 +442,7 @@ df2014 <- df2 %>%
   filter(year_elctn == 2016)
 
 #US Election Results 2016
-plot_usmap(data = df2014, regions = "states", values = "demmargin", labels = TRUE, label_color = "white") +
+plot_usmap(data = df2014, regions = "counties", values = "demmargin") +
   scale_fill_gradient2(low = "red", 
                        mid = "white", 
                        midpoint = 0, 
@@ -466,25 +466,36 @@ plot_usmap(data = df2008, regions = "counties", values = "demmargin") +
   theme(legend.position = "bottom")
 
 
-df_usmap <- df2 %>% 
-  filter(state_po != "AL")
+#Pipes don't really work with usmap package...
 
-unique(df_usmap$year_elctn)
 
-plot_usmap(data = df_usmap, regions = "counties", values = "demmargin") +
-  scale_fill_gradient2(low = "red", 
-                       mid = "white", 
-                       midpoint = 0, 
-                       high = "blue", 
-                       name = "Republican - Democrat Margin (2016)") + 
+df_usmap_soccap_2014 <- df2 %>%
+  filter(year_elctn == 2016) %>% 
+  mutate(bowl = bowl/pop * 1000) %>%
+  mutate(civic = civic/pop * 1000) %>% 
+  mutate(golf = golf/pop * 1000) %>% 
+  mutate(relig = relig/pop * 1000) %>% 
+  mutate(sport = sport/pop * 1000) %>% 
+  mutate(pol = pol/pop * 1000) %>%
+  mutate(prof = prof/pop * 1000) %>% 
+  mutate(bus = bus/pop * 1000) %>% 
+  mutate(labor = labor/pop * 1000) %>%
+  mutate(nccs = nccs /pop * 1000) %>% 
+  select(fips, civic, relig, pol, labor) %>% 
+  pivot_longer(cols = c(civic, relig, pol, labor),
+              names_to = 
+              values_to = soccount
+
+
+plot_usmap(data = df_usmap_soccap_2014, regions = "counties", values = "civic") +
+  scale_fill_gradient2(low = "white", 
+                       high = "green", 
+                       name = "Republican - Democrat Margin (2008)") + 
   #scale_fill_continuous(low = "red", high = "blue", name = "Percentage of Democratic Votes (2016)", label = scales::comma) + 
   theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
-  theme(legend.position = "bottom") + 
-  facet_wrap(~year_elctn, ncol = 2)
+  theme(legend.position = "bottom")
 
 
-
-#Pipes don't really work with usmap package...
 
 
 
