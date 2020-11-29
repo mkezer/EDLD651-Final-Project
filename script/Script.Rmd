@@ -98,9 +98,23 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed,
                       cache = FALSE)
 ```
 
-# Data Preparation
+# Introduction
+Social science literature has extensively examined the relationship between social capital and politics (e.g. Morales & Guigni, 2016; Jottier & Heyndels, 2012; La Due Lake & Huckfeldt, 1998). However, relatively little is known on the impact of social capital election results.
 
-## Load data and clean names
+# Methods
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+
+## Data
+- County Presidential Election Returns 2000-2016 (MIT Election Data and Science Lab, 2018)
+  - County level returns for presidential elections from 2000 to 2016
+  - Election results across the years in one dataset & in tidy format
+- The production of social capital in US counties (Rupasingha, Goetz, & Freshwater, 2006, with updates)
+  - County level count of various establishments defined by NAICS code
+  - Different variables measured across years; new dataset for each year
+
+## Data Preparation
+
+### Load data and clean names
 We first load the datasets and clean the variable names.
 ```{r load data}
 election <- import(here("data", "countypres_2000-2016.csv")) %>% 
@@ -120,15 +134,15 @@ s_capital_14 <- import(here("data", "social-capital-variables-spreadsheet-for-20
 
 ```
 
-## Clean data
-### Election data
+### Clean data
+#### Election data
 - We start with the election data as it is more comprehensive in terms of the number of counties. First, we select the variables of interests. Then, we select the election year (i.e., 2000, 2008, 2012, 2016) that we will match with social capital data.  
 
 - The name of the year variable is changed in a way that shows it is the year of election (so that it is not mixed with the same year variable in social capital data).  
 
 - We create new datasets for each presidential election we are interested in. These will be later merged with corresponding social capital data.  
 
-### Social capital data
+#### Social capital data
 - For each social capital dataset (i.e., 1997, 2005, 2009, 2014), we first add state code for some counties that do not readily contain that information. Then, we create two variables out of the area name such that we have different variables for county names and state codes.  
 
 - We select the relevant variables and clean the variable names.  
@@ -217,13 +231,13 @@ s_capital_14 %<>% #create year variable before merging
 colnames(s_capital_14) <- colnames(s_capital_09) #rename variables to make it compatible with previous years' datasets
 ```
 
-## Merge Datasets
+### Merge Datasets
 
 - First, we merge social capital data across years for reasons explained above, and call it `s_capital`.  
 
 - Next, we merge corresponding election and social capital data for 4 time points. **In doing so,** we keep the rows that exist in both election and social capital data. For instance, if we do not have the election information for a county, we do not include it in the merged dataset even if we have that county's social capital data. These datasets are called `df_year`. *Year* denotes the year of election. Also, we remove the duplicate variables (i.e., state and county names) and fix the names. We did not remove them earlier because we first wanted to merge the social capital data with all the variables.  
 
-- Finally, we merge all election and social capital data in the same dataset (i.e., `df`). 
+- Finally, we merge all election and social capital data in the same dataset (i.e., `df`). In addition, we created another dataset using `pivot_wider()` to have variables for the candidate votes per political party. Then, we removed the intermediate objects (i.e., all data frames except for `df` and `df_wide`).
 
 ```{r merge datasets}
 s_capital <- bind_rows(s_capital_97, s_capital_05, s_capital_09, s_capital_14) #merge social capital data
@@ -257,20 +271,6 @@ df_wide <- df_wide[,-25] #remove NA variable
 
 rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Chris' review)
 ```
-
-
-
-# Introduction
-Social science literature has extensively examined the relationship between social capital and politics (e.g. Morales & Guigni, 2016; Jottier & Heyndels, 2012; La Due Lake & Huckfeldt, 1998). However, relatively little is known on the impact of social capital election results.
-
-# Methods
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
-
-## Participants
-
-## Material
-
-## Procedure
 
 ## Data analysis
 We used `r cite_r("r-references.bib")` for all our analyses.
