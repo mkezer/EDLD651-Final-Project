@@ -85,6 +85,7 @@ library(janitor)
 library(magrittr)
 library(stringr)
 library(here)
+library(kableExtra)
 r_refs("r-references.bib")
 ```
 
@@ -243,13 +244,17 @@ df_16 <- inner_join(elctn_16, s_capital_14, by = "fips") #merge election 2016 & 
 df_16 <- df_16[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
 colnames(df_16)[3:4] <- c("state_po", "county") #rename variables
 
-    names_from = party,
+df <- bind_rows(df_00, df_08, df_12, df_16)
+
 df_wide <- df %>% #wide format
+pivot_wider(
+    names_from = party,
     values_from = candidatevotes,
     names_prefix = "candidatevotes_"
   )
-  pivot_wider(
+
 df_wide <- df_wide[,-25] #remove NA variable
+
 rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Chris' review)
 ```
 
@@ -271,9 +276,6 @@ We report how we determined our sample size, all data exclusions (if any), all m
 We used `r cite_r("r-references.bib")` for all our analyses.
 
 ```{r descriptives set up, echo = FALSE, results = "hide"}
-#install.packages("kableExtra")
-library(kableExtra)
-
 (table_01 <- df %>% 
   group_by(state_po) %>% 
   summarize(n = n(),
