@@ -241,6 +241,17 @@ df_16 <- df_16[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
 colnames(df_16)[3:4] <- c("state_po", "county") #rename variables
 
 df <- bind_rows(df_00, df_08, df_12, df_16) #merged dataset: contains all election and corresponding social capital data
+
+df_wide <- df %>% #wide format
+  pivot_wider(
+    names_from = party,
+    values_from = candidatevotes,
+    names_prefix = "candidatevotes_"
+  )
+
+df_wide <- df_wide[,-25] #remove NA variable
+
+rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Chris' review)
 ```
 
 
@@ -406,6 +417,7 @@ plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "ass
 ```
 
 # Results
+
 
 # Discussion
 
