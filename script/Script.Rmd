@@ -276,6 +276,16 @@ pivot_wider(
 df_wide <- df_wide[,-25] #remove NA variable
 
 rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Chris' review)
+
+#     names_from = party,
+# df_wide <- df %>% #wide format
+#     values_from = candidatevotes,
+#     names_prefix = "candidatevotes_"
+#   )
+#   pivot_wider(
+# df_wide <- df_wide[,-25] #remove NA variable
+# rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Chris' review)
+
 ```
 
 ## Data analysis
@@ -369,11 +379,12 @@ aggregate_states <- df %>%
            (year_elctn == 2016 & party == "republican")) %>%
   mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
   group_by(state_po,year_sc) %>%
-  summarize(aggregate_capital=sum(aggregate_capital))
+  summarize(aggregate_capital = (sum(aggregate_capital) / sum(pop)) * 1000) 
 aggregate_states %>%
-  ggplot(mapping=aes(x=year_sc,y=aggregate_capital)) +
-  geom_point() +
-  geom_smooth(se=FALSE,method=lm) +
+  ggplot(mapping=aes(x=as.character(year_sc),
+                     y=aggregate_capital)) +
+  geom_violin(aes(color=as.character(year_sc)),show.legend=FALSE) +
+  geom_boxplot(color="gray70") +
   labs(title="Social Capital Trends in U.S. States",
        x="Year",
        y="Aggregate Social Capital")
@@ -389,13 +400,15 @@ aggregate_country <- aggregate_country %>%
   mutate(Year = c(1997,2005,2009,2014)) %>%
   pivot_longer(cols=bowl:labor,names_to = "type_sc", values_to = "count")
 aggregate_country %>%
-  ggplot(mapping=aes(x=Year,y=count,color=type_sc)) +
+  filter(type_sc == "relig" | type_sc=="labor" | type_sc=="civic") %>%
+  ggplot(mapping=aes(x=as.character(Year),y=count,color=type_sc)) +
   geom_point() +
-  geom_smooth(se=FALSE,method=lm) +
   labs(title="Changes in Social Capital in U.S.",
        x="Year",
        y="Count",
-       color="Type of Capital")
+       color="Type of Capital") +
+  facet_wrap(~type_sc,scales="free")
+#spell out types of social capital
 
 #Scatterplot of proportion votes for winning party by social capital for each state
 aggregate_election <- df %>%
@@ -405,7 +418,7 @@ aggregate_election <- df %>%
            (year_elctn == 2016 & party == "republican")) %>%
   mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
   group_by(state_po,year_elctn,party) %>%
-  summarize(aggregate_capital=sum(aggregate_capital), 
+  summarize(aggregate_capital=(sum(aggregate_capital) / sum(pop)) * 1000, 
             prop_votes = sum(candidatevotes) / sum(totalvotes))
 aggregate_election %>%
   ggplot(mapping=aes(x=aggregate_capital,y=prop_votes,color=party)) +
@@ -416,6 +429,9 @@ aggregate_election %>%
        x="Aggregate Social Capital",
        y="Proportion of Votes",
        color="Winning Party")
+#maybe add losing party lines
+
+
 
   
 ```
