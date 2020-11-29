@@ -87,10 +87,7 @@ library(knitr)
 library(janitor)
 library(magrittr)
 library(stringr)
-<<<<<<< Updated upstream
 library(here)
-=======
->>>>>>> Stashed changes
 library(kableExtra)
 r_refs("r-references.bib")
 ```

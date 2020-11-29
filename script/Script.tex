@@ -191,19 +191,56 @@ Two or three sentences to provide a \textbf{broader perspective}, readily compre
 \begin{document}
 \maketitle
 
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Social science literature has extensively examined the relationship between social capital and politics (e.g.~Morales \& Guigni, 2016; Jottier \& Heyndels, 2012; La Due Lake \& Huckfeldt, 1998). However, relatively little is known on the impact of social capital election results.
+
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
+
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study.
+
+\hypertarget{data}{%
+\subsection{Data}\label{data}}
+
+\begin{itemize}
+\tightlist
+\item
+  County Presidential Election Returns 2000-2016 (MIT Election Data and Science Lab, 2018)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    County level returns for presidential elections from 2000 to 2016
+  \item
+    Election results across the years in one dataset \& in tidy format
+  \end{itemize}
+\item
+  The production of social capital in US counties (Rupasingha, Goetz, \& Freshwater, 2006, with updates)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    County level count of various establishments defined by NAICS code
+  \item
+    Different variables measured across years; new dataset for each year
+  \end{itemize}
+\end{itemize}
+
 \hypertarget{data-preparation}{%
-\section{Data Preparation}\label{data-preparation}}
+\subsection{Data Preparation}\label{data-preparation}}
 
 \hypertarget{load-data-and-clean-names}{%
-\subsection{Load data and clean names}\label{load-data-and-clean-names}}
+\subsubsection{Load data and clean names}\label{load-data-and-clean-names}}
 
 We first load the datasets and clean the variable names.
 
 \hypertarget{clean-data}{%
-\subsection{Clean data}\label{clean-data}}
+\subsubsection{Clean data}\label{clean-data}}
 
 \hypertarget{election-data}{%
-\subsubsection{Election data}\label{election-data}}
+\paragraph{Election data}\label{election-data}}
 
 \begin{itemize}
 \item
@@ -215,7 +252,7 @@ We first load the datasets and clean the variable names.
 \end{itemize}
 
 \hypertarget{social-capital-data}{%
-\subsubsection{Social capital data}\label{social-capital-data}}
+\paragraph{Social capital data}\label{social-capital-data}}
 
 \begin{itemize}
 \item
@@ -229,7 +266,7 @@ We first load the datasets and clean the variable names.
 \end{itemize}
 
 \hypertarget{merge-datasets}{%
-\subsection{Merge Datasets}\label{merge-datasets}}
+\subsubsection{Merge Datasets}\label{merge-datasets}}
 
 \begin{itemize}
 \item
@@ -237,36 +274,13 @@ We first load the datasets and clean the variable names.
 \item
   Next, we merge corresponding election and social capital data for 4 time points. \textbf{In doing so,} we keep the rows that exist in both election and social capital data. For instance, if we do not have the election information for a county, we do not include it in the merged dataset even if we have that county's social capital data. These datasets are called \texttt{df\_year}. \emph{Year} denotes the year of election. Also, we remove the duplicate variables (i.e., state and county names) and fix the names. We did not remove them earlier because we first wanted to merge the social capital data with all the variables.
 \item
-  Finally, we merge all election and social capital data in the same dataset (i.e., \texttt{df}).
+  Finally, we merge all election and social capital data in the same dataset (i.e., \texttt{df}). In addition, we created another dataset using \texttt{pivot\_wider()} to have variables for the candidate votes per political party. Then, we removed the intermediate objects (i.e., all data frames except for \texttt{df} and \texttt{df\_wide}).
 \end{itemize}
-
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
-
-Social science literature has extensively examined the relationship between social capital and politics (e.g.~Morales \& Guigni, 2016; Jottier \& Heyndels, 2012; La Due Lake \& Huckfeldt, 1998). However, relatively little is known on the impact of social capital election results.
-
-\hypertarget{methods}{%
-\section{Methods}\label{methods}}
-
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study.
-
-\hypertarget{participants}{%
-\subsection{Participants}\label{participants}}
-
-\hypertarget{material}{%
-\subsection{Material}\label{material}}
-
-\hypertarget{procedure}{%
-\subsection{Procedure}\label{procedure}}
 
 \hypertarget{data-analysis}{%
 \subsection{Data analysis}\label{data-analysis}}
 
-<<<<<<< Updated upstream
-We used R (Version 4.0.2; R Core Team, 2020) and the R-packages \emph{dplyr} (Version 1.0.2; Wickham et al., 2020), \emph{forcats} (Version 0.5.0; Wickham, 2020a), \emph{ggplot2} (Version 3.3.2; Wickham, 2016), \emph{here} (Version 0.1; Müller, 2017), \emph{janitor} (Version 2.0.1; Firke, 2020), \emph{knitr} (Version 1.30; Xie, 2015), \emph{magrittr} (Version 1.5; Bache \& Wickham, 2014), \emph{papaja} (Version 0.1.0.9997; Aust \& Barth, 2020), \emph{purrr} (Version 0.3.4; Henry \& Wickham, 2020), \emph{readr} (Version 1.3.1; Wickham, Hester, \& Francois, 2018), \emph{rio} (Version 0.5.16; Chan, Chan, Leeper, \& Becker, 2018), \emph{stringr} (Version 1.4.0; Wickham, 2019), \emph{tibble} (Version 3.0.3; Müller \& Wickham, 2020), \emph{tidyr} (Version 1.1.2; Wickham, 2020b), and \emph{tidyverse} (Version 1.3.0; Wickham, Averick, et al., 2019) for all our analyses.
-=======
 We used R \autocite[Version 3.6.1;][]{R-base} and the R-packages \emph{dplyr} \autocite[Version 1.0.0;][]{R-dplyr}, \emph{forcats} \autocite[Version 0.5.0;][]{R-forcats}, \emph{ggplot2} \autocite[Version 3.3.2;][]{R-ggplot2}, \emph{here} \autocite[Version 0.1;][]{R-here}, \emph{janitor} \autocite[Version 2.0.1;][]{R-janitor}, \emph{kableExtra} \autocite[Version 1.3.1;][]{R-kableExtra}, \emph{knitr} \autocite[Version 1.29;][]{R-knitr}, \emph{magrittr} \autocite[Version 1.5;][]{R-magrittr}, \emph{papaja} \autocite[Version 0.1.0.9997;][]{R-papaja}, \emph{purrr} \autocite[Version 0.3.4;][]{R-purrr}, \emph{readr} \autocite[Version 1.3.1;][]{R-readr}, \emph{rio} \autocite[Version 0.5.16;][]{R-rio}, \emph{stringr} \autocite[Version 1.4.0;][]{R-stringr}, \emph{tibble} \autocite[Version 3.0.2;][]{R-tibble}, \emph{tidyr} \autocite[Version 1.1.0;][]{R-tidyr}, and \emph{tidyverse} \autocite[Version 1.3.0;][]{R-tidyverse} for all our analyses.
->>>>>>> Stashed changes
 
 \begin{verbatim}
 ## Warning: `...` is not empty.
@@ -554,58 +568,8 @@ Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
 \setlength{\leftskip}{0.5in}
 
 \hypertarget{refs}{}
-<<<<<<< Updated upstream
-\leavevmode\hypertarget{ref-R-papaja}{}%
-Aust, F., \& Barth, M. (2020). \emph{papaja: Create APA manuscripts with R Markdown}. Retrieved from \url{https://github.com/crsh/papaja}
-
-\leavevmode\hypertarget{ref-R-magrittr}{}%
-Bache, S. M., \& Wickham, H. (2014). \emph{Magrittr: A forward-pipe operator for r}. Retrieved from \url{https://CRAN.R-project.org/package=magrittr}
-
-\leavevmode\hypertarget{ref-R-rio}{}%
-Chan, C.-h., Chan, G. C., Leeper, T. J., \& Becker, J. (2018). \emph{Rio: A swiss-army knife for data file i/o}.
-
-\leavevmode\hypertarget{ref-R-janitor}{}%
-Firke, S. (2020). \emph{Janitor: Simple tools for examining and cleaning dirty data}. Retrieved from \url{https://CRAN.R-project.org/package=janitor}
-
-\leavevmode\hypertarget{ref-R-purrr}{}%
-Henry, L., \& Wickham, H. (2020). \emph{Purrr: Functional programming tools}. Retrieved from \url{https://CRAN.R-project.org/package=purrr}
-
-\leavevmode\hypertarget{ref-R-here}{}%
-Müller, K. (2017). \emph{Here: A simpler way to find your files}. Retrieved from \url{https://CRAN.R-project.org/package=here}
-
-\leavevmode\hypertarget{ref-R-tibble}{}%
-Müller, K., \& Wickham, H. (2020). \emph{Tibble: Simple data frames}. Retrieved from \url{https://CRAN.R-project.org/package=tibble}
-
-\leavevmode\hypertarget{ref-R-base}{}%
-R Core Team. (2020). \emph{R: A language and environment for statistical computing}. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from \url{https://www.R-project.org/}
-=======
 \begin{CSLReferences}{0}{0}
 \end{CSLReferences}
->>>>>>> Stashed changes
-
-\leavevmode\hypertarget{ref-R-ggplot2}{}%
-Wickham, H. (2016). \emph{Ggplot2: Elegant graphics for data analysis}. Springer-Verlag New York. Retrieved from \url{https://ggplot2.tidyverse.org}
-
-\leavevmode\hypertarget{ref-R-stringr}{}%
-Wickham, H. (2019). \emph{Stringr: Simple, consistent wrappers for common string operations}. Retrieved from \url{https://CRAN.R-project.org/package=stringr}
-
-\leavevmode\hypertarget{ref-R-forcats}{}%
-Wickham, H. (2020a). \emph{Forcats: Tools for working with categorical variables (factors)}. Retrieved from \url{https://CRAN.R-project.org/package=forcats}
-
-\leavevmode\hypertarget{ref-R-tidyr}{}%
-Wickham, H. (2020b). \emph{Tidyr: Tidy messy data}. Retrieved from \url{https://CRAN.R-project.org/package=tidyr}
-
-\leavevmode\hypertarget{ref-R-tidyverse}{}%
-Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., \ldots{} Yutani, H. (2019). Welcome to the tidyverse. \emph{Journal of Open Source Software}, \emph{4}(43), 1686. \url{https://doi.org/10.21105/joss.01686}
-
-\leavevmode\hypertarget{ref-R-dplyr}{}%
-Wickham, H., François, R., Henry, L., \& Müller, K. (2020). \emph{Dplyr: A grammar of data manipulation}. Retrieved from \url{https://CRAN.R-project.org/package=dplyr}
-
-\leavevmode\hypertarget{ref-R-readr}{}%
-Wickham, H., Hester, J., \& Francois, R. (2018). \emph{Readr: Read rectangular text data}. Retrieved from \url{https://CRAN.R-project.org/package=readr}
-
-\leavevmode\hypertarget{ref-R-knitr}{}%
-Xie, Y. (2015). \emph{Dynamic documents with R and knitr} (2nd ed.). Boca Raton, Florida: Chapman; Hall/CRC. Retrieved from \url{https://yihui.org/knitr/}
 
 \endgroup
 
