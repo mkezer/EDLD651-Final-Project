@@ -165,14 +165,6 @@ Two or three sentences to provide a \textbf{broader perspective}, readily compre
 \begin{document}
 \maketitle
 
-\begin{verbatim}
-## Warning: package 'rio' was built under R version 4.0.3
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'here' was built under R version 4.0.3
-\end{verbatim}
-
 \hypertarget{data-preparation}{%
 \section{Data Preparation}\label{data-preparation}}
 
@@ -244,7 +236,7 @@ We report how we determined our sample size, all data exclusions (if any), all m
 \hypertarget{data-analysis}{%
 \subsection{Data analysis}\label{data-analysis}}
 
-We used R (Version 4.0.2; R Core Team, 2020) and the R-package \emph{papaja} (Version 0.1.0.9997; Aust \& Barth, 2020) for all our analyses.
+We used R (Version 4.0.2; R Core Team, 2020) and the R-packages \emph{dplyr} (Version 1.0.2; Wickham et al., 2020), \emph{forcats} (Version 0.5.0; Wickham, 2020a), \emph{ggplot2} (Version 3.3.2; Wickham, 2016), \emph{here} (Version 0.1; Müller, 2017), \emph{janitor} (Version 2.0.1; Firke, 2020), \emph{knitr} (Version 1.30; Xie, 2015), \emph{magrittr} (Version 1.5; Bache \& Wickham, 2014), \emph{papaja} (Version 0.1.0.9997; Aust \& Barth, 2020), \emph{purrr} (Version 0.3.4; Henry \& Wickham, 2020), \emph{readr} (Version 1.3.1; Wickham, Hester, \& Francois, 2018), \emph{rio} (Version 0.5.16; Chan, Chan, Leeper, \& Becker, 2018), \emph{stringr} (Version 1.4.0; Wickham, 2019), \emph{tibble} (Version 3.0.3; Müller \& Wickham, 2020), \emph{tidyr} (Version 1.1.2; Wickham, 2020b), and \emph{tidyverse} (Version 1.3.0; Wickham, Averick, et al., 2019) for all our analyses.
 
 \begin{verbatim}
 ## Warning: package 'kableExtra' was built under R version 4.0.3
@@ -404,13 +396,103 @@ Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
 \end{tabular}
 \end{table}
 
+\begin{verbatim}
+##                  bowl        civic          golf         relig        sport
+## bowl       1.00000000  0.163331564  0.1843690062  1.754235e-01 -0.011262877
+## civic      0.16333156  1.000000000  0.1658962995  2.547000e-01 -0.003264050
+## golf       0.18436901  0.165896299  1.0000000000  3.491323e-01 -0.021985208
+## relig      0.17542352  0.254699957  0.3491322736  1.000000e+00  0.002806421
+## sport     -0.01126288 -0.003264050 -0.0219852075  2.806421e-03  1.000000000
+## pol       -0.02966700  0.001966347 -0.0334108615 -9.423555e-05  0.012883481
+## prof      -0.01392921  0.076733734 -0.0417492547 -3.323368e-02  0.021631055
+## bus        0.09723730  0.140544743  0.1370127533  3.110755e-01 -0.020948989
+## labor      0.01396846  0.127298046 -0.0318697416 -4.609051e-02  0.017101150
+## respn      0.04573144  0.033975898  0.0008135967 -8.286148e-03 -0.004274877
+## pvote      0.08361274  0.095880533  0.1007224264  4.908534e-02  0.028533722
+## pop       -0.06101167 -0.070326839 -0.1026103152 -2.262784e-01  0.023425173
+## nccs       0.22185326  0.347937372  0.2808439095  3.743616e-01  0.017981863
+## assn       0.29451849  0.484150132  0.4950591900  9.183900e-01  0.023813113
+## demmargin -0.09156467 -0.037419358 -0.1379312816 -3.337933e-01  0.024754801
+##                     pol        prof         bus         labor         respn
+## bowl      -2.966700e-02 -0.01392921  0.09723730  0.0139684639  0.0457314391
+## civic      1.966347e-03  0.07673373  0.14054474  0.1272980463  0.0339758984
+## golf      -3.341086e-02 -0.04174925  0.13701275 -0.0318697416  0.0008135967
+## relig     -9.423555e-05 -0.03323368  0.31107552 -0.0460905051 -0.0082861484
+## sport      1.288348e-02  0.02163105 -0.02094899  0.0171011497 -0.0042748774
+## pol        1.000000e+00  0.20178507  0.08837989  0.0511035445 -0.0353395859
+## prof       2.017851e-01  1.00000000  0.16314793  0.1102856692  0.0756318706
+## bus        8.837989e-02  0.16314793  1.00000000 -0.0188081662 -0.1678024962
+## labor      5.110354e-02  0.11028567 -0.01880817  1.0000000000  0.1920688496
+## respn     -3.533959e-02  0.07563187 -0.16780250  0.1920688496  1.0000000000
+## pvote      4.581321e-02  0.04152891  0.07735125 -0.0036691656  0.1131580514
+## pop        4.668483e-02  0.08947146 -0.09489972  0.0586595869  0.1039281594
+## nccs       8.661840e-02  0.13549486  0.32688972 -0.0002338711 -0.1209083839
+## assn       6.319277e-02  0.09392249  0.47070855  0.0830621339  0.0133341334
+## demmargin  8.501235e-02  0.18630848 -0.09135165  0.1315740835  0.0595954442
+##                  pvote         pop          nccs        assn   demmargin
+## bowl       0.083612738 -0.06101167  0.2218532641  0.29451849 -0.09156467
+## civic      0.095880533 -0.07032684  0.3479373723  0.48415013 -0.03741936
+## golf       0.100722426 -0.10261032  0.2808439095  0.49505919 -0.13793128
+## relig      0.049085341 -0.22627840  0.3743615599  0.91838999 -0.33379330
+## sport      0.028533722  0.02342517  0.0179818630  0.02381311  0.02475480
+## pol        0.045813214  0.04668483  0.0866183961  0.06319277  0.08501235
+## prof       0.041528912  0.08947146  0.1354948632  0.09392249  0.18630848
+## bus        0.077351254 -0.09489972  0.3268897173  0.47070855 -0.09135165
+## labor     -0.003669166  0.05865959 -0.0002338711  0.08306213  0.13157408
+## respn      0.113158051  0.10392816 -0.1209083839  0.01333413  0.05959544
+## pvote      1.000000000  0.02826091  0.2303456902  0.11604985  0.10013568
+## pop        0.028260911  1.00000000 -0.0958799517 -0.19781990  0.35179190
+## nccs       0.230345690 -0.09587995  1.0000000000  0.49110261 -0.06627689
+## assn       0.116049854 -0.19781990  0.4911026061  1.00000000 -0.25818469
+## demmargin  0.100135681  0.35179190 -0.0662768883 -0.25818469  1.00000000
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = demmargin ~ 1 + bowl + civic + golf + relig + sport + 
+##     pol + prof + bus + labor + pvote + respn + pop, data = df_anal_2016)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.90456 -0.18538 -0.04293  0.15323  1.21563 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -4.604e-01  4.802e-02  -9.588  < 2e-16 ***
+## bowl        -2.034e-01  9.204e-02  -2.210   0.0272 *  
+## civic        6.436e-02  3.853e-02   1.671   0.0949 .  
+## golf        -4.419e-02  4.695e-02  -0.941   0.3467    
+## relig       -1.583e-01  1.110e-02 -14.253  < 2e-16 ***
+## sport        1.861e-01  2.800e-01   0.665   0.5064    
+## pol          4.993e-01  2.240e-01   2.229   0.0259 *  
+## prof         1.165e+00  1.454e-01   8.011 1.60e-15 ***
+## bus         -4.153e-02  4.610e-02  -0.901   0.3677    
+## labor        4.958e-01  9.433e-02   5.256 1.58e-07 ***
+## pvote        3.632e-01  5.692e-02   6.381 2.02e-10 ***
+## respn       -2.638e-02  4.800e-02  -0.550   0.5826    
+## pop          2.653e-07  1.607e-08  16.504  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.283 on 3102 degrees of freedom
+## Multiple R-squared:  0.2362, Adjusted R-squared:  0.2333 
+## F-statistic: 79.94 on 12 and 3102 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
 \includegraphics{Script_files/figure-latex/unnamed-chunk-1-1.pdf} \includegraphics{Script_files/figure-latex/unnamed-chunk-1-2.pdf} \includegraphics{Script_files/figure-latex/unnamed-chunk-1-3.pdf}
 
 \begin{verbatim}
 ## Warning: package 'usmap' was built under R version 4.0.3
 \end{verbatim}
 
-\includegraphics{Script_files/figure-latex/visualization part 2-1.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-2.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-3.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-4.pdf}
+\includegraphics{Script_files/figure-latex/visualization part 2-1.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-2.pdf}
+
+\begin{verbatim}
+## [1] 2000 2008 2012 2016
+\end{verbatim}
+
+\includegraphics{Script_files/figure-latex/visualization part 2-3.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-4.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-5.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-6.pdf}
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -431,8 +513,50 @@ Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
 \leavevmode\hypertarget{ref-R-papaja}{}%
 Aust, F., \& Barth, M. (2020). \emph{papaja: Create APA manuscripts with R Markdown}. Retrieved from \url{https://github.com/crsh/papaja}
 
+\leavevmode\hypertarget{ref-R-magrittr}{}%
+Bache, S. M., \& Wickham, H. (2014). \emph{Magrittr: A forward-pipe operator for r}. Retrieved from \url{https://CRAN.R-project.org/package=magrittr}
+
+\leavevmode\hypertarget{ref-R-rio}{}%
+Chan, C.-h., Chan, G. C., Leeper, T. J., \& Becker, J. (2018). \emph{Rio: A swiss-army knife for data file i/o}.
+
+\leavevmode\hypertarget{ref-R-janitor}{}%
+Firke, S. (2020). \emph{Janitor: Simple tools for examining and cleaning dirty data}. Retrieved from \url{https://CRAN.R-project.org/package=janitor}
+
+\leavevmode\hypertarget{ref-R-purrr}{}%
+Henry, L., \& Wickham, H. (2020). \emph{Purrr: Functional programming tools}. Retrieved from \url{https://CRAN.R-project.org/package=purrr}
+
+\leavevmode\hypertarget{ref-R-here}{}%
+Müller, K. (2017). \emph{Here: A simpler way to find your files}. Retrieved from \url{https://CRAN.R-project.org/package=here}
+
+\leavevmode\hypertarget{ref-R-tibble}{}%
+Müller, K., \& Wickham, H. (2020). \emph{Tibble: Simple data frames}. Retrieved from \url{https://CRAN.R-project.org/package=tibble}
+
 \leavevmode\hypertarget{ref-R-base}{}%
 R Core Team. (2020). \emph{R: A language and environment for statistical computing}. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from \url{https://www.R-project.org/}
+
+\leavevmode\hypertarget{ref-R-ggplot2}{}%
+Wickham, H. (2016). \emph{Ggplot2: Elegant graphics for data analysis}. Springer-Verlag New York. Retrieved from \url{https://ggplot2.tidyverse.org}
+
+\leavevmode\hypertarget{ref-R-stringr}{}%
+Wickham, H. (2019). \emph{Stringr: Simple, consistent wrappers for common string operations}. Retrieved from \url{https://CRAN.R-project.org/package=stringr}
+
+\leavevmode\hypertarget{ref-R-forcats}{}%
+Wickham, H. (2020a). \emph{Forcats: Tools for working with categorical variables (factors)}. Retrieved from \url{https://CRAN.R-project.org/package=forcats}
+
+\leavevmode\hypertarget{ref-R-tidyr}{}%
+Wickham, H. (2020b). \emph{Tidyr: Tidy messy data}. Retrieved from \url{https://CRAN.R-project.org/package=tidyr}
+
+\leavevmode\hypertarget{ref-R-tidyverse}{}%
+Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., \ldots{} Yutani, H. (2019). Welcome to the tidyverse. \emph{Journal of Open Source Software}, \emph{4}(43), 1686. \url{https://doi.org/10.21105/joss.01686}
+
+\leavevmode\hypertarget{ref-R-dplyr}{}%
+Wickham, H., François, R., Henry, L., \& Müller, K. (2020). \emph{Dplyr: A grammar of data manipulation}. Retrieved from \url{https://CRAN.R-project.org/package=dplyr}
+
+\leavevmode\hypertarget{ref-R-readr}{}%
+Wickham, H., Hester, J., \& Francois, R. (2018). \emph{Readr: Read rectangular text data}. Retrieved from \url{https://CRAN.R-project.org/package=readr}
+
+\leavevmode\hypertarget{ref-R-knitr}{}%
+Xie, Y. (2015). \emph{Dynamic documents with R and knitr} (2nd ed.). Boca Raton, Florida: Chapman; Hall/CRC. Retrieved from \url{https://yihui.org/knitr/}
 
 \endgroup
 
