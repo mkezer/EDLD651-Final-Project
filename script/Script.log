@@ -1,19 +1,20 @@
+<<<<<<< Updated upstream
 This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.2)  28 NOV 2020 12:47
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.2)  29 NOV 2020 10:18
+>>>>>>> Stashed changes
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Script.tex
 (./Script.tex
 LaTeX2e <2020-10-01> patch level 2
-L3 programming layer <2020-10-27> xparse <2020-03-03> (c:/Users/Hyeonjin/AppDat
-a/Roaming/TinyTeX/texmf-dist/tex/latex/apa6/apa6.cls
+L3 programming layer <2020-10-27> xparse <2020-03-03> (c:/Users/Diana/AppData/R
+oaming/TinyTeX/texmf-dist/tex/latex/apa6/apa6.cls
 Document Class: apa6 2020/01/13 v2.34 APA formatting (6th edition)
-
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cl
-s
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size12.clo
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
 \c@part=\count175
@@ -28,14 +29,14 @@ File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolb
-ox.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.
+sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count183
 )
 Class apa6 Info: No bibliography package was specified; defaulting to (but not 
 loading) Biblatex on input line 213.
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
 Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -69,30 +70,25 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-)
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fontenc.st
-y
+) (c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
 2.
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ))
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/geometry/geomet
-ry.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/geometry/geometry.
+sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval
-.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.st
+y
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.
-sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.s
-ty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
 \Gm@cnth=\count184
@@ -108,33 +104,31 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layoutvoffset=\dimen146
 \Gm@dimlist=\toks16
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphi
-cx.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.
+sty
 Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphi
-cs.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.
+sty
 Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
-
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.s
-ty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/gr
-aphics.cfg
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graph
+ics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/pd
-ftex.def
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/pdfte
+x.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen147
 \Gin@req@width=\dimen148
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/bookta
-bs.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.
+sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen149
 \lightrulewidth=\dimen150
@@ -154,8 +148,8 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count190
 \@thisrulewidth=\dimen161
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttable/
-threeparttable.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttable/thr
+eeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
 \@tempboxb=\box47
 )
@@ -170,12 +164,12 @@ Package: threeparttable 2003/06/13  v 3.0
 \b@level@five@skip=\skip57
 \e@level@five@skip=\skip58
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption
-.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption.st
+y
 Package: caption 2020/10/26 v3.5g Customizing captions (AR)
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption
-3.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption3.s
+ty
 Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
 \captionmargin=\dimen162
 \captionmargin@=\dimen163
@@ -195,7 +189,7 @@ Package caption Info: threeparttable package is loaded.
 \gr@box=\box48
 \gr@boxwidth=\skip60
 \gr@boxheight=\skip61
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/bm.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2019/07/24 v1.2d Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup4
 \symboldletters=\mathgroup5
@@ -205,8 +199,8 @@ LaTeX Info: Redefining \bm on input line 209.
 )
 \c@appendix=\count194
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyhdr/fancyh
-dr.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyhdr/fancyhdr.
+sty
 Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip62
@@ -219,8 +213,8 @@ s
 \f@nch@O@olf=\skip69
 \f@nch@O@orf=\skip70
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/endfloat/endflo
-at.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/endfloat/endfloat.
+sty
 Package: endfloat 2019/04/15 v2.7 LaTeX2e package puts figures and tables at en
 d (jdm)
 \c@posttable=\count195
@@ -230,44 +224,27 @@ d (jdm)
 \efloat@postfff=\write4
 \@ef@fffopen=\count198
 ))
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amssym
-b.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfon
-ts.sty
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks17
-\symAMSa=\mathgroup7
-\symAMSb=\mathgroup8
-LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath
-.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.st
+y
 Package: amsmath 2020/09/23 v2.17i AMS math features
 \@mathmargin=\skip71
 For additional information on amsmath, use the `?' option.
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amstext
-.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.st
+y
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.
-sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks18
+\@emptytoks=\toks17
 \ex@=\dimen169
 ))
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.
-sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 LaTeX Info: Redefining \boldsymbol on input line 28.
 \pmbraise@=\dimen170
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.
-sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count199
@@ -290,52 +267,60 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \dotsspace@=\muskip16
 \c@parentequation=\count272
 \dspbrk@lvl=\count273
-\tag@help=\toks19
+\tag@help=\toks18
 \row@=\count274
 \column@=\count275
 \maxfields@=\count276
-\andhelp@=\toks20
+\andhelp@=\toks19
 \eqnshift@=\dimen172
 \alignsep@=\dimen173
 \tagshift@=\dimen174
 \tagwidth@=\dimen175
 \totwidth@=\dimen176
 \lineht@=\dimen177
-\@envbody=\toks21
+\@envbody=\toks20
 \multlinegap=\skip72
 \multlinetaggap=\skip73
-\mathdisplay@stack=\toks22
+\mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifxetex
-.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifxetex.st
+y
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifluate
-x.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifluatex.s
+ty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-)
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fontenc.st
-y
+) (c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
-)
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/inputenc.s
-ty
+) (c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/inputenc.st
+y
 Package: inputenc 2020/08/01 v1.3d Input encoding file
-\inpenc@prehook=\toks23
-\inpenc@posthook=\toks24
-)
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/textcomp.s
-ty
+\inpenc@prehook=\toks22
+\inpenc@posthook=\toks23
+) (c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/textcomp.st
+y
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.s
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.s
+ty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.
+sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup7
+\symAMSb=\mathgroup8
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.s
 ty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/co
-lor.cfg
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color
+.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -349,78 +334,77 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hyperr
-ef.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.
+sty
 Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcm
-ds.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.
+sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pd
-ftexcmds.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdfte
+xcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/infwarerr/inf
-warerr.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/infwarerr/infwar
+err.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvsetkeys/kvs
-etkeys.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvsetkeys/kvsetk
+eys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/
-kvdefinekeys.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvd
+efinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdfescape/pdf
-escape.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfesc
+ape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor
-.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.st
+y
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/letltxmacro/let
-ltxmacro.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltx
+macro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook
-.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook.st
+y
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvoptions/kvopt
-ions.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoption
+s.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen178
 \Hy@linkcounter=\count277
 \Hy@pagecounter=\count278
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc
-.def
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.de
+f
 File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/intcalc/intca
-lc.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.
+sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/etexcmds/etex
-cmds.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmd
+s.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
 \Hy@SavedSpaceFactor=\count279
 Package hyperref Info: Option `unicode' set `true' on input line 4338.
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.
-def
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2020-05-15 v7.00e Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
@@ -433,19 +417,19 @@ Package hyperref Info: Backreferencing OFF on input line 4484.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4717.
 \c@Hy@tempcnt=\count280
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/url/url.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5076.
 \XeTeXLinkMargin=\dimen179
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bitset/bitset
-.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bitset/bitset.st
+y
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bigintcalc/bi
-gintcalc.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigin
+tcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
@@ -462,8 +446,8 @@ Package hyperref Info: PDF/A mode OFF on input line 6377.
 LaTeX Info: Redefining \ref on input line 6417.
 LaTeX Info: Redefining \pageref on input line 6421.
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atbegshi-l
-tx.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.
+sty
 Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
 ge
 with kernel methods
@@ -474,12 +458,12 @@ with kernel methods
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hpdfte
-x.def
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.d
+ef
 File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atveryend-
-ltx.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx
+.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
 e
 with kernel methods
@@ -487,35 +471,27 @@ with kernel methods
 \Fld@listcount=\count285
 \c@bookmark@seq@number=\count286
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/
-rerunfilecheck.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rer
+unfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/uniquecounter
-/uniquecounter.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/uniquecounter/un
+iquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 )
 \Hy@SectionHShift=\skip74
-)
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/grffile/grffile
-.sty
-Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legac
-y)
-Package grffile Info: This package is an empty stub for compatibility on input 
-line 40.
-)
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/was/upgreek.sty
+) (c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/was/upgreek.sty
 Package: upgreek 2003/02/12 v2.0 (WaS)
 Package upgreek Info: Using Euler Roman for upright Greek on input line 31.
 \symugrf@m=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `ugrf@m' in version `bold'
 (Font)                  U/eur/m/n --> U/eur/b/n on input line 38.
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable
-.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.st
+y
 Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
 \LTleft=\skip75
 \LTright=\skip76
@@ -531,30 +507,28 @@ Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
 \LT@rows=\count289
 \c@LT@tables=\count290
 \c@LT@chunks=\count291
-\LT@p@ftn=\toks25
+\LT@p@ftn=\toks24
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/lscape
-.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/lscape.st
+y
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multir
-ow.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multirow.
+sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@colwidth=\skip79
 \multirow@cntb=\count292
 \multirow@dima=\skip80
 \bigstrutjot=\dimen183
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/tabularx.
-sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
-
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
 Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
 \col@sep=\dimen184
 \ar@mcellbox=\box55
 \extrarowheight=\dimen185
-\NC@list=\toks26
+\NC@list=\toks25
 \extratabsurround=\skip81
 \backup@length=\skip82
 \ar@cellbox=\box56
@@ -565,26 +539,26 @@ Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
 \TX@target=\dimen189
 \TX@delta=\dimen190
 \TX@cols=\count293
-\TX@ftn=\toks27
+\TX@ftn=\toks26
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttablex
-/threeparttablex.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttablex/th
+reeparttablex.sty
 Package: threeparttablex 2013/07/23 v0.3 by daleif
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/environ/environ
-.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/environ/environ.st
+y
 Package: environ 2014/05/04 v0.3 A new way to define environments
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/trim
-spaces.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspa
+ces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
 \TPTL@width=\skip83
 )
 \longtablewidth=\skip84
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/csquotes/csquot
-es.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/csquotes/csquotes.
+sty
 Package: csquotes 2019-12-06 v5.2j context-sensitive quotations (JAW)
 \csq@reset=\count294
 \csq@gtype=\count295
@@ -592,38 +566,35 @@ Package: csquotes 2019-12-06 v5.2j context-sensitive quotations (JAW)
 \csq@qlevel=\count297
 \csq@maxlvl=\count298
 \csq@tshold=\count299
-\csq@ltx@everypar=\toks28
+\csq@ltx@everypar=\toks27
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/csquotes/csquot
-es.def
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/csquotes/csquotes.
+def
 File: csquotes.def 2019-12-06 v5.2j csquotes generic definitions (JAW)
 )
 Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/csquotes/csquot
-es.cfg
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/csquotes/csquotes.
+cfg
 File: csquotes.cfg 
-))
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.s
+)) (c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.s
 ty
 Package: babel 2020/10/27 3.51 The Babel package
-
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.d
-ef
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2020/10/27 3.51 Babel common definitions
 \babel@savecnt=\count300
 \U@D=\dimen191
 \l@babelnohyphens=\language3
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/txtbabe
-l.def)
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/txtbabel.d
+ef)
 \bbl@readstream=\read2
 )
 \bbl@dirlevel=\count301
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel-english
-/english.ldf
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel-english/en
+glish.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: \l@british = using hyphenrules for english
 (babel)             (\language0) on input line 82.
@@ -636,41 +607,301 @@ Package babel Info: \l@australian = using hyphenrules for english
 Package babel Info: \l@newzealand = using hyphenrules for english
 (babel)             (\language0) on input line 108.
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel-english
-/english.ldf
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel-english/en
+glish.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 ))
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/biblatex.
+sty
+Package: biblatex 2020/08/23 v3.15a programmable bibliographies (PK/MW)
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count302
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+)) (c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@tabx@nest=\count303
+\c@listtotal=\count304
+\c@listcount=\count305
+\c@liststart=\count306
+\c@liststop=\count307
+\c@citecount=\count308
+\c@citetotal=\count309
+\c@multicitecount=\count310
+\c@multicitetotal=\count311
+\c@instcount=\count312
+\c@maxnames=\count313
+\c@minnames=\count314
+\c@maxitems=\count315
+\c@minitems=\count316
+\c@citecounter=\count317
+\c@maxcitecounter=\count318
+\c@savedcitecounter=\count319
+\c@uniquelist=\count320
+\c@uniquename=\count321
+\c@refsection=\count322
+\c@refsegment=\count323
+\c@maxextratitle=\count324
+\c@maxextratitleyear=\count325
+\c@maxextraname=\count326
+\c@maxextradate=\count327
+\c@maxextraalpha=\count328
+\c@abbrvpenalty=\count329
+\c@highnamepenalty=\count330
+\c@lownamepenalty=\count331
+\c@maxparens=\count332
+\c@parenlevel=\count333
+\blx@tempcnta=\count334
+\blx@tempcntb=\count335
+\blx@tempcntc=\count336
+\blx@maxsection=\count337
+\blx@maxsegment@0=\count338
+\blx@notetype=\count339
+\blx@parenlevel@text=\count340
+\blx@parenlevel@foot=\count341
+\blx@sectionciteorder@0=\count342
+\blx@entrysetcounter=\count343
+\blx@biblioinstance=\count344
+\labelnumberwidth=\skip85
+\labelalphawidth=\skip86
+\biblabelsep=\skip87
+\bibitemsep=\skip88
+\bibnamesep=\skip89
+\bibinitsep=\skip90
+\bibparsep=\skip91
+\bibhang=\skip92
+\blx@bcfin=\read3
+\blx@bcfout=\write5
+\blx@langwohyphens=\language4
+\c@mincomprange=\count345
+\c@maxcomprange=\count346
+\c@mincompwidth=\count347
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/blx-dm.de
+f
+File: blx-dm.def 2020/08/23 v3.15a biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count348
+\c@savedafterword=\count349
+\c@annotator=\count350
+\c@savedannotator=\count351
+\c@author=\count352
+\c@savedauthor=\count353
+\c@bookauthor=\count354
+\c@savedbookauthor=\count355
+\c@commentator=\count356
+\c@savedcommentator=\count357
+\c@editor=\count358
+\c@savededitor=\count359
+\c@editora=\count360
+\c@savededitora=\count361
+\c@editorb=\count362
+\c@savededitorb=\count363
+\c@editorc=\count364
+\c@savededitorc=\count365
+\c@foreword=\count366
+\c@savedforeword=\count367
+\c@holder=\count368
+\c@savedholder=\count369
+\c@introduction=\count370
+\c@savedintroduction=\count371
+\c@namea=\count372
+\c@savednamea=\count373
+\c@nameb=\count374
+\c@savednameb=\count375
+\c@namec=\count376
+\c@savednamec=\count377
+\c@translator=\count378
+\c@savedtranslator=\count379
+\c@shortauthor=\count380
+\c@savedshortauthor=\count381
+\c@shorteditor=\count382
+\c@savedshorteditor=\count383
+\c@labelname=\count384
+\c@savedlabelname=\count385
+\c@institution=\count386
+\c@savedinstitution=\count387
+\c@lista=\count388
+\c@savedlista=\count389
+\c@listb=\count390
+\c@savedlistb=\count391
+\c@listc=\count392
+\c@savedlistc=\count393
+\c@listd=\count394
+\c@savedlistd=\count395
+\c@liste=\count396
+\c@savedliste=\count397
+\c@listf=\count398
+\c@savedlistf=\count399
+\c@location=\count400
+\c@savedlocation=\count401
+\c@organization=\count402
+\c@savedorganization=\count403
+\c@origlocation=\count404
+\c@savedoriglocation=\count405
+\c@origpublisher=\count406
+\c@savedorigpublisher=\count407
+\c@publisher=\count408
+\c@savedpublisher=\count409
+\c@language=\count410
+\c@savedlanguage=\count411
+\c@origlanguage=\count412
+\c@savedoriglanguage=\count413
+\c@pageref=\count414
+\c@savedpageref=\count415
+\shorthandwidth=\skip93
+\shortjournalwidth=\skip94
+\shortserieswidth=\skip95
+\shorttitlewidth=\skip96
+\shortauthorwidth=\skip97
+\shorteditorwidth=\skip98
+\locallabelnumberwidth=\skip99
+\locallabelalphawidth=\skip100
+\localshorthandwidth=\skip101
+\localshortjournalwidth=\skip102
+\localshortserieswidth=\skip103
+\localshorttitlewidth=\skip104
+\localshortauthorwidth=\skip105
+\localshorteditorwidth=\skip106
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/blx-compa
+t.def
+File: blx-compat.def 2020/08/23 v3.15a biblatex compatibility (PK/MW)
+)
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2020-10-27 L3 programming layer (loader) 
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backen
+d-pdftex.def
+File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
+\l__kernel_color_stack_int=\count416
+\l__pdf_internal_box=\box57
+))
+Package biblatex Info: expl3
+(biblatex)             2020-10-27 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+Package biblatex Info: Trying to load expl3 case changing code...
+Package biblatex Info: ... file 'blx-case-expl3.def' found.
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/blx-case-
+expl3.def
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/
+xparse.sty
+Package: xparse 2020-10-27 L3 Experimental document command parser
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/
+xparse-generic.tex))
+File: blx-case-expl3 2020/08/23 v3.15a expl3 case changing code for biblatex
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/biblatex.
+def
+File: biblatex.def 2020/08/23 v3.15a biblatex compatibility (PK/MW)
+\c@textcitecount=\count417
+\c@textcitetotal=\count418
+\c@textcitemaxnames=\count419
+\c@biburlbigbreakpenalty=\count420
+\c@biburlbreakpenalty=\count421
+\c@biburlnumpenalty=\count422
+\c@biburlucpenalty=\count423
+\c@biburllcpenalty=\count424
+\biburlbigskip=\muskip18
+\biburlnumskip=\muskip19
+\biburlucskip=\muskip20
+\biburllcskip=\muskip21
+\c@smartand=\count425
+)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/bbx/numer
+ic.bbx
+File: numeric.bbx 2020/08/23 v3.15a biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/bbx/stand
+ard.bbx
+File: standard.bbx 2020/08/23 v3.15a biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count426
+\c@bbx:relatedtotal=\count427
+))
+Package biblatex Info: Trying to load citation style 'numeric'...
+Package biblatex Info: ... file 'numeric.cbx' found.
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/cbx/numer
+ic.cbx
+File: numeric.cbx 2020/08/23 v3.15a biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/biblatex.
+cfg
+File: biblatex.cfg 
+))
+\cslhangindent=\skip107
+\csllabelwidth=\skip108
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count428
+\calc@Bcount=\count429
+\calc@Adimen=\dimen192
+\calc@Bdimen=\dimen193
+\calc@Askip=\skip109
+\calc@Bskip=\skip110
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count430
+\calc@Cskip=\skip111
+)
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
-
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3bac
-kend-pdftex.def
-File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count302
-\l__pdf_internal_box=\box57
-) (./Script.aux)
+(./Script.aux)
 \openout1 = `Script.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 191.
+LaTeX Font Info:    ... okay on input line 191.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -706,105 +937,216 @@ LaTeX Font Info:    ... okay on input line 165.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/ep
-stopdf-base.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epsto
+pdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/grfext/grfext.s
-ty
-Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
-)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 504.
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latexconfig/eps
-topdf-sys.cfg
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latexconfig/epstop
+df-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/apa6/config/APA
-american.txt
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/apa6/config/APAame
+rican.txt
 File: APAamerican.txt 2012/02/23 v1.25 apa6 configuration for American English
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: longtable package is loaded.
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/ltcapti
-on.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.
+sty
 Package: ltcaption 2020/05/30 v1.4b longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 165.
+Package hyperref Info: Link coloring OFF on input line 191.
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/namere
-f.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.s
+ty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/refcount/refcou
-nt.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/refcount/refcount.
+sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/gettitlestrin
-g/gettitlestring.sty
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/gettitlestring/g
+ettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count303
+\c@section@level=\count431
 )
-LaTeX Info: Redefining \ref on input line 165.
-LaTeX Info: Redefining \pageref on input line 165.
-LaTeX Info: Redefining \nameref on input line 165.
+LaTeX Info: Redefining \ref on input line 191.
+LaTeX Info: Redefining \pageref on input line 191.
+LaTeX Info: Redefining \nameref on input line 191.
 (./Script.out) (./Script.out)
-\@outlinefile=\write5
-\openout5 = `Script.out'.
+\@outlinefile=\write6
+\openout6 = `Script.out'.
 
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/lbx/engli
+sh.lbx
+File: english.lbx 2020/08/23 v3.15a biblatex localization (PK/MW)
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+\openout5 = `Script.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'Script.bbl' found.
+(./Script.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-dplyr
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-forcats
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-ggplot2
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-here
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-janitor
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-kableExtra
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-knitr
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-magrittr
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-purrr
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-readr
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-rio
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-stringr
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-tibble
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-tidyr
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                R-tidyverse
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
+Package biblatex Info: Reference section=0 on input line 191.
+Package biblatex Info: Reference segment=0 on input line 191.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-67.
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
+93.
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-67.
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+93.
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-167.
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
+193.
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-167.
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
+193.
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 167.
+(Font)              <12> on input line 193.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 167.
+(Font)              <8> on input line 193.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 167.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 167
+(Font)              <6> on input line 193.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 193
 .
-
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.f
-d
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 167
+LaTeX Font Info:    Trying to load font information for U+msb on input line 193
 .
-
-(c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.f
-d
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updma
-p/pdftex.map}
+) [1{c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/p
+dftex.map}
 
 ] [2]
+<<<<<<< Updated upstream
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 84.
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
@@ -1014,34 +1356,70 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [6] [7]
 <Script_files/figure-latex/unnamed-chunk-1-1.pdf, id=114, 469.755pt x 325.215pt
+=======
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
+10.
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [3]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
+36.
+(c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [4] [5]
+\openout3 = `Script.ttt'.
+
+(Script.ttt)
+<Script_files/figure-latex/unnamed-chunk-1-1.pdf, id=109, 469.755pt x 325.215pt
+>>>>>>> Stashed changes
 >
 File: Script_files/figure-latex/unnamed-chunk-1-1.pdf Graphic file (type pdf)
 <use Script_files/figure-latex/unnamed-chunk-1-1.pdf>
 Package pdftex.def Info: Script_files/figure-latex/unnamed-chunk-1-1.pdf  used 
+<<<<<<< Updated upstream
 on input line 483.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 <Script_files/figure-latex/unnamed-chunk-1-2.pdf, id=115, 469.755pt x 325.215pt
+=======
+on input line 439.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<Script_files/figure-latex/unnamed-chunk-1-2.pdf, id=110, 469.755pt x 325.215pt
+>>>>>>> Stashed changes
 >
 File: Script_files/figure-latex/unnamed-chunk-1-2.pdf Graphic file (type pdf)
 <use Script_files/figure-latex/unnamed-chunk-1-2.pdf>
 Package pdftex.def Info: Script_files/figure-latex/unnamed-chunk-1-2.pdf  used 
+<<<<<<< Updated upstream
 on input line 483.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 <Script_files/figure-latex/unnamed-chunk-1-3.pdf, id=116, 469.755pt x 325.215pt
+=======
+on input line 439.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<Script_files/figure-latex/unnamed-chunk-1-3.pdf, id=111, 469.755pt x 325.215pt
+>>>>>>> Stashed changes
 >
 File: Script_files/figure-latex/unnamed-chunk-1-3.pdf Graphic file (type pdf)
 <use Script_files/figure-latex/unnamed-chunk-1-3.pdf>
 Package pdftex.def Info: Script_files/figure-latex/unnamed-chunk-1-3.pdf  used 
+<<<<<<< Updated upstream
 on input line 483.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Overfull \hbox (28.90639pt too wide) in paragraph at lines 483--484
+=======
+on input line 439.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Overfull \hbox (28.90639pt too wide) in paragraph at lines 439--440
+>>>>>>> Stashed changes
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+<<<<<<< Updated upstream
 [8]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1050,19 +1428,33 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [10 <./Script_files/figure-latex/unnamed-chunk-1-2.pdf>]
 <Script_files/figure-latex/visualization part 2-1.pdf, id=139, 469.755pt x 325.
+=======
+[6 <./Script_files/figure-latex/unnamed-chunk-1-1.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[7 <./Script_files/figure-latex/unnamed-chunk-1-2.pdf>]
+<Script_files/figure-latex/visualization part 2-1.pdf, id=131, 469.755pt x 325.
+>>>>>>> Stashed changes
 215pt>
 File: Script_files/figure-latex/visualization part 2-1.pdf Graphic file (type p
 df)
 <use Script_files/figure-latex/visualization part 2-1.pdf>
 Package pdftex.def Info: Script_files/figure-latex/visualization part 2-1.pdf  
+<<<<<<< Updated upstream
 used on input line 489.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 <Script_files/figure-latex/visualization part 2-2.pdf, id=140, 469.755pt x 325.
+=======
+used on input line 445.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<Script_files/figure-latex/visualization part 2-2.pdf, id=132, 469.755pt x 325.
+>>>>>>> Stashed changes
 215pt>
 File: Script_files/figure-latex/visualization part 2-2.pdf Graphic file (type p
 df)
 <use Script_files/figure-latex/visualization part 2-2.pdf>
 Package pdftex.def Info: Script_files/figure-latex/visualization part 2-2.pdf  
+<<<<<<< Updated upstream
 used on input line 489.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
@@ -1078,19 +1470,31 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [12 <./Script_files/figure-latex/visualization part 2-1.pdf>]
 <Script_files/figure-latex/visualization part 2-3.pdf, id=161, 469.755pt x 325.
+=======
+used on input line 445.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<Script_files/figure-latex/visualization part 2-3.pdf, id=133, 469.755pt x 325.
+>>>>>>> Stashed changes
 215pt>
 File: Script_files/figure-latex/visualization part 2-3.pdf Graphic file (type p
 df)
 <use Script_files/figure-latex/visualization part 2-3.pdf>
 Package pdftex.def Info: Script_files/figure-latex/visualization part 2-3.pdf  
+<<<<<<< Updated upstream
 used on input line 495.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 <Script_files/figure-latex/visualization part 2-4.pdf, id=162, 469.755pt x 325.
+=======
+used on input line 445.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<Script_files/figure-latex/visualization part 2-4.pdf, id=134, 469.755pt x 325.
+>>>>>>> Stashed changes
 215pt>
 File: Script_files/figure-latex/visualization part 2-4.pdf Graphic file (type p
 df)
 <use Script_files/figure-latex/visualization part 2-4.pdf>
 Package pdftex.def Info: Script_files/figure-latex/visualization part 2-4.pdf  
+<<<<<<< Updated upstream
 used on input line 495.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 <Script_files/figure-latex/visualization part 2-5.pdf, id=163, 469.755pt x 325.
@@ -1111,6 +1515,12 @@ used on input line 495.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Overfull \hbox (28.90639pt too wide) in paragraph at lines 495--496
+=======
+used on input line 445.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Overfull \hbox (28.90639pt too wide) in paragraph at lines 445--446
+>>>>>>> Stashed changes
 [][] 
  []
 
@@ -1126,9 +1536,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [15 <./Script_files/figure-latex/visualization part 2-4.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+<<<<<<< Updated upstream
 [16 <./Script_files/figure-latex/visualization part 2-5.pdf>] [17 <./Script_fil
 es/figure-latex/visualization part 2-6.pdf>] [18] AED endfloat: Processing end 
 Figures and Tables [19] (./Script.ttt
+=======
+[11 <./Script_files/figure-latex/visualization part 2-3.pdf>] [12 <./Script_fil
+es/figure-latex/visualization part 2-4.pdf>] [13] AED endfloat: Processing end 
+Figures and Tables [14
+
+] (./Script.ttt
+>>>>>>> Stashed changes
 Overfull \hbox (64.60254pt too wide) in paragraph at lines 7--117
  [][] 
  []
@@ -1136,11 +1554,29 @@ Overfull \hbox (64.60254pt too wide) in paragraph at lines 7--117
 
 LaTeX Warning: Float too large for page by 740.09364pt on input line 117.
 
+<<<<<<< Updated upstream
 ) [20] [21] (./Script.aux)
+=======
+) [15] [16] (./Script.aux)
+>>>>>>> Stashed changes
 Package rerunfilecheck Info: File `Script.out' has not changed.
 (rerunfilecheck)             Checksum: A77C3AF6054A2A8254841CE527D23A42;1726.
- ) 
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+
+Package logreq Info: Writing requests to 'Script.run.xml'.
+\openout1 = `Script.run.xml'.
+
+ )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 458 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
+<<<<<<< Updated upstream
  14711 strings out of 481433
  222286 string characters out of 5918562
  563470 words of memory out of 5000000
@@ -1162,4 +1598,28 @@ PDF statistics:
  256 compressed objects within 3 object streams
  73 named destinations out of 1000 (max. 500000)
  166 words of extra memory for PDF output out of 10000 (max. 10000000)
+=======
+ 21570 strings out of 481433
+ 358687 string characters out of 5918820
+ 1115973 words of memory out of 5000000
+ 37935 multiletter control sequences out of 15000+600000
+ 579024 words of font info for 66 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 80i,11n,85p,2245b,1739s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dv
+ips/lm/lm-ec.enc}{c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/d
+vips/lm/lm-ts1.enc}<c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/fonts/typ
+e1/public/lm/lmbx12.pfb><c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dist/font
+s/type1/public/lm/lmcsc10.pfb><c:/Users/Diana/AppData/Roaming/TinyTeX/texmf-dis
+t/fonts/type1/public/lm/lmr12.pfb><c:/Users/Diana/AppData/Roaming/TinyTeX/texmf
+-dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/Diana/AppData/Roaming/TinyTeX/te
+xmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/Users/Diana/AppData/Roaming/TinyT
+eX/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
+Output written on Script.pdf (16 pages, 708491 bytes).
+PDF statistics:
+ 252 PDF objects out of 1000 (max. 8388607)
+ 207 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 156 words of extra memory for PDF output out of 10000 (max. 10000000)
+>>>>>>> Stashed changes
 
