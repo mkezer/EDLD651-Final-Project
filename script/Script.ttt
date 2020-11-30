@@ -10,107 +10,107 @@
 \cline{3-4} \cline{5-6}
 Sate & N & M & SD & M & SD\\
 \hline
-AK & 9 & 7036 & 399 & 103142 & 147915\\
+AK & 3 & 7036 & 460 & 103142 & 170798\\
 \hline
-AL & 871 & 29358 & 44897 & 68880 & 100915\\
+AL & 268 & 29724 & 45394 & 69187 & 101303\\
 \hline
-AR & 975 & 13892 & 21091 & 37270 & 53303\\
+AR & 300 & 14026 & 21417 & 37486 & 53831\\
 \hline
-AZ & 195 & 142569 & 322062 & 388108 & 871560\\
+AZ & 60 & 145927 & 330585 & 394133 & 889795\\
 \hline
-CA & 754 & 220437 & 459793 & 616298 & 1378441\\
+CA & 232 & 223051 & 465584 & 620980 & 1387279\\
 \hline
-CO & 822 & 36534 & 73810 & 73782 & 148933\\
+CO & 253 & 37272 & 75235 & 74612 & 150559\\
 \hline
-CT & 104 & 195334 & 149300 & 436423 & 343039\\
+CT & 32 & 196409 & 151721 & 437902 & 347809\\
 \hline
-DC & 13 & 263095 & 45450 & 594503 & 38658\\
+DC & 4 & 268195 & 47994 & 596734 & 43662\\
 \hline
-DE & 39 & 131235 & 82538 & 282679 & 173390\\
+DE & 12 & 133073 & 85452 & 285361 & 178905\\
 \hline
-FL & 867 & 115569 & 169852 & 255262 & 407373\\
+FL & 267 & 118431 & 173570 & 260031 & 415642\\
 \hline
-GA & 2067 & 22355 & 50236 & 56445 & 119008\\
+GA & 636 & 22857 & 51210 & 57121 & 120420\\
 \hline
-HI & 12 & 107234 & 108643 & 355042 & 387067\\
+HI & 4 & 107234 & 120109 & 355042 & 427919\\
 \hline
-IA & 1287 & 15010 & 25994 & 30214 & 50322\\
+IA & 396 & 15153 & 26357 & 30298 & 50767\\
 \hline
-ID & 572 & 13985 & 27273 & 32809 & 60062\\
+ID & 176 & 14201 & 27837 & 33216 & 61206\\
 \hline
-IL & 1326 & 51236 & 206027 & 123386 & 528245\\
+IL & 408 & 51632 & 207620 & 123712 & 528335\\
 \hline
-IN & 1196 & 27700 & 45113 & 68419 & 113414\\
+IN & 368 & 28016 & 45752 & 68726 & 113969\\
 \hline
-KS & 1365 & 11003 & 31922 & 26361 & 70262\\
+KS & 420 & 11068 & 32305 & 26466 & 70945\\
 \hline
-KY & 1560 & 14628 & 32859 & 34967 & 71505\\
+KY & 480 & 14775 & 33166 & 35136 & 71897\\
 \hline
-LA & 832 & 30059 & 40531 & 70716 & 97338\\
+LA & 256 & 30265 & 40734 & 70853 & 97369\\
 \hline
-MA & 182 & 216390 & 187781 & 461167 & 393704\\
+MA & 56 & 218333 & 190389 & 462537 & 397378\\
 \hline
-MD & 312 & 104048 & 124062 & 232448 & 279564\\
+MD & 96 & 105686 & 125998 & 233911 & 281901\\
 \hline
-ME & 208 & 44053 & 39268 & 81514 & 69147\\
+ME & 64 & 44329 & 39811 & 81772 & 69901\\
 \hline
-MI & 1079 & 56095 & 121993 & 119410 & 266776\\
+MI & 332 & 56520 & 122899 & 119512 & 266186\\
 \hline
-MN & 1131 & 31945 & 79109 & 58910 & 140710\\
+MN & 348 & 32271 & 79906 & 59257 & 141434\\
 \hline
-MO & 1495 & 22511 & 56795 & 50415 & 120811\\
+MO & 460 & 22676 & 57042 & 50644 & 121028\\
 \hline
-MS & 1066 & 14372 & 15444 & 35349 & 40073\\
+MS & 328 & 14558 & 15660 & 35473 & 40323\\
 \hline
-MT & 728 & 8345 & 14035 & 17035 & 28321\\
+MT & 224 & 8429 & 14226 & 17130 & 28610\\
 \hline
-NC & 1300 & 40245 & 64517 & 88395 & 128695\\
+NC & 400 & 41172 & 66022 & 89380 & 130861\\
 \hline
-ND & 689 & 5958 & 11698 & 12703 & 23887\\
+ND & 212 & 6001 & 11857 & 12740 & 24158\\
 \hline
-NE & 1209 & 8360 & 26145 & 19121 & 59315\\
+NE & 372 & 8432 & 26489 & 19203 & 59844\\
 \hline
-NH & 130 & 67499 & 59447 & 127581 & 113121\\
+NH & 40 & 68382 & 60667 & 128300 & 114741\\
 \hline
-NJ & 273 & 171456 & 100109 & 409943 & 244355\\
+NJ & 84 & 173096 & 101198 & 411491 & 246050\\
 \hline
-NM & 429 & 22450 & 44793 & 58889 & 108629\\
+NM & 132 & 22809 & 45608 & 59314 & 109938\\
 \hline
-NV & 221 & 53214 & 148530 & 139917 & 406978\\
+NV & 68 & 54664 & 153035 & 142929 & 417902\\
 \hline
-NY & 806 & 117084 & 179490 & 309171 & 523250\\
+NY & 248 & 117671 & 180993 & 309859 & 525415\\
 \hline
-OH & 1144 & 60444 & 100851 & 130137 & 213474\\
+OH & 352 & 61025 & 101857 & 130303 & 213470\\
 \hline
-OK & 1001 & 17671 & 39645 & 46882 & 103204\\
+OK & 308 & 17808 & 40041 & 47139 & 103956\\
 \hline
-OR & 468 & 49127 & 75535 & 101274 & 152892\\
+OR & 144 & 49670 & 76632 & 102065 & 154506\\
 \hline
-PA & 871 & 83990 & 125901 & 186731 & 265667\\
+PA & 268 & 84879 & 127302 & 187084 & 266098\\
 \hline
-RI & 65 & 88910 & 77936 & 209705 & 212422\\
+RI & 20 & 89501 & 79885 & 210091 & 216763\\
 \hline
-SC & 598 & 39297 & 43409 & 94492 & 100130\\
+SC & 184 & 40065 & 44227 & 95374 & 101465\\
 \hline
-SD & 858 & 5361 & 10472 & 11987 & 23049\\
+SD & 264 & 5409 & 10619 & 12046 & 23307\\
 \hline
-TN & 1235 & 25105 & 48954 & 63588 & 121499\\
+TN & 380 & 25376 & 49406 & 64063 & 122210\\
 \hline
-TX & 3302 & 30513 & 104070 & 91653 & 329871\\
+TX & 1016 & 30953 & 105483 & 92814 & 333875\\
 \hline
-UT & 377 & 32856 & 72857 & 87151 & 195646\\
+UT & 116 & 33379 & 74041 & 88323 & 198237\\
 \hline
-VA & 1739 & 26244 & 52883 & 56799 & 110636\\
+VA & 535 & 26730 & 53718 & 57289 & 111708\\
 \hline
-VT & 182 & 21953 & 17867 & 43996 & 34415\\
+VT & 56 & 22031 & 18096 & 44108 & 34787\\
 \hline
-WA & 507 & 75086 & 156389 & 163043 & 324691\\
+WA & 156 & 76026 & 158419 & 164504 & 328036\\
 \hline
-WI & 936 & 40049 & 67282 & 76912 & 129381\\
+WI & 288 & 40379 & 67838 & 77226 & 129823\\
 \hline
-WV & 715 & 12424 & 12600 & 33325 & 32664\\
+WV & 220 & 12478 & 12682 & 33346 & 32720\\
 \hline
-WY & 299 & 10556 & 9243 & 23186 & 21346\\
+WY & 92 & 10645 & 9351 & 23345 & 21584\\
 \hline
 \multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note: } N = number of counties with recorded data per the four time points (2000, 2008, 2012, 2016).}\\
 \end{tabular}
@@ -125,32 +125,368 @@ WY & 299 & 10556 & 9243 & 23186 & 21346\\
 \hline
 Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
 \hline
-2000 & democrat & 3107 & 16218 & 57150\\
+2000 & Dem & 3107 & 16218 & 57150\\
 \hline
-2000 & green & 3107 & NA & NA\\
+2000 & Green & 3107 & -- & --\\
 \hline
-2000 & republican & 3107 & 16049 & 38632\\
+2000 & Rep & 3107 & 16049 & 38632\\
 \hline
-2000 & NA & 3107 & 339 & 954\\
+2000 & -- & 3107 & 339 & 954\\
 \hline
-2008 & democrat & 3108 & 22157 & 76972\\
+2008 & Dem & 3108 & 22157 & 76972\\
 \hline
-2008 & republican & 3108 & 19167 & 44840\\
+2008 & Rep & 3108 & 19167 & 44840\\
 \hline
-2008 & NA & 3108 & 577 & 1848\\
+2008 & -- & 3108 & 577 & 1848\\
 \hline
-2012 & democrat & 3108 & 20974 & 73998\\
+2012 & Dem & 3108 & 20974 & 73998\\
 \hline
-2012 & republican & 3108 & 19409 & 44596\\
+2012 & Rep & 3108 & 19409 & 44596\\
 \hline
-2012 & NA & 3108 & 838 & 2952\\
+2012 & -- & 3108 & 838 & 2952\\
 \hline
-2016 & democrat & 3115 & 21071 & 80496\\
+2016 & Dem & 3115 & 21071 & 80496\\
 \hline
-2016 & republican & 3115 & 20160 & 43157\\
+2016 & Rep & 3115 & 20160 & 43157\\
 \hline
-2016 & NA & 3115 & 2449 & 7509\\
+2016 & -- & 3115 & 2449 & 7509\\
 \hline
 \multicolumn{5}{l}{\rule{0pt}{1em}\textit{Note: } N = total number of counties in the US reporting data.}\\
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{(\#tab:descriptives tables)<b>Table 3</b><br /> <i>A summary table for the year 2000: Selected social capital and voting behavior in Oregon counties.</i>}
+\centering
+\begin{tabular}[t]{c|c|c|c|c|c|c}
+\hline
+County & Religious Organizations & Civic Associations & Labor Organizations & Votes Democrat & Votes Republican & Voter Turnout (\%)\\
+\hline
+Baker & 11 & 5 & 1 & 2195 & 5618 & 64.8\\
+\hline
+Benton & 50 & 13 & 3 & 19444 & 15825 & 63.3\\
+\hline
+Clackamas & 184 & 32 & 13 & 76421 & 77539 & 62.8\\
+\hline
+Clatsop & 35 & 12 & 7 & 8296 & 6950 & 60.8\\
+\hline
+Columbia & 29 & 5 & 3 & 10331 & 9369 & 62.0\\
+\hline
+Coos & 40 & 9 & 7 & 11610 & 15626 & 59.9\\
+\hline
+Crook & 14 & 3 & 0 & 2474 & 5363 & 59.5\\
+\hline
+Curry & 13 & 1 & 1 & 4090 & 6551 & 66.8\\
+\hline
+Deschutes & 62 & 29 & 8 & 22061 & 32132 & 63.7\\
+\hline
+Douglas & 77 & 12 & 4 & 14193 & 30294 & 59.6\\
+\hline
+Gilliam & 1 & 1 & 0 & 359 & 679 & 74.1\\
+\hline
+Grant & 4 & 1 & 0 & 589 & 3078 & 67.5\\
+\hline
+Harney & 7 & 2 & 0 & 766 & 2799 & 70.1\\
+\hline
+Hood River & 15 & 5 & 2 & 4072 & 3721 & 55.9\\
+\hline
+Jackson & 90 & 26 & 14 & 33153 & 46052 & 60.3\\
+\hline
+Jefferson & 11 & 1 & 0 & 2681 & 3838 & 56.6\\
+\hline
+Josephine & 35 & 12 & 0 & 11864 & 22186 & 60.0\\
+\hline
+Klamath & 45 & 15 & 6 & 7541 & 18855 & 50.7\\
+\hline
+Lake & 6 & 2 & 0 & 707 & 2830 & 70.9\\
+\hline
+Lane & 184 & 51 & 30 & 78583 & 61578 & 62.9\\
+\hline
+Lincoln & 32 & 17 & 1 & 10861 & 8446 & 60.7\\
+\hline
+Linn & 84 & 21 & 14 & 16682 & 25359 & 57.0\\
+\hline
+Malheur & 22 & 3 & 0 & 2336 & 7624 & 52.5\\
+\hline
+Marion & 156 & 30 & 25 & 49430 & 57443 & 58.3\\
+\hline
+Morrow & 5 & 3 & 0 & 1197 & 2224 & 53.8\\
+\hline
+Multnomah & 386 & 92 & 103 & 188441 & 83677 & 58.0\\
+\hline
+Polk & 39 & 9 & 2 & 11921 & 14988 & 61.8\\
+\hline
+Sherman & 0 & 0 & 0 & 326 & 679 & 82.0\\
+\hline
+Tillamook & 22 & 5 & 1 & 5762 & 5775 & 62.8\\
+\hline
+Umatilla & 47 & 10 & 4 & 7809 & 14140 & 48.1\\
+\hline
+Union & 25 & 5 & 5 & 3577 & 7836 & 65.4\\
+\hline
+Wallowa & 4 & 3 & 0 & 836 & 3279 & 79.3\\
+\hline
+Wasco & 24 & 4 & 1 & 4616 & 5356 & 60.7\\
+\hline
+Washington & 171 & 29 & 21 & 90662 & 86091 & 58.7\\
+\hline
+Wheeler & 0 & 0 & 0 & 202 & 584 & 69.0\\
+\hline
+Yamhill & 62 & 5 & 2 & 14254 & 19193 & 58.3\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{(\#tab:descriptives tables)<b>Table 4</b><br /> <i>A summary table for 2008: Selected social capital and voting behavior in Oregon counties.</i>}
+\centering
+\begin{tabular}[t]{c|c|c|c|c|c|c}
+\hline
+County & Religious Organizations & Civic Associations & Labor Organizations & Democrat & Republican & Voter Turnout (\%)\\
+\hline
+Baker & 19 & 5 & 2 & 2805 & 5650 & 70\\
+\hline
+Benton & 60 & 15 & 7 & 29901 & 15264 & 73\\
+\hline
+Clackamas & 206 & 20 & 15 & 103476 & 83595 & 71\\
+\hline
+Clatsop & 31 & 12 & 5 & 10701 & 7192 & 68\\
+\hline
+Columbia & 31 & 4 & 1 & 13390 & 10413 & 71\\
+\hline
+Coos & 46 & 8 & 7 & 14401 & 15354 & 65\\
+\hline
+Crook & 15 & 4 & 0 & 3632 & 6371 & 62\\
+\hline
+Curry & 17 & 2 & 0 & 5230 & 6646 & 70\\
+\hline
+Deschutes & 81 & 22 & 5 & 38819 & 39064 & 71\\
+\hline
+Douglas & 81 & 7 & 4 & 20298 & 30919 & 68\\
+\hline
+Gilliam & 1 & 1 & 0 & 430 & 648 & 78\\
+\hline
+Grant & 8 & 1 & 0 & 1006 & 2785 & 71\\
+\hline
+Harney & 6 & 1 & 0 & 950 & 2595 & 69\\
+\hline
+Hood River & 23 & 6 & 2 & 6302 & 3265 & 64\\
+\hline
+Jackson & 102 & 17 & 13 & 49090 & 49043 & 68\\
+\hline
+Jefferson & 13 & 4 & 1 & 3682 & 4402 & 57\\
+\hline
+Josephine & 47 & 12 & 2 & 17412 & 22973 & 67\\
+\hline
+Klamath & 51 & 13 & 5 & 9370 & 19113 & 64\\
+\hline
+Lake & 5 & 4 & 0 & 957 & 2638 & 68\\
+\hline
+Lane & 204 & 45 & 25 & 114037 & 63835 & 71\\
+\hline
+Lincoln & 30 & 11 & 1 & 14258 & 8791 & 67\\
+\hline
+Linn & 86 & 14 & 11 & 22163 & 28071 & 64\\
+\hline
+Malheur & 19 & 1 & 1 & 2949 & 7157 & 47\\
+\hline
+Marion & 183 & 24 & 28 & 61816 & 59059 & 58\\
+\hline
+Morrow & 9 & 2 & 0 & 1410 & 2509 & 51\\
+\hline
+Multnomah & 416 & 71 & 99 & 279696 & 75171 & 70\\
+\hline
+Polk & 50 & 9 & 1 & 17536 & 17714 & 68\\
+\hline
+Sherman & 4 & 0 & 0 & 385 & 634 & 84\\
+\hline
+Tillamook & 24 & 3 & 0 & 7072 & 5757 & 70\\
+\hline
+Umatilla & 51 & 10 & 3 & 9484 & 15254 & 50\\
+\hline
+Union & 29 & 4 & 5 & 4613 & 7581 & 72\\
+\hline
+Wallowa & 7 & 2 & 0 & 1492 & 2836 & 82\\
+\hline
+Wasco & 24 & 6 & 1 & 5906 & 5103 & 67\\
+\hline
+Washington & 209 & 31 & 9 & 141544 & 89185 & 64\\
+\hline
+Wheeler & 1 & 0 & 0 & 281 & 498 & 73\\
+\hline
+Yamhill & 70 & 4 & 3 & 20797 & 21390 & 62\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{(\#tab:descriptives tables)<b>Table 5</b><br /> <i>A summary table for 2012: Selected social capital and voting behavior in Oregon counties.</i>}
+\centering
+\begin{tabular}[t]{c|c|c|c|c|c|c}
+\hline
+County & Religious Organizations & Civic Associations & Labor Organizations & Democrat & Republican & Voter Turnout (\%)\\
+\hline
+Baker & 16 & 5 & 1 & 2369 & 5702 & 68.2\\
+\hline
+Benton & 60 & 14 & 5 & 27776 & 14991 & 69.3\\
+\hline
+Clackamas & 197 & 21 & 15 & 95493 & 88592 & 64.8\\
+\hline
+Clatsop & 28 & 10 & 5 & 9861 & 7249 & 62.4\\
+\hline
+Columbia & 32 & 3 & 2 & 12004 & 10772 & 64.6\\
+\hline
+Coos & 53 & 7 & 6 & 12845 & 14673 & 60.1\\
+\hline
+Crook & 17 & 4 & 0 & 3104 & 6790 & 57.9\\
+\hline
+Curry & 14 & 1 & 0 & 4625 & 6598 & 67.9\\
+\hline
+Deschutes & 95 & 19 & 8 & 36961 & 42463 & 64.6\\
+\hline
+Douglas & 87 & 8 & 4 & 17145 & 30776 & 63.7\\
+\hline
+Gilliam & 1 & 1 & 0 & 371 & 639 & 76.4\\
+\hline
+Grant & 9 & 1 & 0 & 853 & 2926 & 70.3\\
+\hline
+Harney & 5 & 1 & 0 & 832 & 2607 & 70.1\\
+\hline
+Hood River & 22 & 5 & 1 & 6058 & 3429 & 61.4\\
+\hline
+Jackson & 104 & 17 & 14 & 44468 & 49020 & 64.0\\
+\hline
+Jefferson & 14 & 5 & 0 & 3301 & 4642 & 55.9\\
+\hline
+Josephine & 47 & 11 & 2 & 14953 & 23673 & 64.5\\
+\hline
+Klamath & 50 & 11 & 4 & 8302 & 18898 & 57.7\\
+\hline
+Lake & 6 & 4 & 0 & 770 & 2808 & 63.3\\
+\hline
+Lane & 202 & 39 & 26 & 102652 & 62509 & 66.0\\
+\hline
+Lincoln & 31 & 12 & 1 & 13401 & 8686 & 64.1\\
+\hline
+Linn & 87 & 14 & 10 & 20378 & 28944 & 59.0\\
+\hline
+Malheur & 19 & 2 & 2 & 2759 & 6851 & 45.3\\
+\hline
+Marion & 194 & 22 & 24 & 56376 & 60190 & 54.0\\
+\hline
+Morrow & 10 & 2 & 0 & 1202 & 2532 & 50.9\\
+\hline
+Multnomah & 413 & 67 & 96 & 274887 & 75302 & 66.2\\
+\hline
+Polk & 50 & 7 & 0 & 16292 & 17819 & 59.9\\
+\hline
+Sherman & 4 & 0 & 0 & 319 & 678 & 77.3\\
+\hline
+Tillamook & 24 & 4 & 0 & 6293 & 5684 & 66.8\\
+\hline
+Umatilla & 55 & 8 & 4 & 8584 & 15499 & 46.9\\
+\hline
+Union & 30 & 5 & 7 & 3973 & 7636 & 64.5\\
+\hline
+Wallowa & 6 & 2 & 0 & 1253 & 2804 & 80.7\\
+\hline
+Wasco & 23 & 5 & 1 & 5211 & 5229 & 62.1\\
+\hline
+Washington & 224 & 25 & 12 & 135291 & 93974 & 60.5\\
+\hline
+Wheeler & 0 & 0 & 0 & 266 & 545 & 73.1\\
+\hline
+Yamhill & 76 & 5 & 3 & 19260 & 22045 & 58.2\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{(\#tab:descriptives tables)<b>Table 6</b><br /> <i>A summary table for 2016: Selected social capital and voting behavior in Oregon counties.</i>}
+\centering
+\begin{tabular}[t]{c|c|c|c|c|c|c}
+\hline
+County & Religious Organizations & Civic Associations & Labor Organizations & Democrat & Republican & Voter Turnout (\%)\\
+\hline
+Baker & 20 & 8 & 1 & 1797 & 6218 & 83.1\\
+\hline
+Benton & 66 & 13 & 5 & 29193 & 13445 & 85.7\\
+\hline
+Clackamas & 215 & 20 & 18 & 102095 & 88392 & 82.5\\
+\hline
+Clatsop & 31 & 11 & 3 & 9252 & 8138 & 82.2\\
+\hline
+Columbia & 26 & 4 & 2 & 10167 & 13217 & 82.2\\
+\hline
+Coos & 53 & 7 & 5 & 10448 & 17865 & 82.2\\
+\hline
+Crook & 20 & 3 & 0 & 2637 & 8511 & 83.2\\
+\hline
+Curry & 15 & 1 & 0 & 4300 & 7212 & 84.3\\
+\hline
+Deschutes & 92 & 22 & 7 & 42444 & 45692 & 84.1\\
+\hline
+Douglas & 90 & 7 & 3 & 14096 & 34582 & 79.6\\
+\hline
+Gilliam & 2 & 1 & 0 & 239 & 671 & 85.6\\
+\hline
+Grant & 8 & 1 & 0 & 739 & 3210 & 86.9\\
+\hline
+Harney & 7 & 1 & 0 & 683 & 2912 & 83.5\\
+\hline
+Hood River & 23 & 6 & 1 & 6510 & 3272 & 84.4\\
+\hline
+Jackson & 112 & 19 & 13 & 44447 & 53870 & 80.9\\
+\hline
+Jefferson & 15 & 1 & 0 & 2980 & 5483 & 81.4\\
+\hline
+Josephine & 52 & 8 & 2 & 13453 & 26923 & 77.6\\
+\hline
+Klamath & 46 & 8 & 3 & 7210 & 20435 & 81.2\\
+\hline
+Lake & 6 & 3 & 0 & 639 & 3022 & 87.4\\
+\hline
+Lane & 209 & 30 & 27 & 102753 & 67141 & 80.0\\
+\hline
+Lincoln & 35 & 8 & 1 & 12501 & 10039 & 83.3\\
+\hline
+Linn & 94 & 12 & 9 & 17995 & 33488 & 81.2\\
+\hline
+Malheur & 22 & 2 & 2 & 2246 & 7194 & 79.7\\
+\hline
+Marion & 191 & 19 & 21 & 57788 & 63377 & 79.5\\
+\hline
+Morrow & 5 & 2 & 0 & 1017 & 2721 & 78.7\\
+\hline
+Multnomah & 443 & 85 & 85 & 292561 & 67954 & 81.7\\
+\hline
+Polk & 49 & 4 & 0 & 16420 & 18940 & 80.8\\
+\hline
+Sherman & 4 & 0 & 0 & 202 & 732 & 84.1\\
+\hline
+Tillamook & 25 & 6 & 0 & 5768 & 6538 & 83.5\\
+\hline
+Umatilla & 56 & 10 & 4 & 7673 & 17059 & 75.4\\
+\hline
+Union & 31 & 4 & 7 & 3249 & 8431 & 77.1\\
+\hline
+Wallowa & 9 & 1 & 0 & 1116 & 2848 & 86.4\\
+\hline
+Wasco & 22 & 6 & 1 & 4781 & 5833 & 80.2\\
+\hline
+Washington & 224 & 26 & 14 & 153251 & 83197 & 81.1\\
+\hline
+Wheeler & 0 & 0 & 0 & 155 & 591 & 89.7\\
+\hline
+Yamhill & 85 & 4 & 3 & 19301 & 23250 & 82.8\\
+\hline
 \end{tabular}
 \end{table*}

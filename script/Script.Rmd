@@ -286,56 +286,9 @@ rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Ch
 ```
 
 ## Data analysis
-We used `r cite_r("r-references.bib")` for all our analyses.
-
-```{r descriptives set up, echo = FALSE, results = "hide"}
-(table_01 <- df %>% 
-  group_by(state_po) %>% 
-  summarize(n = n(),
-          m_totalvotes = mean(totalvotes),
-          sd_totalvotes = sd(totalvotes),
-          mean_pop = mean(pop), 
-          sd_pop = sd(pop)))
-
-(table_02 <- df %>% 
-  group_by(year_elctn, party) %>% 
-  summarize(n = n(),
-          m_candidatevotes = mean(candidatevotes),
-          sd_candidatevotes = sd(candidatevotes)))
-
-# cor(df$pop, df$totalvotes, method = "pearson")
-
-```
-
-
-```{r descriptives tables}
-
-(table_1 <- table_01 %>% 
-  kbl(col.names = c("Sate", "N", "M", "SD",
-                    "M", "SD"), # renaming the columns
-      digits = 0,
-      caption = "<b>Table 1</b><br /> <i>A summary table for total votes and population by state.</i>",
-      align =  "c") %>% #align center 
-  kable_classic(full_width = FALSE) %>% 
-  add_header_above(c(" " = 2, "Total Votes" = 2, "Population" = 2)) %>% #adding headers. The 2's indicate how many columns are under each header
-  footnote(footnote_as_chunk = TRUE, 
-           general = "N = number of counties with recorded data per the four time points (2000, 2008, 2012, 2016).")) #adding a footnote
-
-(table_2 <- table_02 %>% 
-  kbl(col.names = c("Year", "Party", "N", "Mean Candidate Votes", "SD Candidate Votes"),
-      digits = 0,
-      caption = "<b>Table 2</b><br /> <i>A summary table for votes by candidate and year of election.</i>",
-      align =  "c") %>%
-  kable_classic(full_width = FALSE) %>% 
-  footnote(footnote_as_chunk = TRUE, 
-           general = "N = total number of counties in the US reporting data.")) 
-
-```
-
-
 
 ``` {r preliminary analysis}
-df2 <-df  %>% 
+df2 <- df  %>% 
   pivot_wider(
     names_from = party,
     values_from = candidatevotes) %>% 
@@ -357,6 +310,8 @@ df_anal_2016 <- df2 %>%
   mutate(labor = labor/pop * 1000) %>%
   mutate(nccs = nccs /pop * 1000)
 
+View(df_anal_2016)
+
 df_anal_2016 %>% 
   cor()
 
@@ -365,6 +320,115 @@ mod1 <- lm(data = df_anal_2016, demmargin ~ 1 + bowl + civic + golf + relig + sp
 summary(mod1)
 
 ```
+
+```{r descriptives set up, echo = FALSE, warning = FALSE}
+(table_01 <- df_wide %>% 
+  group_by(state_po) %>% 
+  summarize(n = n(),
+          m_totalvotes = mean(totalvotes),
+          sd_totalvotes = sd(totalvotes),
+          mean_pop = mean(pop), 
+          sd_pop = sd(pop)))
+
+(table_02 <- df %>% 
+  mutate(party = fct_collapse(party, 
+                                "Rep" = c("republican"), 
+                                "Dem" = c("democrat"), 
+                                "Green" = c("green")))  %>%
+  group_by(year_elctn, party) %>% 
+  summarize(n = n(),
+          m_candidatevotes = mean(candidatevotes),
+          sd_candidatevotes = sd(candidatevotes)))
+
+(table_03 <- df2 %>% 
+  filter(year_elctn == 2000) %>%
+  filter(state_po == "OR") %>%
+   mutate(v_percent = (pvote *100)) %>%
+  group_by(county, relig, civic, labor, democrat, republican) %>% 
+  summarize(voter_turnout = mean(v_percent)))
+
+(table_04 <- df2 %>% 
+  filter(year_elctn == 2008) %>%
+  filter(state_po == "OR") %>%
+   mutate(v_percent = (pvote *100)) %>%
+  group_by(county, relig, civic, labor, democrat, republican) %>% 
+  summarize(voter_turnout = mean(v_percent)))
+
+(table_05 <- df2 %>% 
+  filter(year_elctn == 2012) %>%
+  filter(state_po == "OR") %>%
+   mutate(v_percent = (pvote *100)) %>%
+  group_by(county, relig, civic, labor, democrat, republican) %>% 
+  summarize(voter_turnout = mean(v_percent)))
+
+(table_06 <- df2 %>% 
+  filter(year_elctn == 2016) %>%
+  filter(state_po == "OR") %>%
+   mutate(v_percent = (pvote *100)) %>%
+  group_by(county, relig, civic, labor, democrat, republican) %>% 
+  summarize(voter_turnout = mean(v_percent)))
+
+# cor(df$pop, df$totalvotes, method = "pearson")
+
+```
+
+
+```{r descriptives tables}
+
+options(knitr.kable.NA = '--')
+
+(table_1 <- table_01 %>% 
+  kbl(col.names = c("Sate", "N", "M", "SD",
+                    "M", "SD"), # renaming the columns
+      digits = 0,
+      caption = "<b>Table 1</b><br /> <i>A summary table for total votes and population by state.</i>",
+      align =  "c") %>% #align center 
+  kable_classic(full_width = FALSE) %>% 
+  add_header_above(c(" " = 2, "Total Votes" = 2, "Population" = 2)) %>% #adding headers. The 2's indicate how many columns are under each header
+  footnote(footnote_as_chunk = TRUE, 
+           general = "N = number of counties with recorded data per the four time points (2000, 2008, 2012, 2016).")) #adding a footnote
+
+
+(table_2 <- table_02 %>% 
+  kbl(col.names = c("Year", "Party", "N","Mean Candidate Votes", "SD Candidate Votes"),
+      digits = 0,
+      caption = "<b>Table 2</b><br /> <i>A summary table for votes by candidate and year of election.</i>",
+      align =  "c") %>%
+  kable_classic(full_width = FALSE) %>% 
+  footnote(footnote_as_chunk = TRUE, 
+           general = "N = total number of counties in the US reporting data.")) 
+
+
+(table_3 <- table_03 %>% 
+  kbl(col.names = c("County", "Religious Organizations", "Civic Associations", "Labor Organizations", "Votes Democrat", "Votes Republican","Voter Turnout (%)"),
+      digits = 1,
+      caption = "<b>Table 3</b><br /> <i>A summary table for the year 2000: Selected social capital and voting behavior in Oregon counties.</i>",
+      align =  "c") %>%
+  kable_classic(full_width = FALSE))
+
+(table_4 <- table_04 %>% 
+  kbl(col.names = c("County", "Religious Organizations", "Civic Associations", "Labor Organizations", "Democrat", "Republican","Voter Turnout (%)"),
+      digits = 1,
+      caption = "<b>Table 4</b><br /> <i>A summary table for 2008: Selected social capital and voting behavior in Oregon counties.</i>",
+      align =  "c") %>%
+  kable_classic(full_width = FALSE))
+
+(table_5 <- table_05 %>% 
+  kbl(col.names = c("County", "Religious Organizations", "Civic Associations", "Labor Organizations", "Democrat", "Republican","Voter Turnout (%)"),
+      digits = 1,
+      caption = "<b>Table 5</b><br /> <i>A summary table for 2012: Selected social capital and voting behavior in Oregon counties.</i>",,
+      align =  "c") %>%
+  kable_classic(full_width = FALSE))
+
+(table_6 <- table_06 %>% 
+  kbl(col.names = c("County", "Religious Organizations", "Civic Associations", "Labor Organizations", "Democrat", "Republican","Voter Turnout (%)"),
+      digits = 1,
+      caption = "<b>Table 6</b><br /> <i>A summary table for 2016: Selected social capital and voting behavior in Oregon counties.</i>",
+      align =  "c") %>%
+  kable_classic(full_width = FALSE))
+
+```
+
 
 
 ```{r}
@@ -527,6 +591,8 @@ plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "ass
 \newpage
 
 # References
+
+We used `r cite_r("r-references.bib")` for all our analyses.
 
 \begingroup
 \setlength{\parindent}{-0.5in}
