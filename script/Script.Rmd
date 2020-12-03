@@ -89,6 +89,7 @@ library(magrittr)
 library(stringr)
 library(here)
 library(kableExtra)
+library(gtsummary)
 r_refs("r-references.bib")
 ```
 
@@ -321,7 +322,7 @@ summary(mod1)
 
 ```
 
-```{r descriptives set up, echo = FALSE, warning = FALSE}
+```{r descriptives set up}
 (table_01 <- df_wide %>% 
   group_by(state_po) %>% 
   summarize(n = n(),
@@ -348,27 +349,11 @@ summary(mod1)
   summarize(voter_turnout = mean(v_percent)))
 
 (table_04 <- df2 %>% 
-  filter(year_elctn == 2008) %>%
-  filter(state_po == "OR") %>%
-   mutate(v_percent = (pvote *100)) %>%
-  group_by(county, relig, civic, labor, democrat, republican) %>% 
-  summarize(voter_turnout = mean(v_percent)))
-
-(table_05 <- df2 %>% 
-  filter(year_elctn == 2012) %>%
-  filter(state_po == "OR") %>%
-   mutate(v_percent = (pvote *100)) %>%
-  group_by(county, relig, civic, labor, democrat, republican) %>% 
-  summarize(voter_turnout = mean(v_percent)))
-
-(table_06 <- df2 %>% 
   filter(year_elctn == 2016) %>%
   filter(state_po == "OR") %>%
    mutate(v_percent = (pvote *100)) %>%
   group_by(county, relig, civic, labor, democrat, republican) %>% 
   summarize(voter_turnout = mean(v_percent)))
-
-# cor(df$pop, df$totalvotes, method = "pearson")
 
 ```
 
@@ -409,26 +394,36 @@ options(knitr.kable.NA = '--')
 (table_4 <- table_04 %>% 
   kbl(col.names = c("County", "Religious Organizations", "Civic Associations", "Labor Organizations", "Democrat", "Republican","Voter Turnout (%)"),
       digits = 1,
-      caption = "<b>Table 4</b><br /> <i>A summary table for 2008: Selected social capital and voting behavior in Oregon counties.</i>",
-      align =  "c") %>%
-  kable_classic(full_width = FALSE))
-
-(table_5 <- table_05 %>% 
-  kbl(col.names = c("County", "Religious Organizations", "Civic Associations", "Labor Organizations", "Democrat", "Republican","Voter Turnout (%)"),
-      digits = 1,
-      caption = "<b>Table 5</b><br /> <i>A summary table for 2012: Selected social capital and voting behavior in Oregon counties.</i>",,
-      align =  "c") %>%
-  kable_classic(full_width = FALSE))
-
-(table_6 <- table_06 %>% 
-  kbl(col.names = c("County", "Religious Organizations", "Civic Associations", "Labor Organizations", "Democrat", "Republican","Voter Turnout (%)"),
-      digits = 1,
-      caption = "<b>Table 6</b><br /> <i>A summary table for 2016: Selected social capital and voting behavior in Oregon counties.</i>",
+      caption = "<b>Table 4</b><br /> <i>A summary table for 2016: Selected social capital and voting behavior in Oregon counties.</i>",
       align =  "c") %>%
   kable_classic(full_width = FALSE))
 
 ```
 
+```{r lm table}
+
+# lm(demmargin ~ 1 + bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop, data = df_anal_2016) %>%
+#  tidy() %>%
+# mutate(
+#    p.value = scales::pvalue(p.value), 
+#    term = c("Democratic margin", "Bowling", "Civic", "Golf", "Religious", 
+#             "Sport", "Political", "Professional", "Bus", "Labor", "Voter turnout", "Census response", "Pop")
+#  ) %>%
+#  knitr::kable(
+#    caption = "Coefficient-Level Estimates for a Model Fitted to Estimate Variation in Social Capital.",
+#    col.names = c("Predictor", "B", "SE", "t", "p"),
+#   digits = c(0, 2, 3, 2, 3), 
+#   aligh = c("l", "r", "r", "r", "r")
+#  )
+
+
+# Regression table beginnings, still trying to fix with kable
+table_5 <- mod1 %>%
+  tbl_regression(exponentiate = TRUE)
+
+table_5
+
+```
 
 
 ```{r}
