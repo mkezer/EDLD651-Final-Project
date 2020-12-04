@@ -134,7 +134,7 @@ s_capital_14 <- import(here("data", "social-capital-variables-spreadsheet-for-20
   For each social capital dataset (i.e., 1997, 2005, 2009, 2014), we first added state code for some counties that do not readily contain that information. Then, we created two variables out of the area name such that we have different variables for county names and state codes. Then, we selected the relevant variables and cleaned the variable names. We only selected the variables that were available for all time points that we chose. Next, we created a year variable indicating when the data were collected.  
   Finally, we reorder the variables so that they are the same across datasets, and merged the four datasets to create one dataset that contains all of the data from each dataset.
 
-```{r cleandatasets}
+```{r clean}
 #select, filter, and clean data
 ##election
 election %<>%
@@ -251,34 +251,6 @@ rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Ch
   First, we provide the descriptive statistics in Table 1-X. Next, we visualize the data. Finally, we present regression models in which elections results are predicted by different types of social capital.
   We used `r cite_r("r-references.bib")` for all our analyses.
   
-``` {r preliminary analysis}
-df_wide %<>% 
-  mutate(demmargin = (democrat - republican) / (democrat + republican))
-
-# social capital variables with per capita measures
-df_wide %<>% 
-  filter(year_elctn == 2016) %>% 
-  select(bowl:demmargin) %>%
-  select(-democrat, -republican, -green, -"NA", -sk) %>% 
-  mutate(bowl =bowl/pop * 1000) %>%
-  mutate(civic = civic/pop * 1000) %>% 
-  mutate(golf = golf/pop * 1000) %>% 
-  mutate(relig = relig/pop * 1000) %>% 
-  mutate(sport = sport/pop * 1000) %>% 
-  mutate(pol = pol/pop * 1000) %>%
-  mutate(prof = prof/pop * 1000) %>% 
-  mutate(bus = bus/pop * 1000) %>% 
-  mutate(labor = labor/pop * 1000) %>%
-  mutate(nccs = nccs /pop * 1000)
-
-df_anal_2016 %>% 
-  cor()
-
-#preliminary analysis
-mod1 <- lm(data = df_anal_2016, demmargin ~ 1 + bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop)
-summary(mod1)
-```
-
 ```{r descriptives set up}
 (table_01 <- df_wide %>% 
   group_by(state_po) %>% 
@@ -311,9 +283,7 @@ summary(mod1)
    mutate(v_percent = (pvote *100)) %>%
   group_by(county, relig, civic, labor, democrat, republican) %>% 
   summarize(voter_turnout = mean(v_percent)))
-
 ```
-
 
 ```{r descriptives tables}
 
@@ -327,7 +297,7 @@ options(knitr.kable.NA = '--')
       align =  "c") %>% #align center 
   kable_classic(full_width = FALSE) %>% 
   add_header_above(c(" " = 2, "Total Votes" = 2, "Population" = 2)) %>% #adding headers. The 2's indicate how many columns are under each header
-  footnote(footnote_as_chunk = TRUE, 
+  footnote(footnote_as_chunk = TRUE,
            general = "N = number of counties with recorded data per the four time points (2000, 2008, 2012, 2016).")) #adding a footnote
 
 
@@ -355,15 +325,6 @@ options(knitr.kable.NA = '--')
       align =  "c") %>%
   kable_classic(full_width = FALSE))
 ```
-
-```{r lm-table}
-# Regression table beginnings, still trying to fix with kable
-table_5 <- mod1 %>%
-  tbl_regression(exponentiate = TRUE)
-
-table_5
-```
-
 
 ```{r}
 #Scatterplot of social capital over time (individual points represent states). Line fitted to show any trends over time
@@ -514,6 +475,35 @@ plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "ass
 ```
 
 # Results
+
+``` {r regression}
+# Social Capital 2014 & Election Results 2016
+df_wide_16 <- df_wide %>% filter(year_elctn == 2016) #filter
+  
+df_wide_16 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (candidatevotes_democrat - candidatevotes_republican) / (candidatevotes_democrat + candidatevotes_republican)
+    )
+
+df_wide_16 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
+
+df_wide_16 %>% # correlation table
+  select(bowl:dem_margin)
+  cor()
+
+model_2016 <- lm(dem_margin ~ bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop, # regression model
+                 data = df_wide_16)
+```
 
 
 # Discussion
