@@ -89,7 +89,7 @@ library(magrittr)
 library(stringr)
 library(here)
 library(kableExtra)
-library(gtsummary)
+library(usmap)
 r_refs("r-references.bib")
 ```
 
@@ -109,17 +109,10 @@ Social science literature has extensively examined the relationship between soci
 We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
 
 ## Data
-- County Presidential Election Returns 2000-2016 (MIT Election Data and Science Lab, 2018)
-  - County level returns for presidential elections from 2000 to 2016
-  - Election results across the years in one dataset & in tidy format
-- The production of social capital in US counties (Rupasingha, Goetz, & Freshwater, 2006, with updates)
-  - County level count of various establishments defined by NAICS code
-  - Different variables measured across years; new dataset for each year
+ The present study uses secondary datasets. First, *The production of social capital in US counties constitutes the social capital data* (Rupasingha, Goetz, & Freshwater, 2006, with updates)[link]. Second, *County Presidential Election Returns 2000-2016* (MIT Election Data and Science Lab, 2018) is used for presidential election results. Both datasets provide data on county level.
 
 ## Data Preparation
 
-### Load data and clean names
-We first load the datasets and clean the variable names.
 ```{r load data}
 election <- import(here("data", "countypres_2000-2016.csv")) %>% 
   clean_names() #load election results
@@ -130,32 +123,18 @@ s_capital_97 <- import(here("data", "social-capital-variables-for-1997.xlsx")) %
 s_capital_05 <- import(here("data", "social-capital-variables-for-2005.xlsx")) %>% 
   clean_names() #load social capital data for 2005
 
-s_capital_09 <- import(here("data", "social-capital-variables-for-2009.xlsx")) %>% 
+s_capital_09 <- import(here("data", "social-capital-variables-for-2009.xlsx")) %>%
   clean_names() #load social capital data for 2009
 
 s_capital_14 <- import(here("data", "social-capital-variables-spreadsheet-for-2014.xlsx")) %>% 
   clean_names()#load social capital data for 2014
 
 ```
+  To prepare the data for analysis, we started with the election data as it is more comprehensive in terms of the number of counties. First, we selected the variables of interests. Then, we selected the election years (i.e., 2000, 2008, 2012, 2016) that match with social capital data. The name of the year variable was changed in a way that shows it is the year of election so that it is not mixed with the same year variable in social capital data. Next, we create new datasets for each presidential election we are interested in. These will be later merged with corresponding social capital data.  
+  For each social capital dataset (i.e., 1997, 2005, 2009, 2014), we first added state code for some counties that do not readily contain that information. Then, we created two variables out of the area name such that we have different variables for county names and state codes. Then, we selected the relevant variables and cleaned the variable names. We only selected the variables that were available for all time points that we chose. Next, we created a year variable indicating when the data were collected.  
+  Finally, we reorder the variables so that they are the same across datasets, and merged the four datasets to create one dataset that contains all of the data from each dataset.
 
-### Clean data
-#### Election data
-- We start with the election data as it is more comprehensive in terms of the number of counties. First, we select the variables of interests. Then, we select the election year (i.e., 2000, 2008, 2012, 2016) that we will match with social capital data.  
-
-- The name of the year variable is changed in a way that shows it is the year of election (so that it is not mixed with the same year variable in social capital data).  
-
-- We create new datasets for each presidential election we are interested in. These will be later merged with corresponding social capital data.  
-
-#### Social capital data
-- For each social capital dataset (i.e., 1997, 2005, 2009, 2014), we first add state code for some counties that do not readily contain that information. Then, we create two variables out of the area name such that we have different variables for county names and state codes.  
-
-- We select the relevant variables and clean the variable names.  
-
-- We create a year variable indicating when the data were collected.  
-
-- Finally, we reorder variables so that the order of the variables is the same across datasets. This will be useful when we want to merge social capital data across year so that we can get descriptive statistics for each year simultaneously and that we can visualize the changes across years in social capital.  
-
-```{r clean datasets}
+```{r cleandatasets}
 #select, filter, and clean data
 ##election
 election %<>%
@@ -235,14 +214,6 @@ s_capital_14 %<>% #create year variable before merging
 colnames(s_capital_14) <- colnames(s_capital_09) #rename variables to make it compatible with previous years' datasets
 ```
 
-### Merge Datasets
-
-- First, we merge social capital data across years for reasons explained above, and call it `s_capital`.  
-
-- Next, we merge corresponding election and social capital data for 4 time points. **In doing so,** we keep the rows that exist in both election and social capital data. For instance, if we do not have the election information for a county, we do not include it in the merged dataset even if we have that county's social capital data. These datasets are called `df_year`. *Year* denotes the year of election. Also, we remove the duplicate variables (i.e., state and county names) and fix the names. We did not remove them earlier because we first wanted to merge the social capital data with all the variables.  
-
-- Finally, we merge all election and social capital data in the same dataset (i.e., `df`). In addition, we created another dataset using `pivot_wider()` to have variables for the candidate votes per political party. Then, we removed the intermediate objects (i.e., all data frames except for `df` and `df_wide`).
-
 ```{r merge datasets}
 s_capital <- bind_rows(s_capital_97, s_capital_05, s_capital_09, s_capital_14) #merge social capital data
 
@@ -274,29 +245,17 @@ pivot_wider(
 df_wide <- df_wide[,-25] #remove NA variable
 
 rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Chris' review)
-
-#     names_from = party,
-# df_wide <- df %>% #wide format
-#     values_from = candidatevotes,
-#     names_prefix = "candidatevotes_"
-#   )
-#   pivot_wider(
-# df_wide <- df_wide[,-25] #remove NA variable
-# rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Chris' review)
-
 ```
 
 ## Data analysis
-
+  
+  
 ``` {r preliminary analysis}
-df2 <- df  %>% 
-  pivot_wider(
-    names_from = party,
-    values_from = candidatevotes) %>% 
+df_wide %<>% 
   mutate(demmargin = (democrat - republican) / (democrat + republican))
 
 # social capital variables with per capita measures
-df_anal_2016 <- df2 %>%
+df_wide %<>% 
   filter(year_elctn == 2016) %>% 
   select(bowl:demmargin) %>%
   select(-democrat, -republican, -green, -"NA", -sk) %>% 
@@ -311,15 +270,12 @@ df_anal_2016 <- df2 %>%
   mutate(labor = labor/pop * 1000) %>%
   mutate(nccs = nccs /pop * 1000)
 
-View(df_anal_2016)
-
 df_anal_2016 %>% 
   cor()
 
 #preliminary analysis
 mod1 <- lm(data = df_anal_2016, demmargin ~ 1 + bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop)
 summary(mod1)
-
 ```
 
 ```{r descriptives set up}
@@ -397,32 +353,14 @@ options(knitr.kable.NA = '--')
       caption = "<b>Table 4</b><br /> <i>A summary table for 2016: Selected social capital and voting behavior in Oregon counties.</i>",
       align =  "c") %>%
   kable_classic(full_width = FALSE))
-
 ```
 
-```{r lm table}
-
-# lm(demmargin ~ 1 + bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop, data = df_anal_2016) %>%
-#  tidy() %>%
-# mutate(
-#    p.value = scales::pvalue(p.value), 
-#    term = c("Democratic margin", "Bowling", "Civic", "Golf", "Religious", 
-#             "Sport", "Political", "Professional", "Bus", "Labor", "Voter turnout", "Census response", "Pop")
-#  ) %>%
-#  knitr::kable(
-#    caption = "Coefficient-Level Estimates for a Model Fitted to Estimate Variation in Social Capital.",
-#    col.names = c("Predictor", "B", "SE", "t", "p"),
-#   digits = c(0, 2, 3, 2, 3), 
-#   aligh = c("l", "r", "r", "r", "r")
-#  )
-
-
+```{r lm-table}
 # Regression table beginnings, still trying to fix with kable
 table_5 <- mod1 %>%
   tbl_regression(exponentiate = TRUE)
 
 table_5
-
 ```
 
 
@@ -493,9 +431,6 @@ aggregate_election %>%
 ```
 
 ```{r visualization part 2}
-#install.packages("usmap")
-library(usmap)
-
 #percentage of democratic voters
 df2014 <- df2 %>% 
   filter(year_elctn == 2016)
@@ -509,7 +444,7 @@ plot_usmap(data = df2014, regions = "states", values = "demmargin", labels = TRU
                        name = "Republican - Democrat Margin (2016)") + 
   #scale_fill_continuous(low = "red", high = "blue", name = "Percentage of Democratic Votes (2016)", label = scales::comma) + 
   theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
-  theme(legend.position = "bottom") 
+  theme(legend.position = "bottom")
 
 df2008 <- df2 %>% 
   filter(year_elctn == 2008)
