@@ -248,7 +248,8 @@ rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Ch
 ```
 
 ## Data analysis
-  
+  First, we provide the descriptive statistics in Table 1-X. Next, we visualize the data. Finally, we present regression models in which elections results are predicted by different types of social capital.
+  We used `r cite_r("r-references.bib")` for all our analyses.
   
 ``` {r preliminary analysis}
 df_wide %<>% 
@@ -522,7 +523,6 @@ plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "ass
 
 # References
 
-We used `r cite_r("r-references.bib")` for all our analyses.
 
 \begingroup
 \setlength{\parindent}{-0.5in}
