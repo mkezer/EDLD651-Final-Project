@@ -140,12 +140,28 @@ election %<>%
   select(-office, -version, -candidate, -state) %>% #select relevant variables
   filter(year %in% c(2000, 2008, 2012, 2016)) #select relevant years
 
+#Can combine the command below as part of the piping above.
 colnames(election)[1] <- "year_elctn" #rename year variable for merging
 
 elctn_00 <- election %>% filter(year_elctn == 2000) #create a df for each election of interest so that it's easier to match them with sc dfs
 elctn_08 <- election %>% filter(year_elctn == 2008)
 elctn_12 <- election %>% filter(year_elctn == 2012)
 elctn_16 <- election %>% filter(year_elctn == 2016)
+
+#I recommend combining all commands below a dataset into one piping section. Then can just repeat the same code by simply inserting the new dataset name for each s_capital year (and edit commands where necessary).
+
+
+# s_capital_97 %>% 
+#   s_capital_97[290, 2] <- "District of Columbia, DC" %>%   #add DC's code
+#   separate(areaname, c("county","state_po"), sep = ', ') %>%  #create county and state variables
+#   select(-fitnes97, -memspt97, -memnec97) %>% #select relevant variables
+#   #remove year from variable names
+#   colnames[4:18] <- str_sub(colnames(s_capital_97)[4:18], end=-3) %>%
+#   mutate(year_sc = 1997) #remove the year from the variable names#create year variable before merging
+
+
+
+
 
 ##social capital 1997
 s_capital_97[290, 2] <- "District of Columbia, DC" #add DC's code
@@ -241,6 +257,8 @@ df_16 <- df_16[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
 colnames(df_16)[3:4] <- c("state_po", "county") #rename variables
 
 df <- bind_rows(df_00, df_08, df_12, df_16) #merged dataset: contains all election and corresponding social capital data
+
+#This is amazing! Merging datasets seems tricky, so it's impressive you were able to pull so many together!
 ```
 
 
@@ -262,7 +280,8 @@ We used `r cite_r("r-references.bib")` for all our analyses.
 
 ```{r descriptives set up, echo = FALSE, results = "hide"}
 #install.packages("kableExtra")
-library(kableExtra)
+library(kableExtra) #Should move to the top of the document in a list of all libraries used
+
 
 (table_01 <- df %>% 
   group_by(state_po) %>% 
@@ -270,10 +289,11 @@ library(kableExtra)
           m_totalvotes = mean(totalvotes),
           sd_totalvotes = sd(totalvotes),
           mean_pop = mean(pop), 
-          sd_pop = sd(pop)))
+          sd_pop = sd(pop))) 
 
-(table_02 <- df %>% 
-  group_by(year_elctn, party) %>% 
+
+(table_02 <- df %>%
+  group_by(year_elctn, party) %>%
   summarize(n = n(),
           m_candidatevotes = mean(candidatevotes),
           sd_candidatevotes = sd(candidatevotes)))
@@ -294,6 +314,7 @@ library(kableExtra)
   footnote(footnote_as_chunk = TRUE, 
            general = "N = number of counties with recorded data per the four time points (2000, 2008, 2012, 2016).")) #adding a footnote
 
+#Table 2 has some "NA"s. May want to remove NA's listwise, or replace with a word like "other". I also recommend grouping rows by year. I just couldn't figure out how to then remove the list of years within each group!
 (table_2 <- table_02 %>% 
   kbl(col.names = c("Year", "Party", "N", "Mean Candidate Votes", "SD Candidate Votes"),
       digits = 2,
@@ -301,7 +322,11 @@ library(kableExtra)
       align =  "c") %>%
   kable_classic(full_width = FALSE) %>% 
   footnote(footnote_as_chunk = TRUE, 
-           general = "N = total number of counties in the US reporting data.")) 
+           general = "N = total number of counties in the US reporting data."))    #group_rows("2000", 1, 4) %>%
+    # group_rows("2008", 5, 7) %>% 
+    # group_rows("2012", 8, 10) %>% 
+    # group_rows("2016", 11, 13))
+
 
 ```
 
@@ -362,7 +387,7 @@ aggregate_election %>%
        y="Proportion of Votes",
        color="Winning Party")
 
-  
+#Really cool graphs!  
 ```
 
 ```{r visualization part 2}
@@ -402,7 +427,7 @@ plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "ass
   theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
   theme(legend.position = "bottom")
 
-
+#These maps are also amazing. I hope to learn to do this in the next data visualization course!
 ```
 
 # Results
