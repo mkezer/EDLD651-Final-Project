@@ -90,6 +90,9 @@ library(stringr)
 library(here)
 library(kableExtra)
 library(usmap)
+library(corx)
+library(broom)
+library(sjmisc)
 r_refs("r-references.bib")
 ```
 
@@ -103,10 +106,10 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed,
 ```
 
 # Introduction
-Social science literature has extensively examined the relationship between social capital and politics (e.g. Morales & Guigni, 2016; Jottier & Heyndels, 2012; La Due Lake & Huckfeldt, 1998). However, relatively little is known on the impact of social capital election results.
+  Social science literature has extensively examined the relationship between social capital and politics (e.g. Morales & Guigni, 2016; Jottier & Heyndels, 2012; La Due Lake & Huckfeldt, 1998). However, relatively little is known on the impact of social capital election results.
 
 # Methods
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+  We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
 
 ## Data
  The present study uses secondary datasets. First, *The production of social capital in US counties constitutes the social capital data* (Rupasingha, Goetz, & Freshwater, 2006, with updates)[link]. Second, *County Presidential Election Returns 2000-2016* (MIT Election Data and Science Lab, 2018) is used for presidential election results. Both datasets provide data on county level.
@@ -498,11 +501,145 @@ df_wide_16 %<>% # Social capital variables with per capita measures
          nccs = nccs /pop * 1000)
 
 df_wide_16 %>% # correlation table
-  select(bowl:dem_margin)
-  cor()
+  select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
+         Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
+         `Democratic Margin` = dem_margin) %>% 
+  corx(triangle = "lower") %>% 
+  kable(align = "c", caption = "Table X. Correlation between social capital variables (2014) and democratic margin (2016)") %>% 
+  kable_classic() %>% 
+  footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
 
 model_2016 <- lm(dem_margin ~ bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop, # regression model
                  data = df_wide_16)
+
+# Social Capital 2009 & Election Results 2012
+df_wide_12 <- df_wide %>% filter(year_elctn == 2012) #filter
+  
+df_wide_12 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (candidatevotes_democrat - candidatevotes_republican) / (candidatevotes_democrat + candidatevotes_republican)
+    )
+
+df_wide_12 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
+
+df_wide_12 %>% # correlation table
+  select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
+         Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
+         `Democratic Margin` = dem_margin) %>% 
+  corx(triangle = "lower") %>% 
+  kable(align = "c", caption = "Table X. Correlation between social capital variables (2009) and democratic margin (2012)") %>% 
+  kable_classic() %>% 
+  footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
+
+model_2012 <- lm(dem_margin ~ bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop, # regression model
+                 data = df_wide_12)
+
+# Social Capital 2005 & Election Results 2008
+df_wide_08 <- df_wide %>% filter(year_elctn == 2008) #filter
+  
+df_wide_08 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (candidatevotes_democrat - candidatevotes_republican) / (candidatevotes_democrat + candidatevotes_republican)
+    )
+
+df_wide_08 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
+
+df_wide_08 %>% # correlation table
+  select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
+         Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
+         `Democratic Margin` = dem_margin) %>% 
+  corx(triangle = "lower") %>% 
+  kable(align = "c", caption = "Table X. Correlation between social capital variables (2005) and democratic margin (2008)") %>% 
+  kable_classic() %>% 
+  footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
+
+model_2008 <- lm(dem_margin ~ bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop, # regression model
+                 data = df_wide_08)
+
+# Social Capital 1997 & Election Results 2000
+df_wide_00 <- df_wide %>% filter(year_elctn == 2000) #filter
+  
+df_wide_00 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (candidatevotes_democrat - candidatevotes_republican) / (candidatevotes_democrat + candidatevotes_republican)
+    )
+
+df_wide_00 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
+
+df_wide_00 %>% # correlation table
+  select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
+         Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
+         `Democratic Margin` = dem_margin) %>% 
+  corx(triangle = "lower") %>% 
+  kable(align = "c", caption = "Table X. Correlation between social capital variables (1997) and democratic margin (2000)") %>% 
+  kable_classic() %>% 
+  footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
+
+model_2000 <- lm(dem_margin ~ bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop, # regression model
+                 data = df_wide_00)
+
+# regression table
+model_2000 %<>% tidy()
+model_2000 %<>% select(Term = term, B1 = estimate, SE1 = std.error, p1 = p.value, -statistic) #tidy it
+
+model_2008 %<>% tidy() #tidy it
+model_2008 %<>% select(Term = term, B2 = estimate, SE2 = std.error, p2 = p.value, -statistic) 
+
+model_2012 %<>% tidy() #tidy it
+model_2012 %<>% select(Term = term, B3 = estimate, SE3 = std.error, p3 = p.value, -statistic) 
+
+model_2016 %<>% tidy() #tidy it
+model_2016 %<>% select(Term = term, B4 = estimate, SE4 = std.error, p4 = p.value, -statistic) 
+
+reg_table <- cbind( #merge the model results
+  model_2000,
+  select(model_2008, -Term),
+  select(model_2012, -Term),
+  select(model_2016, -Term)
+)
+
+reg_table$Term <- rec(reg_table$Term, #recode terms
+                  rec = "(Intercept) = Intercept; bowl = Bowling; civic = Civic; golf = Golf; relig = Religious; sport = Sport;
+                         pol = Political; prof = Professional; bus = Business; labor = Labor; pvote = Popular Vote; 
+                         respn = Census Rate; pop = Population; else = copy", as.num = F, append = T, suffix = "")
+
+reg_table %>% 
+  kable(align = "c", digits = 2, #create table
+     caption = "Table X. Social Capital Variables Regressed on Democratic Margin for Each Time Point",
+     col.names = c("Term", "B", "SE", "p", "B", "SE", "p", "B", "SE", "p", "B", "SE", "p")) %>% 
+  kable_classic() %>% 
+  add_header_above(c(" " = 1, "2000" = 3, "2004" = 3, "2008" = 3, "2012" = 3), bold = T) %>%
+  footnote("The headers indicate election years.", footnote_as_chunk = T)
 ```
 
 
