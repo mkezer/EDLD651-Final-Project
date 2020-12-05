@@ -144,7 +144,7 @@ election %<>%
   select(-office, -version, -candidate, -state) %>% #select relevant variables
   filter(year %in% c(2000, 2008, 2012, 2016)) #select relevant years
 
-colnames(election)[1] <- "year_elctn" #rename year variable for merging
+election %<>% rename(year_elctn = year) #rename year variable for merging
 
 elctn_00 <- election %>% filter(year_elctn == 2000) #create a df for each election of interest so that it's easier to match them with sc dfs
 elctn_08 <- election %>% filter(year_elctn == 2008)
@@ -152,7 +152,10 @@ elctn_12 <- election %>% filter(year_elctn == 2012)
 elctn_16 <- election %>% filter(year_elctn == 2016)
 
 ##social capital 1997
-s_capital_97[290, 2] <- "District of Columbia, DC" #add DC's code
+s_capital_97 %<>% #add DC's code
+  mutate(
+    areaname = recode(areaname, `District of Columbia` = "District of Columbia, DC")
+  )
 
 s_capital_97 %<>% #create county and state variables
   separate(areaname, c("county","state_po"), sep = ', ')
@@ -166,7 +169,10 @@ s_capital_97 %<>% #create year variable before merging
   mutate(year_sc = 1997)
 
 ##social capital 2005
-s_capital_05[290, 2] <- "District of Columbia, DC" #add DC's code
+s_capital_05 %<>% #add DC's code
+  mutate(
+    areaname = recode(areaname, `District of Columbia` = "District of Columbia, DC") #add DC's code
+  )
 
 s_capital_05 %<>% #create county and state variables
   separate(areaname, c("county","state_po"), sep = ', ')
@@ -176,12 +182,17 @@ s_capital_05 %<>% #select relevant variables
 
 colnames(s_capital_05)[4:18] <- str_sub(colnames(s_capital_05)[4:18], end=-3) #remove the year from the variable names
 
-s_capital_05 <- s_capital_05[,c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 15, 14, 13, 16, 17:18)] #reorder the variables
+s_capital_05 %<>% #reorder the variables
+  select(fips, county, state_po, bowl, civic, golf, relig, sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk)
 
-s_capital_05$year_sc <- 2005 #create year variable before merging
+s_capital_05 %<>% #create year variable before merging
+  mutate(year_sc = 2005)
 
 ##social capital 2009
-s_capital_09[290, 2] <- "District of Columbia, DC" #add DC's code
+s_capital_09 %<>% #add DC's code
+  mutate(
+    areaname = recode(areaname, `District of Columbia` = "District of Columbia, DC") #add DC's code
+  )
 
 s_capital_09 %<>% #create county and state variables
   separate(areaname, c("county","state_po"), sep = ', ')
@@ -191,50 +202,62 @@ s_capital_09 %<>% #select relevant variables
 
 colnames(s_capital_09)[4:18] <- str_sub(colnames(s_capital_09)[4:18], end=-3) #remove the year from the variable names
 
-s_capital_09 <- s_capital_09[,c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 14:15, 13, 16:18)] #reorder the variables
+s_capital_09 %<>% #reorder the variables
+  select(fips, county, state_po, bowl, civic, golf, relig, sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk)
 
 s_capital_09 %<>% #create year variable before merging
   mutate(year_sc = 2009)
 
 ##social capital 2014
-s_capital_14[77, 2] <- "Hoonah-Angoon Census Area, AK" #remove the repeated state code
+s_capital_14 %<>% #add DC's code
+  mutate(
+    county_name = recode(county_name, `Hoonah-Angoon Census Area, AK, AK` = "Hoonah-Angoon Census Area, AK") #remove the repeated state code
+  )
 
 s_capital_14 %<>% #create county and state variables
   separate(county_name, c("county","state_po"), sep = ', ') 
 
-s_capital_14$county <- word(s_capital_14$county, 1) #remove the word 'county' and keep only the name
+s_capital_14 %<>% #remove the word 'county' and keep only the name
+  mutate(
+    county = word(county, 1)
+  )
 
 s_capital_14 %<>% #select relevant variables
   select(-recreational2014)
 
 colnames(s_capital_14)[4:18] <- str_sub(colnames(s_capital_14)[4:18], end=-5) #remove the year from the variable names
 
-s_capital_14 <- s_capital_14[, c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 16, 15, 13, 17, 14, 18)] #reorder the variables
-
 s_capital_14 %<>% #create year variable before merging
   mutate(year_sc = 2014)
 
 colnames(s_capital_14) <- colnames(s_capital_09) #rename variables to make it compatible with previous years' datasets
+
+s_capital_14 %<>% #reorder the variables
+  select(fips, county, state_po, bowl, civic, golf, relig, sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk, year_sc)
 ```
 
 ```{r merge datasets}
 s_capital <- bind_rows(s_capital_97, s_capital_05, s_capital_09, s_capital_14) #merge social capital data
 
 df_00 <- inner_join(elctn_00, s_capital_97, by = "fips") #merge election 2000 & social capital 1997
-df_00 <- df_00[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
-colnames(df_00)[3:4] <- c("state_po", "county") #rename variables
+df_00 %<>% 
+  select(year_elctn, year_sc, state_po = state_po.x, county = county.x, fips, party, candidatevotes, totalvotes, bowl, civic, golf, relig,
+         sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk) #remove duplicates, and reorder and rename variables
 
 df_08 <- inner_join(elctn_08, s_capital_05, by = "fips") #merge election 2008 & social capital 2005
-df_08 <- df_08[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
-colnames(df_08)[3:4] <- c("state_po", "county") #rename variables
+df_08 %<>% 
+  select(year_elctn, year_sc, state_po = state_po.x, county = county.x, fips, party, candidatevotes, totalvotes, bowl, civic, golf, relig,
+         sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk) #remove duplicates, and reorder and rename variables
 
 df_12 <- inner_join(elctn_12, s_capital_09, by = "fips") #merge election 2012 & social capital 2009
-df_12 <- df_12[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
-colnames(df_12)[3:4] <- c("state_po", "county") #rename variables
+df_12 %<>% 
+  select(year_elctn, year_sc, state_po = state_po.x, county = county.x, fips, party, candidatevotes, totalvotes, bowl, civic, golf, relig,
+         sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk) #remove duplicates, and reorder and rename variables
 
 df_16 <- inner_join(elctn_16, s_capital_14, by = "fips") #merge election 2016 & social capital 2014
-df_16 <- df_16[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
-colnames(df_16)[3:4] <- c("state_po", "county") #rename variables
+df_16 %<>% 
+  select(year_elctn, year_sc, state_po = state_po.x, county = county.x, fips, party, candidatevotes, totalvotes, bowl, civic, golf, relig,
+         sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk) #remove duplicates, and reorder and rename variables
 
 df <- bind_rows(df_00, df_08, df_12, df_16)
 
@@ -245,7 +268,8 @@ pivot_wider(
     names_prefix = "candidatevotes_"
   )
 
-df_wide <- df_wide[,-25] #remove NA variable
+df_wide  %<>% #remove NA variable
+  select(-candidatevotes_NA)
 
 rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Chris' review)
 ```
