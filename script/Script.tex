@@ -6,13 +6,12 @@
   english,
   man]{apa6}
 \usepackage{lmodern}
-\usepackage{amsmath}
+\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
-  \usepackage{amssymb}
 \else % if luatex or xetex
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
@@ -45,7 +44,7 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
-\usepackage{graphicx}
+\usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -128,31 +127,8 @@
 \else
   \usepackage[shorthands=off,main=english]{babel}
 \fi
-\ifluatex
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage[]{biblatex}
 \addbibresource{r-references.bib}
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
-  \fi
- }%
- {}
-\usepackage{calc} % for \widthof, \maxof
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\maxof{\widthof{#1}}{\csllabelwidth}}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth}{#1}}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \title{Relationship between social capital and election results}
 \author{Anisha Babu\textsuperscript{1}, Hyeonjin Cha\textsuperscript{1}, Diana DeWald\textsuperscript{1}, \& Murat Kezer\textsuperscript{1}}
@@ -214,34 +190,8 @@ Finally, we reorder the variables so that they are the same across datasets, and
 \hypertarget{data-analysis}{%
 \subsection{Data analysis}\label{data-analysis}}
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-We used R \autocite[Version 3.6.1;][]{R-base} and the R-packages \emph{dplyr} \autocite[Version 1.0.0;][]{R-dplyr}, \emph{forcats} \autocite[Version 0.5.0;][]{R-forcats}, \emph{ggplot2} \autocite[Version 3.3.2;][]{R-ggplot2}, \emph{here} \autocite[Version 0.1;][]{R-here}, \emph{janitor} \autocite[Version 2.0.1;][]{R-janitor}, \emph{kableExtra} \autocite[Version 1.3.1;][]{R-kableExtra}, \emph{knitr} \autocite[Version 1.29;][]{R-knitr}, \emph{magrittr} \autocite[Version 1.5;][]{R-magrittr}, \emph{papaja} \autocite[Version 0.1.0.9997;][]{R-papaja}, \emph{purrr} \autocite[Version 0.3.4;][]{R-purrr}, \emph{readr} \autocite[Version 1.3.1;][]{R-readr}, \emph{rio} \autocite[Version 0.5.16;][]{R-rio}, \emph{stringr} \autocite[Version 1.4.0;][]{R-stringr}, \emph{tibble} \autocite[Version 3.0.2;][]{R-tibble}, \emph{tidyr} \autocite[Version 1.1.0;][]{R-tidyr}, and \emph{tidyverse} \autocite[Version 1.3.0;][]{R-tidyverse} for all our analyses.
-
-\begin{verbatim}
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-\end{verbatim}
-=======
-We used R (Version 4.0.2; R Core Team, 2020) and the R-packages \emph{dplyr} (Version 1.0.2; Wickham et al., 2020), \emph{forcats} (Version 0.5.0; Wickham, 2020a), \emph{ggplot2} (Version 3.3.2; Wickham, 2016), \emph{here} (Version 0.1; Müller, 2017), \emph{janitor} (Version 2.0.1; Firke, 2020), \emph{kableExtra} (Version 1.3.1; Zhu, 2020), \emph{knitr} (Version 1.30; Xie, 2015), \emph{magrittr} (Version 1.5; Bache \& Wickham, 2014), \emph{papaja} (Version 0.1.0.9997; Aust \& Barth, 2020), \emph{purrr} (Version 0.3.4; Henry \& Wickham, 2020), \emph{readr} (Version 1.3.1; Wickham, Hester, \& Francois, 2018), \emph{rio} (Version 0.5.16; Chan, Chan, Leeper, \& Becker, 2018), \emph{stringr} (Version 1.4.0; Wickham, 2019), \emph{tibble} (Version 3.0.3; Müller \& Wickham, 2020), \emph{tidyr} (Version 1.1.2; Wickham, 2020b), and \emph{tidyverse} (Version 1.3.0; Wickham, Averick, et al., 2019) for all our analyses.
->>>>>>> Stashed changes
-=======
 First, we provide the descriptive statistics in Table 1-X. Next, we visualize the data. Finally, we present regression models in which elections results are predicted by different types of social capital.
-We used R \autocite[Version 3.6.1;][]{R-base} and the R-packages \emph{broom} \autocite[Version 0.7.0;][]{R-broom}, \emph{corx} \autocite[Version 1.0.6.1;][]{R-corx}, \emph{dplyr} \autocite[Version 1.0.2;][]{R-dplyr}, \emph{forcats} \autocite[Version 0.5.0;][]{R-forcats}, \emph{ggplot2} \autocite[Version 3.3.2;][]{R-ggplot2}, \emph{gtsummary} \autocite[Version 1.3.5;][]{R-gtsummary}, \emph{here} \autocite[Version 0.1;][]{R-here}, \emph{janitor} \autocite[Version 2.0.1;][]{R-janitor}, \emph{kableExtra} \autocite[Version 1.3.1;][]{R-kableExtra}, \emph{knitr} \autocite[Version 1.29;][]{R-knitr}, \emph{magrittr} \autocite[Version 1.5;][]{R-magrittr}, \emph{papaja} \autocite[Version 0.1.0.9997;][]{R-papaja}, \emph{purrr} \autocite[Version 0.3.4;][]{R-purrr}, \emph{readr} \autocite[Version 1.3.1;][]{R-readr}, \emph{rio} \autocite[Version 0.5.16;][]{R-rio}, \emph{scales} \autocite[Version 1.1.1;][]{R-scales}, \emph{sjlabelled} \autocite[Version 1.1.7;][]{R-sjlabelled}, \emph{sjmisc} \autocite[Version 2.8.5;][]{R-sjmisc}, \emph{stringr} \autocite[Version 1.4.0;][]{R-stringr}, \emph{tibble} \autocite[Version 3.0.4;][]{R-tibble}, \emph{tidyr} \autocite[Version 1.1.2;][]{R-tidyr}, \emph{tidyverse} \autocite[Version 1.3.0;][]{R-tidyverse}, and \emph{usmap} \autocite[Version 0.5.1;][]{R-usmap} for all our analyses.
->>>>>>> main
+We used R \autocite[Version 4.0.2;][]{R-base} and the R-packages \emph{broom} \autocite[Version 0.7.1;][]{R-broom}, \emph{corx} \autocite[Version 1.0.6.1;][]{R-corx}, \emph{dplyr} \autocite[Version 1.0.2;][]{R-dplyr}, \emph{forcats} \autocite[Version 0.5.0;][]{R-forcats}, \emph{ggplot2} \autocite[Version 3.3.2;][]{R-ggplot2}, \emph{ggpubr} \autocite[Version 0.4.0;][]{R-ggpubr}, \emph{here} \autocite[Version 0.1;][]{R-here}, \emph{janitor} \autocite[Version 2.0.1;][]{R-janitor}, \emph{kableExtra} \autocite[Version 1.3.1;][]{R-kableExtra}, \emph{knitr} \autocite[Version 1.30;][]{R-knitr}, \emph{magrittr} \autocite[Version 1.5;][]{R-magrittr}, \emph{papaja} \autocite[Version 0.1.0.9997;][]{R-papaja}, \emph{purrr} \autocite[Version 0.3.4;][]{R-purrr}, \emph{readr} \autocite[Version 1.3.1;][]{R-readr}, \emph{rio} \autocite[Version 0.5.16;][]{R-rio}, \emph{scales} \autocite[Version 1.1.1;][]{R-scales}, \emph{sjmisc} \autocite[Version 2.8.5;][]{R-sjmisc}, \emph{stringr} \autocite[Version 1.4.0;][]{R-stringr}, \emph{tibble} \autocite[Version 3.0.3;][]{R-tibble}, \emph{tidyr} \autocite[Version 1.1.2;][]{R-tidyr}, \emph{tidyverse} \autocite[Version 1.3.0;][]{R-tidyverse}, and \emph{usmap} \autocite[Version 0.5.1;][]{R-usmap} for all our analyses.
 
 \begin{table}
 
@@ -449,7 +399,13 @@ Labor & 0.89 & 0.06 & <0.05 & 1.03 & 0.08 & <0.05 & 0.90 & 0.09 & <0.05 & 0.65 &
 
 \includegraphics{Script_files/figure-latex/visualization part 1-1.pdf} \includegraphics{Script_files/figure-latex/visualization part 1-2.pdf} \includegraphics{Script_files/figure-latex/visualization part 1-3.pdf}
 
-\includegraphics{Script_files/figure-latex/visualization part 2-1.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-2.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-3.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-4.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-5.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-6.pdf}
+\includegraphics{Script_files/figure-latex/visualization election results-1.pdf} \includegraphics{Script_files/figure-latex/visualization election results-2.pdf}
+
+\includegraphics{Script_files/figure-latex/visualization religious capital maps-1.pdf} \includegraphics{Script_files/figure-latex/visualization religious capital maps-2.pdf}
+
+\includegraphics{Script_files/figure-latex/visualization civic social capital maps-1.pdf} \includegraphics{Script_files/figure-latex/visualization civic social capital maps-2.pdf}
+
+\includegraphics{Script_files/figure-latex/visualization labor social capital maps-1.pdf} \includegraphics{Script_files/figure-latex/visualization labor social capital maps-2.pdf}
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -467,11 +423,6 @@ Labor & 0.89 & 0.06 & <0.05 & 1.03 & 0.08 & <0.05 & 0.90 & 0.09 & <0.05 & 0.65 &
 \setlength{\leftskip}{0.5in}
 
 \hypertarget{refs}{}
-\begin{CSLReferences}{0}{0}
-\end{CSLReferences}
-
-\leavevmode\hypertarget{ref-R-kableExtra}{}%
-Zhu, H. (2020). \emph{KableExtra: Construct complex table with 'kable' and pipe syntax}. Retrieved from \url{https://CRAN.R-project.org/package=kableExtra}
 
 \endgroup
 
