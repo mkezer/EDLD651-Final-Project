@@ -490,10 +490,13 @@ reg_table %>%
   kable(align = "c", digits = 2, #create table
      caption = "Table X. Social Capital Variables Regressed on Democratic Margin for Each Time Point",
      col.names = c("Term", "B", "SE", "p", "B", "SE", "p", "B", "SE", "p", "B", "SE", "p")) %>% 
-  kable_classic() %>% 
+  kable_classic(full_width = F) %>% 
   add_header_above(c(" " = 1, "2000" = 3, "2004" = 3, "2008" = 3, "2012" = 3), bold = T) %>%
   footnote("The headers indicate election years.", footnote_as_chunk = T)  
 ```
+
+
+
 
 ```{r visualization part 1}
 #Scatterplot of social capital over time (individual points represent states). Line fitted to show any trends over time
@@ -573,6 +576,51 @@ aggregate_election %>%
        color="Party")
 
 ```
+
+
+```{r regression2}
+#create aggregate social capital per capita & democratic margin
+df_wide %<>% 
+  dplyr::mutate(
+    aggregate_capital = rowSums(select(., bowl:labor), na.rm = T) / pop * 1000,
+    dem_margin = (democrat - republican) / (democrat + republican)
+  )
+
+#democratic margin regressed on aggregate social capital across years
+model_agg_00 <- lm(dem_margin ~ aggregate_capital, 
+                 data = subset(df_wide, year_elctn == 2000))
+
+model_agg_08 <- lm(dem_margin ~ aggregate_capital, 
+                 data = subset(df_wide, year_elctn == 2008))
+
+model_agg_12 <- lm(dem_margin ~ aggregate_capital, 
+                 data = subset(df_wide, year_elctn == 2012))
+
+model_agg_16 <- lm(dem_margin ~ aggregate_capital, 
+                 data = subset(df_wide, year_elctn == 2016))
+
+#create kable
+model_agg_00 %<>% tidy()
+model_agg_08 %<>% tidy()
+model_agg_12 %<>% tidy()
+model_agg_16 %<>% tidy()
+
+model_agg <- bind_rows(model_agg_00, model_agg_08, model_agg_12, model_agg_16)
+
+model_agg %>% 
+  select(Term = term, B = estimate, SE = std.error, p = p.value) %>% 
+  rec(Term, rec = "(Intercept)=Intercept; aggregate_capital = Social_Capital_(aggregate); else = copy", 
+      as.num = F, append = T, suffix = "") %>% 
+  mutate(p = pvalue(p, accuracy = .05)) %>% 
+  kable(align = "r", digits = 2, caption = "Table X. Democratic Margin Predicted by Aggregate Social Capital") %>% 
+  kable_classic(full_width = F) %>% 
+  pack_rows("2000 Election", 1,2) %>% 
+  pack_rows("2008 Election", 3,4) %>% 
+  pack_rows("2012 Election", 5,6) %>% 
+  pack_rows("2016 Election", 7,8)
+
+```
+
 
 ```{r visualization election results}
 #US Election Results 2016
