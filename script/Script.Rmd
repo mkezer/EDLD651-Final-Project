@@ -327,7 +327,129 @@ options(knitr.kable.NA = '--')
 
 ```
 
-``` {r regression}
+
+```{r visualization part 1}
+#Scatterplot of social capital over time (individual points represent states). Line fitted to show any trends over time
+aggregate_states <- df %>%
+  filter((year_elctn == 2000 & party == "republican") | 
+           (year_elctn == 2008 & party == "democrat") | 
+           (year_elctn == 2012 & party == "democrat") | 
+           (year_elctn == 2016 & party == "republican")) %>%
+  mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
+  group_by(state_po,year_sc) %>%
+  summarize(aggregate_capital = (sum(aggregate_capital) / sum(pop)) * 1000) 
+aggregate_states %>%
+  ggplot(mapping=aes(x=as.character(year_sc),
+                     y=aggregate_capital)) +
+  geom_violin(aes(color=as.character(year_sc)),show.legend=FALSE) +
+  geom_boxplot(color="gray70") +
+  labs(title="Social Capital Trends in U.S. States",
+       x="Year",
+       y="Aggregate Social Capital")
+
+#Scatterplot of different types of social capital over time (individual points represent aggregate for entire country). Lines fitted for each type to show trends over time
+filter_df <- df %>%
+  filter((year_elctn == 2000 & party == "republican") | 
+           (year_elctn == 2008 & party == "democrat") | 
+           (year_elctn == 2012 & party == "democrat") | 
+           (year_elctn == 2016 & party == "republican")) 
+aggregate_country <- filter_df %>%
+  group_by(year_sc) %>%
+  summarize(bowl=sum(bowl)/sum(pop)*10000,
+            civic=sum(civic)/sum(pop)*10000,
+            golf=sum(golf)/sum(pop)*10000,
+            relig=sum(relig)/sum(pop)*10000,
+            sport=sum(sport)/sum(pop)*10000,
+            pol=sum(pol)/sum(pop)*10000,
+            prof=sum(prof)/sum(pop)*10000,
+            bus=sum(bus)/sum(pop)*10000,
+            labor=sum(labor)/sum(pop)*10000)
+aggregate_country <- aggregate_country %>%
+  mutate(year_sc = c(1997,2005,2009,2014)) %>%
+  pivot_longer(cols=bowl:labor,names_to = "type_sc", values_to = "count")
+aggregate_country %>%
+  filter(type_sc == "relig" | type_sc=="labor" | type_sc=="civic") %>%
+  ggplot(mapping=aes(x=as.character(year_sc),y=count,color=type_sc)) +
+  geom_point(show.legend=FALSE) +
+  labs(title="Changes in Social Capital in U.S.",
+       x="Year",
+       y="Count",
+       color="Type of Capital") +
+  facet_wrap(~type_sc,scales="free")
+
+#Scatterplot of proportion votes for winning party by social capital for each state
+aggregate_election <- df %>%
+  filter(party %in% c("republican","democrat")) %>%
+  mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
+  group_by(state_po,year_elctn,party) %>%
+  summarize(aggregate_capital=(sum(aggregate_capital) / sum(pop)) * 1000, 
+            prop_votes = sum(candidatevotes) / sum(totalvotes))
+aggregate_election %>%
+  filter(state_po != "DC") %>%
+  mutate(year_elctn = factor(year_elctn, levels = c("2000",
+                                                    "2008",
+                                                    "2012",
+                                                    "2016"))) %>%
+  mutate(year_elctn = fct_recode(year_elctn,
+                                 "2000 - Republican" = "2000",
+                                 "2008 - Democrat" = "2008",
+                                 "2012 - Democrat" = "2012",
+                                 "2016 - Republican" = "2016")) %>%
+  ggplot(mapping=aes(x=aggregate_capital,y=prop_votes,color=party)) +
+  geom_point(alpha=0.5) +
+  geom_smooth(se=FALSE,method=lm) +
+  scale_color_manual(values=c("blue4","red4")) +
+  facet_wrap(~year_elctn,scales="free") +
+  labs(title="Proportion Party Votes by Social Capital in U.S. States",
+       x="Aggregate Social Capital",
+       y="Proportion of Votes",
+       color="Party")
+
+```
+
+```{r regression}
+#create aggregate social capital per capita & democratic margin
+df_wide %<>% 
+  dplyr::mutate(
+    aggregate_capital = rowSums(select(., bowl:labor), na.rm = T) / pop * 1000,
+    dem_margin = (democrat - republican) / (democrat + republican)
+  )
+
+#democratic margin regressed on aggregate social capital across years
+model_agg_00 <- lm(dem_margin ~ aggregate_capital, 
+                 data = subset(df_wide, year_elctn == 2000))
+
+model_agg_08 <- lm(dem_margin ~ aggregate_capital, 
+                 data = subset(df_wide, year_elctn == 2008))
+
+model_agg_12 <- lm(dem_margin ~ aggregate_capital, 
+                 data = subset(df_wide, year_elctn == 2012))
+
+model_agg_16 <- lm(dem_margin ~ aggregate_capital, 
+                 data = subset(df_wide, year_elctn == 2016))
+
+#create kable
+model_agg_00 %<>% tidy()
+model_agg_08 %<>% tidy()
+model_agg_12 %<>% tidy()
+model_agg_16 %<>% tidy()
+
+model_agg <- bind_rows(model_agg_00, model_agg_08, model_agg_12, model_agg_16)
+
+model_agg %>% 
+  select(Term = term, B = estimate, SE = std.error, p = p.value) %>% 
+  rec(Term, rec = "(Intercept)=Intercept; aggregate_capital = Social_Capital_(aggregate); else = copy", 
+      as.num = F, append = T, suffix = "") %>% 
+  mutate(p = pvalue(p, accuracy = .05)) %>% 
+  kable(align = "r", digits = 2, caption = "Table X. Democratic Margin Predicted by Aggregate Social Capital") %>% 
+  kable_classic(full_width = F) %>% 
+  pack_rows("2000 Election", 1,2) %>% 
+  pack_rows("2008 Election", 3,4) %>% 
+  pack_rows("2012 Election", 5,6) %>% 
+  pack_rows("2016 Election", 7,8)
+```
+
+``` {r regression2}
 # Social Capital 2014 & Election Results 2016
 df_wide_16 <- df_wide %>% filter(year_elctn == 2016) #filter
   
@@ -493,132 +615,6 @@ reg_table %>%
   kable_classic(full_width = F) %>% 
   add_header_above(c(" " = 1, "2000" = 3, "2004" = 3, "2008" = 3, "2012" = 3), bold = T) %>%
   footnote("The headers indicate election years.", footnote_as_chunk = T)  
-```
-
-
-
-
-```{r visualization part 1}
-#Scatterplot of social capital over time (individual points represent states). Line fitted to show any trends over time
-aggregate_states <- df %>%
-  filter((year_elctn == 2000 & party == "republican") | 
-           (year_elctn == 2008 & party == "democrat") | 
-           (year_elctn == 2012 & party == "democrat") | 
-           (year_elctn == 2016 & party == "republican")) %>%
-  mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
-  group_by(state_po,year_sc) %>%
-  summarize(aggregate_capital = (sum(aggregate_capital) / sum(pop)) * 1000) 
-aggregate_states %>%
-  ggplot(mapping=aes(x=as.character(year_sc),
-                     y=aggregate_capital)) +
-  geom_violin(aes(color=as.character(year_sc)),show.legend=FALSE) +
-  geom_boxplot(color="gray70") +
-  labs(title="Social Capital Trends in U.S. States",
-       x="Year",
-       y="Aggregate Social Capital")
-
-#Scatterplot of different types of social capital over time (individual points represent aggregate for entire country). Lines fitted for each type to show trends over time
-filter_df <- df %>%
-  filter((year_elctn == 2000 & party == "republican") | 
-           (year_elctn == 2008 & party == "democrat") | 
-           (year_elctn == 2012 & party == "democrat") | 
-           (year_elctn == 2016 & party == "republican")) 
-aggregate_country <- filter_df %>%
-  group_by(year_sc) %>%
-  summarize(bowl=sum(bowl)/sum(pop)*10000,
-            civic=sum(civic)/sum(pop)*10000,
-            golf=sum(golf)/sum(pop)*10000,
-            relig=sum(relig)/sum(pop)*10000,
-            sport=sum(sport)/sum(pop)*10000,
-            pol=sum(pol)/sum(pop)*10000,
-            prof=sum(prof)/sum(pop)*10000,
-            bus=sum(bus)/sum(pop)*10000,
-            labor=sum(labor)/sum(pop)*10000)
-aggregate_country <- aggregate_country %>%
-  mutate(year_sc = c(1997,2005,2009,2014)) %>%
-  pivot_longer(cols=bowl:labor,names_to = "type_sc", values_to = "count")
-aggregate_country %>%
-  filter(type_sc == "relig" | type_sc=="labor" | type_sc=="civic") %>%
-  ggplot(mapping=aes(x=as.character(year_sc),y=count,color=type_sc)) +
-  geom_point(show.legend=FALSE) +
-  labs(title="Changes in Social Capital in U.S.",
-       x="Year",
-       y="Count",
-       color="Type of Capital") +
-  facet_wrap(~type_sc,scales="free")
-
-#Scatterplot of proportion votes for winning party by social capital for each state
-aggregate_election <- df %>%
-  filter(party %in% c("republican","democrat")) %>%
-  mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
-  group_by(state_po,year_elctn,party) %>%
-  summarize(aggregate_capital=(sum(aggregate_capital) / sum(pop)) * 1000, 
-            prop_votes = sum(candidatevotes) / sum(totalvotes))
-aggregate_election %>%
-  filter(state_po != "DC") %>%
-  mutate(year_elctn = factor(year_elctn, levels = c("2000",
-                                                    "2008",
-                                                    "2012",
-                                                    "2016"))) %>%
-  mutate(year_elctn = fct_recode(year_elctn,
-                                 "2000 - Republican" = "2000",
-                                 "2008 - Democrat" = "2008",
-                                 "2012 - Democrat" = "2012",
-                                 "2016 - Republican" = "2016")) %>%
-  ggplot(mapping=aes(x=aggregate_capital,y=prop_votes,color=party)) +
-  geom_point(alpha=0.5) +
-  geom_smooth(se=FALSE,method=lm) +
-  scale_color_manual(values=c("blue4","red4")) +
-  facet_wrap(~year_elctn,scales="free") +
-  labs(title="Proportion Party Votes by Social Capital in U.S. States",
-       x="Aggregate Social Capital",
-       y="Proportion of Votes",
-       color="Party")
-
-```
-
-
-```{r regression2}
-#create aggregate social capital per capita & democratic margin
-df_wide %<>% 
-  dplyr::mutate(
-    aggregate_capital = rowSums(select(., bowl:labor), na.rm = T) / pop * 1000,
-    dem_margin = (democrat - republican) / (democrat + republican)
-  )
-
-#democratic margin regressed on aggregate social capital across years
-model_agg_00 <- lm(dem_margin ~ aggregate_capital, 
-                 data = subset(df_wide, year_elctn == 2000))
-
-model_agg_08 <- lm(dem_margin ~ aggregate_capital, 
-                 data = subset(df_wide, year_elctn == 2008))
-
-model_agg_12 <- lm(dem_margin ~ aggregate_capital, 
-                 data = subset(df_wide, year_elctn == 2012))
-
-model_agg_16 <- lm(dem_margin ~ aggregate_capital, 
-                 data = subset(df_wide, year_elctn == 2016))
-
-#create kable
-model_agg_00 %<>% tidy()
-model_agg_08 %<>% tidy()
-model_agg_12 %<>% tidy()
-model_agg_16 %<>% tidy()
-
-model_agg <- bind_rows(model_agg_00, model_agg_08, model_agg_12, model_agg_16)
-
-model_agg %>% 
-  select(Term = term, B = estimate, SE = std.error, p = p.value) %>% 
-  rec(Term, rec = "(Intercept)=Intercept; aggregate_capital = Social_Capital_(aggregate); else = copy", 
-      as.num = F, append = T, suffix = "") %>% 
-  mutate(p = pvalue(p, accuracy = .05)) %>% 
-  kable(align = "r", digits = 2, caption = "Table X. Democratic Margin Predicted by Aggregate Social Capital") %>% 
-  kable_classic(full_width = F) %>% 
-  pack_rows("2000 Election", 1,2) %>% 
-  pack_rows("2008 Election", 3,4) %>% 
-  pack_rows("2012 Election", 5,6) %>% 
-  pack_rows("2016 Election", 7,8)
-
 ```
 
 
