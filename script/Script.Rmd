@@ -526,7 +526,6 @@ aggregate_states <- df %>%
            (year_elctn == 2008 & party == "democrat") | 
            (year_elctn == 2012 & party == "democrat") | 
            (year_elctn == 2016 & party == "republican")) %>%
-  filter(state_po != "AL") %>%
   mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
   group_by(state_po,year_sc) %>%
   summarize(aggregate_capital = (sum(aggregate_capital) / sum(pop)) * 1000) 
