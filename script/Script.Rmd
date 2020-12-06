@@ -43,19 +43,7 @@ authornote: |
   Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
   Enter author note here.
 abstract: |
-  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
-  
-  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
-  
-  One sentence clearly stating the **general problem** being addressed by  this particular study.
-  
-  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
-  
-  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
-  
-  One or two sentences to put the results into a more **general context**.
-  
-  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
+  Social capital has been an important predictor of the U.S. presidential election results. However, previous studies conceptualizes social capital as a unidimensional construct. We argue that a multidimensional conceptualization of social capital will reveal patterns that will contribute to our understanding of social capital and its relationship with elections. In the present study, we first examine how social capital changes across years. Then, we investigate how different types of social capital (i.e., religion, civic, and labor) are associated with presidential election results across years. Social capital as a unidimensional construct was largely stable over the four time points used in this research (1997, 2005, 2009, and 2014). As such, it is unlikely that social capital has much impact on election results, as presidential winners typically alternate between the two major political parties. Moreover, our findings indicate that while an aggregate social capital negatively predicted democratic margin in the presidential elections, this was not the case when social capital was operationalized as a multidimensional construct. Therefore, future research should consider conceptualizing social capital as a construct comprised of a multitude of dimensions.
   
   
   <!-- https://tinyurl.com/ybremelq -->
