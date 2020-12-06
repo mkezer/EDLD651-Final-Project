@@ -93,6 +93,7 @@ library(usmap)
 library(corx)
 library(broom)
 library(sjmisc)
+library(scales)
 r_refs("r-references.bib")
 ```
 
@@ -380,7 +381,7 @@ df_wide_16 %>% # correlation table
   kable_classic() %>% 
   footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
 
-model_2016 <- lm(dem_margin ~ bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop, # regression model
+model_2016 <- lm(dem_margin ~ relig + civic+ labor, # regression model
                  data = df_wide_16)
 
 # Social Capital 2009 & Election Results 2012
@@ -412,7 +413,7 @@ df_wide_12 %>% # correlation table
   kable_classic() %>% 
   footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
 
-model_2012 <- lm(dem_margin ~ bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop, # regression model
+model_2012 <- lm(dem_margin ~ relig + civic + labor, # regression model
                  data = df_wide_12)
 
 # Social Capital 2005 & Election Results 2008
@@ -444,7 +445,7 @@ df_wide_08 %>% # correlation table
   kable_classic() %>% 
   footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
 
-model_2008 <- lm(dem_margin ~ bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop, # regression model
+model_2008 <- lm(dem_margin ~ relig + civic + labor, # regression model
                  data = df_wide_08)
 
 # Social Capital 1997 & Election Results 2000
@@ -476,7 +477,7 @@ df_wide_00 %>% # correlation table
   kable_classic() %>% 
   footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
 
-model_2000 <- lm(dem_margin ~ bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop, # regression model
+model_2000 <- lm(dem_margin ~ relig + civic + labor, # regression model
                  data = df_wide_00)
 
 # regression table
@@ -500,17 +501,22 @@ reg_table <- cbind( #merge the model results
 )
 
 reg_table$Term <- rec(reg_table$Term, #recode terms
-                  rec = "(Intercept) = Intercept; bowl = Bowling; civic = Civic; golf = Golf; relig = Religious; sport = Sport;
-                         pol = Political; prof = Professional; bus = Business; labor = Labor; pvote = Popular Vote; 
-                         respn = Census Rate; pop = Population; else = copy", as.num = F, append = T, suffix = "")
+                  rec = "(Intercept) = Intercept; civic = Civic; relig = Religious; labor = Labor; else = copy", 
+                  as.num = F, append = T, suffix = "")
 
 reg_table %>% 
+  mutate(
+    p1 = pvalue(p1, accuracy = .05),
+    p2 = pvalue(p2, accuracy = .05),
+    p3 = pvalue(p3, accuracy = .05),
+    p4 = pvalue(p4, accuracy = .05)
+  ) %>% 
   kable(align = "c", digits = 2, #create table
      caption = "Table X. Social Capital Variables Regressed on Democratic Margin for Each Time Point",
      col.names = c("Term", "B", "SE", "p", "B", "SE", "p", "B", "SE", "p", "B", "SE", "p")) %>% 
   kable_classic() %>% 
   add_header_above(c(" " = 1, "2000" = 3, "2004" = 3, "2008" = 3, "2012" = 3), bold = T) %>%
-  footnote("The headers indicate election years.", footnote_as_chunk = T)
+  footnote("The headers indicate election years.", footnote_as_chunk = T)  
 ```
 
 ```{r visualization part 1}
