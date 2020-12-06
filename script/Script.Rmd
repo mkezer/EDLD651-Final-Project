@@ -89,6 +89,11 @@ library(magrittr)
 library(stringr)
 library(here)
 library(kableExtra)
+library(usmap)
+library(corx)
+library(broom)
+library(sjmisc)
+library(scales)
 r_refs("r-references.bib")
 ```
 
@@ -102,23 +107,16 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed,
 ```
 
 # Introduction
-Social science literature has extensively examined the relationship between social capital and politics (e.g. Morales & Guigni, 2016; Jottier & Heyndels, 2012; La Due Lake & Huckfeldt, 1998). However, relatively little is known on the impact of social capital election results.
+
 
 # Methods
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+  We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
 
 ## Data
-- County Presidential Election Returns 2000-2016 (MIT Election Data and Science Lab, 2018)
-  - County level returns for presidential elections from 2000 to 2016
-  - Election results across the years in one dataset & in tidy format
-- The production of social capital in US counties (Rupasingha, Goetz, & Freshwater, 2006, with updates)
-  - County level count of various establishments defined by NAICS code
-  - Different variables measured across years; new dataset for each year
+ The present study uses secondary datasets. First, *The production of social capital in US counties constitutes the social capital data* (Rupasingha, Goetz, & Freshwater, 2006, with updates)[link]. Second, *County Presidential Election Returns 2000-2016* (MIT Election Data and Science Lab, 2018) is used for presidential election results. Both datasets provide data on county level.
 
 ## Data Preparation
 
-### Load data and clean names
-We first load the datasets and clean the variable names.
 ```{r load data}
 election <- import(here("data", "countypres_2000-2016.csv")) %>% 
   clean_names() #load election results
@@ -129,39 +127,25 @@ s_capital_97 <- import(here("data", "social-capital-variables-for-1997.xlsx")) %
 s_capital_05 <- import(here("data", "social-capital-variables-for-2005.xlsx")) %>% 
   clean_names() #load social capital data for 2005
 
-s_capital_09 <- import(here("data", "social-capital-variables-for-2009.xlsx")) %>% 
+s_capital_09 <- import(here("data", "social-capital-variables-for-2009.xlsx")) %>%
   clean_names() #load social capital data for 2009
 
 s_capital_14 <- import(here("data", "social-capital-variables-spreadsheet-for-2014.xlsx")) %>% 
   clean_names()#load social capital data for 2014
 
 ```
+  To prepare the data for analysis, we started with the election data as it is more comprehensive in terms of the number of counties. First, we selected the variables of interests. Then, we selected the election years (i.e., 2000, 2008, 2012, 2016) that match with social capital data. The name of the year variable was changed in a way that shows it is the year of election so that it is not mixed with the same year variable in social capital data. Next, we create new datasets for each presidential election we are interested in. These will be later merged with corresponding social capital data.  
+  For each social capital dataset (i.e., 1997, 2005, 2009, 2014), we first added state code for some counties that do not readily contain that information. Then, we created two variables out of the area name such that we have different variables for county names and state codes. Then, we selected the relevant variables and cleaned the variable names. We only selected the variables that were available for all time points that we chose. Next, we created a year variable indicating when the data were collected.  
+  Finally, we reorder the variables so that they are the same across datasets, and merged the four datasets to create one dataset that contains all of the data from each dataset.
 
-### Clean data
-#### Election data
-- We start with the election data as it is more comprehensive in terms of the number of counties. First, we select the variables of interests. Then, we select the election year (i.e., 2000, 2008, 2012, 2016) that we will match with social capital data.  
-
-- The name of the year variable is changed in a way that shows it is the year of election (so that it is not mixed with the same year variable in social capital data).  
-
-- We create new datasets for each presidential election we are interested in. These will be later merged with corresponding social capital data.  
-
-#### Social capital data
-- For each social capital dataset (i.e., 1997, 2005, 2009, 2014), we first add state code for some counties that do not readily contain that information. Then, we create two variables out of the area name such that we have different variables for county names and state codes.  
-
-- We select the relevant variables and clean the variable names.  
-
-- We create a year variable indicating when the data were collected.  
-
-- Finally, we reorder variables so that the order of the variables is the same across datasets. This will be useful when we want to merge social capital data across year so that we can get descriptive statistics for each year simultaneously and that we can visualize the changes across years in social capital.  
-
-```{r clean datasets}
+```{r clean}
 #select, filter, and clean data
 ##election
 election %<>%
   select(-office, -version, -candidate, -state) %>% #select relevant variables
   filter(year %in% c(2000, 2008, 2012, 2016)) #select relevant years
 
-colnames(election)[1] <- "year_elctn" #rename year variable for merging
+election %<>% rename(year_elctn = year) #rename year variable for merging
 
 elctn_00 <- election %>% filter(year_elctn == 2000) #create a df for each election of interest so that it's easier to match them with sc dfs
 elctn_08 <- election %>% filter(year_elctn == 2008)
@@ -169,7 +153,10 @@ elctn_12 <- election %>% filter(year_elctn == 2012)
 elctn_16 <- election %>% filter(year_elctn == 2016)
 
 ##social capital 1997
-s_capital_97[290, 2] <- "District of Columbia, DC" #add DC's code
+s_capital_97 %<>% #add DC's code
+  mutate(
+    areaname = recode(areaname, `District of Columbia` = "District of Columbia, DC")
+  )
 
 s_capital_97 %<>% #create county and state variables
   separate(areaname, c("county","state_po"), sep = ', ')
@@ -183,7 +170,10 @@ s_capital_97 %<>% #create year variable before merging
   mutate(year_sc = 1997)
 
 ##social capital 2005
-s_capital_05[290, 2] <- "District of Columbia, DC" #add DC's code
+s_capital_05 %<>% #add DC's code
+  mutate(
+    areaname = recode(areaname, `District of Columbia` = "District of Columbia, DC") #add DC's code
+  )
 
 s_capital_05 %<>% #create county and state variables
   separate(areaname, c("county","state_po"), sep = ', ')
@@ -193,12 +183,17 @@ s_capital_05 %<>% #select relevant variables
 
 colnames(s_capital_05)[4:18] <- str_sub(colnames(s_capital_05)[4:18], end=-3) #remove the year from the variable names
 
-s_capital_05 <- s_capital_05[,c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 15, 14, 13, 16, 17:18)] #reorder the variables
+s_capital_05 %<>% #reorder the variables
+  select(fips, county, state_po, bowl, civic, golf, relig, sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk)
 
-s_capital_05$year_sc <- 2005 #create year variable before merging
+s_capital_05 %<>% #create year variable before merging
+  mutate(year_sc = 2005)
 
 ##social capital 2009
-s_capital_09[290, 2] <- "District of Columbia, DC" #add DC's code
+s_capital_09 %<>% #add DC's code
+  mutate(
+    areaname = recode(areaname, `District of Columbia` = "District of Columbia, DC") #add DC's code
+  )
 
 s_capital_09 %<>% #create county and state variables
   separate(areaname, c("county","state_po"), sep = ', ')
@@ -208,88 +203,82 @@ s_capital_09 %<>% #select relevant variables
 
 colnames(s_capital_09)[4:18] <- str_sub(colnames(s_capital_09)[4:18], end=-3) #remove the year from the variable names
 
-s_capital_09 <- s_capital_09[,c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 14:15, 13, 16:18)] #reorder the variables
+s_capital_09 %<>% #reorder the variables
+  select(fips, county, state_po, bowl, civic, golf, relig, sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk)
 
 s_capital_09 %<>% #create year variable before merging
   mutate(year_sc = 2009)
 
 ##social capital 2014
-s_capital_14[77, 2] <- "Hoonah-Angoon Census Area, AK" #remove the repeated state code
+s_capital_14 %<>% #add DC's code
+  mutate(
+    county_name = recode(county_name, `Hoonah-Angoon Census Area, AK, AK` = "Hoonah-Angoon Census Area, AK") #remove the repeated state code
+  )
 
 s_capital_14 %<>% #create county and state variables
   separate(county_name, c("county","state_po"), sep = ', ') 
 
-s_capital_14$county <- word(s_capital_14$county, 1) #remove the word 'county' and keep only the name
+s_capital_14 %<>% #remove the word 'county' and keep only the name
+  mutate(
+    county = word(county, 1)
+  )
 
 s_capital_14 %<>% #select relevant variables
   select(-recreational2014)
 
 colnames(s_capital_14)[4:18] <- str_sub(colnames(s_capital_14)[4:18], end=-5) #remove the year from the variable names
 
-s_capital_14 <- s_capital_14[, c(1:3, 10, 5, 11, 4, 12, 7:8, 6, 9, 16, 15, 13, 17, 14, 18)] #reorder the variables
-
 s_capital_14 %<>% #create year variable before merging
   mutate(year_sc = 2014)
 
-colnames(s_capital_14) <- colnames(s_capital_09) #rename variables to make it compatible with previous years' datasets
+s_capital_14 %<>% #reorder the variables
+  select(fips, county, state_po, bowl = bowling, civic, golf, relig = religious, sport = sports, pol = political, prof = professional, 
+         bus = business, labor, respn, pvote, pop, nccs, assn, sk, year_sc)
 ```
-
-### Merge Datasets
-
-- First, we merge social capital data across years for reasons explained above, and call it `s_capital`.  
-
-- Next, we merge corresponding election and social capital data for 4 time points. **In doing so,** we keep the rows that exist in both election and social capital data. For instance, if we do not have the election information for a county, we do not include it in the merged dataset even if we have that county's social capital data. These datasets are called `df_year`. *Year* denotes the year of election. Also, we remove the duplicate variables (i.e., state and county names) and fix the names. We did not remove them earlier because we first wanted to merge the social capital data with all the variables.  
-
-- Finally, we merge all election and social capital data in the same dataset (i.e., `df`). In addition, we created another dataset using `pivot_wider()` to have variables for the candidate votes per political party. Then, we removed the intermediate objects (i.e., all data frames except for `df` and `df_wide`).
 
 ```{r merge datasets}
 s_capital <- bind_rows(s_capital_97, s_capital_05, s_capital_09, s_capital_14) #merge social capital data
 
 df_00 <- inner_join(elctn_00, s_capital_97, by = "fips") #merge election 2000 & social capital 1997
-df_00 <- df_00[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
-colnames(df_00)[3:4] <- c("state_po", "county") #rename variables
+df_00 %<>% 
+  select(year_elctn, year_sc, state_po = state_po.x, county = county.x, fips, party, candidatevotes, totalvotes, bowl, civic, golf, relig,
+         sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk) #remove duplicates, and reorder and rename variables
 
 df_08 <- inner_join(elctn_08, s_capital_05, by = "fips") #merge election 2008 & social capital 2005
-df_08 <- df_08[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
-colnames(df_08)[3:4] <- c("state_po", "county") #rename variables
+df_08 %<>% 
+  select(year_elctn, year_sc, state_po = state_po.x, county = county.x, fips, party, candidatevotes, totalvotes, bowl, civic, golf, relig,
+         sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk) #remove duplicates, and reorder and rename variables
 
 df_12 <- inner_join(elctn_12, s_capital_09, by = "fips") #merge election 2012 & social capital 2009
-df_12 <- df_12[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
-colnames(df_12)[3:4] <- c("state_po", "county") #rename variables
+df_12 %<>% 
+  select(year_elctn, year_sc, state_po = state_po.x, county = county.x, fips, party, candidatevotes, totalvotes, bowl, civic, golf, relig,
+         sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk) #remove duplicates, and reorder and rename variables
 
 df_16 <- inner_join(elctn_16, s_capital_14, by = "fips") #merge election 2016 & social capital 2014
-df_16 <- df_16[, c(1, 25, 2:7, 10:24)] #remove duplicates and reorder variables
-colnames(df_16)[3:4] <- c("state_po", "county") #rename variables
+df_16 %<>% 
+  select(year_elctn, year_sc, state_po = state_po.x, county = county.x, fips, party, candidatevotes, totalvotes, bowl, civic, golf, relig,
+         sport, pol, prof, bus, labor, respn, pvote, pop, nccs, assn, sk) #remove duplicates, and reorder and rename variables
 
 df <- bind_rows(df_00, df_08, df_12, df_16)
 
 df_wide <- df %>% #wide format
 pivot_wider(
     names_from = party,
-    values_from = candidatevotes,
-    names_prefix = "candidatevotes_"
+    values_from = candidatevotes
   )
 
-df_wide <- df_wide[,-25] #remove NA variable
+df_wide  %<>% #remove NA variable
+  select(-`NA`)
 
 rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Chris' review)
-
-#     names_from = party,
-# df_wide <- df %>% #wide format
-#     values_from = candidatevotes,
-#     names_prefix = "candidatevotes_"
-#   )
-#   pivot_wider(
-# df_wide <- df_wide[,-25] #remove NA variable
-# rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Chris' review)
-
 ```
 
 ## Data analysis
-We used `r cite_r("r-references.bib")` for all our analyses.
-
-```{r descriptives set up, echo = FALSE, results = "hide"}
-(table_01 <- df %>% 
+  First, we provide the descriptive statistics in Table 1-X. Next, we visualize the data. Finally, we present regression models in which elections results are predicted by different types of social capital.
+  We used `r cite_r("r-references.bib")` for all our analyses.
+  
+```{r descriptives set up, include = FALSE}
+(table_01 <- df_wide %>% 
   group_by(state_po) %>% 
   summarize(n = n(),
           m_totalvotes = mean(totalvotes),
@@ -298,33 +287,37 @@ We used `r cite_r("r-references.bib")` for all our analyses.
           sd_pop = sd(pop)))
 
 (table_02 <- df %>% 
+  mutate(party = fct_collapse(party, 
+                                "Rep" = c("republican"), 
+                                "Dem" = c("democrat"), 
+                                "Green" = c("green")))  %>%
   group_by(year_elctn, party) %>% 
   summarize(n = n(),
           m_candidatevotes = mean(candidatevotes),
           sd_candidatevotes = sd(candidatevotes)))
 
-# cor(df$pop, df$totalvotes, method = "pearson")
+(table_03 <- df_wide %>% 
+  filter(year_elctn == 2000) %>%
+  filter(state_po == "OR") %>%
+   mutate(v_percent = (pvote *100)) %>%
+  group_by(county, relig, civic, labor, democrat, republican) %>% 
+  summarize(voter_turnout = mean(v_percent)))
 
+(table_04 <- df_wide %>% 
+  filter(year_elctn == 2016) %>%
+  filter(state_po == "OR") %>%
+   mutate(v_percent = (pvote *100)) %>%
+  group_by(county, relig, civic, labor, democrat, republican) %>% 
+  summarize(voter_turnout = mean(v_percent)))
 ```
 
+```{r descriptives table 1}
+options(knitr.kable.NA = '--')
 
-```{r descriptives tables}
-
-(table_1 <- table_01 %>% 
-  kbl(col.names = c("Sate", "N", "M", "SD",
-                    "M", "SD"), # renaming the columns
+(table_1 <- table_02 %>% 
+  kbl(col.names = c("Year", "Party", "N","Mean Candidate Votes", "SD Candidate Votes"),
       digits = 0,
-      caption = "<b>Table 1</b><br /> <i>A summary table for total votes and population by state.</i>",
-      align =  "c") %>% #align center 
-  kable_classic(full_width = FALSE) %>% 
-  add_header_above(c(" " = 2, "Total Votes" = 2, "Population" = 2)) %>% #adding headers. The 2's indicate how many columns are under each header
-  footnote(footnote_as_chunk = TRUE, 
-           general = "N = number of counties with recorded data per the four time points (2000, 2008, 2012, 2016).")) #adding a footnote
-
-(table_2 <- table_02 %>% 
-  kbl(col.names = c("Year", "Party", "N", "Mean Candidate Votes", "SD Candidate Votes"),
-      digits = 0,
-      caption = "<b>Table 2</b><br /> <i>A summary table for votes by candidate and year of election.</i>",
+      caption = "A summary table for votes by candidate and year of election.",
       align =  "c") %>%
   kable_classic(full_width = FALSE) %>% 
   footnote(footnote_as_chunk = TRUE, 
@@ -332,42 +325,175 @@ We used `r cite_r("r-references.bib")` for all our analyses.
 
 ```
 
+``` {r regression}
+# Social Capital 2014 & Election Results 2016
+df_wide_16 <- df_wide %>% filter(year_elctn == 2016) #filter
+  
+df_wide_16 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (democrat - republican) / (democrat + republican)
+    )
 
+df_wide_16 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
 
-``` {r preliminary analysis}
-df2 <-df  %>% 
-  pivot_wider(
-    names_from = party,
-    values_from = candidatevotes) %>% 
-  mutate(demmargin = (democrat - republican) / (democrat + republican))
+df_wide_16 %>% # correlation table
+  select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
+         Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
+         `Democratic Margin` = dem_margin) %>% 
+  corx(triangle = "lower") %>% 
+  kable(align = "c", caption = "Table X. Correlation between social capital variables (2014) and democratic margin (2016)") %>% 
+  kable_classic() %>% 
+  footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
 
-# social capital variables with per capita measures
-df_anal_2016 <- df2 %>%
-  filter(year_elctn == 2016) %>% 
-  select(bowl:demmargin) %>%
-  select(-democrat, -republican, -green, -"NA", -sk) %>% 
-  mutate(bowl =bowl/pop * 1000) %>%
-  mutate(civic = civic/pop * 1000) %>% 
-  mutate(golf = golf/pop * 1000) %>% 
-  mutate(relig = relig/pop * 1000) %>% 
-  mutate(sport = sport/pop * 1000) %>% 
-  mutate(pol = pol/pop * 1000) %>%
-  mutate(prof = prof/pop * 1000) %>% 
-  mutate(bus = bus/pop * 1000) %>% 
-  mutate(labor = labor/pop * 1000) %>%
-  mutate(nccs = nccs /pop * 1000)
+model_2016 <- lm(dem_margin ~ relig + civic+ labor, # regression model
+                 data = df_wide_16)
 
-df_anal_2016 %>% 
-  cor()
+# Social Capital 2009 & Election Results 2012
+df_wide_12 <- df_wide %>% filter(year_elctn == 2012) #filter
+  
+df_wide_12 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (democrat - republican) / (democrat + republican)
+    )
 
-#preliminary analysis
-mod1 <- lm(data = df_anal_2016, demmargin ~ 1 + bowl + civic + golf + relig + sport + pol + prof + bus + labor + pvote + respn  + pop)
-summary(mod1)
+df_wide_12 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
 
+df_wide_12 %>% # correlation table
+  select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
+         Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
+         `Democratic Margin` = dem_margin) %>% 
+  corx(triangle = "lower") %>% 
+  kable(align = "c", caption = "Table X. Correlation between social capital variables (2009) and democratic margin (2012)") %>% 
+  kable_classic() %>% 
+  footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
+
+model_2012 <- lm(dem_margin ~ relig + civic + labor, # regression model
+                 data = df_wide_12)
+
+# Social Capital 2005 & Election Results 2008
+df_wide_08 <- df_wide %>% filter(year_elctn == 2008) #filter
+  
+df_wide_08 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (democrat - republican) / (democrat + republican)
+    )
+
+df_wide_08 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
+
+df_wide_08 %>% # correlation table
+  select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
+         Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
+         `Democratic Margin` = dem_margin) %>% 
+  corx(triangle = "lower") %>% 
+  kable(align = "c", caption = "Table X. Correlation between social capital variables (2005) and democratic margin (2008)") %>% 
+  kable_classic() %>% 
+  footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
+
+model_2008 <- lm(dem_margin ~ relig + civic + labor, # regression model
+                 data = df_wide_08)
+
+# Social Capital 1997 & Election Results 2000
+df_wide_00 <- df_wide %>% filter(year_elctn == 2000) #filter
+  
+df_wide_00 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (democrat - republican) / (democrat + republican)
+    )
+
+df_wide_00 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
+
+df_wide_00 %>% # correlation table
+  select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
+         Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
+         `Democratic Margin` = dem_margin) %>% 
+  corx(triangle = "lower") %>% 
+  kable(align = "c", caption = "Table X. Correlation between social capital variables (1997) and democratic margin (2000)") %>% 
+  kable_classic() %>% 
+  footnote("* p < .05; ** p < .01; *** p < .001", footnote_as_chunk = T)
+
+model_2000 <- lm(dem_margin ~ relig + civic + labor, # regression model
+                 data = df_wide_00)
+
+# regression table
+model_2000 %<>% tidy()
+model_2000 %<>% select(Term = term, B1 = estimate, SE1 = std.error, p1 = p.value, -statistic) #tidy it
+
+model_2008 %<>% tidy() #tidy it
+model_2008 %<>% select(Term = term, B2 = estimate, SE2 = std.error, p2 = p.value, -statistic) 
+
+model_2012 %<>% tidy() #tidy it
+model_2012 %<>% select(Term = term, B3 = estimate, SE3 = std.error, p3 = p.value, -statistic) 
+
+model_2016 %<>% tidy() #tidy it
+model_2016 %<>% select(Term = term, B4 = estimate, SE4 = std.error, p4 = p.value, -statistic) 
+
+reg_table <- cbind( #merge the model results
+  model_2000,
+  select(model_2008, -Term),
+  select(model_2012, -Term),
+  select(model_2016, -Term)
+)
+
+reg_table$Term <- rec(reg_table$Term, #recode terms
+                  rec = "(Intercept) = Intercept; civic = Civic; relig = Religious; labor = Labor; else = copy", 
+                  as.num = F, append = T, suffix = "")
+
+reg_table %>% 
+  mutate(
+    p1 = pvalue(p1, accuracy = .05),
+    p2 = pvalue(p2, accuracy = .05),
+    p3 = pvalue(p3, accuracy = .05),
+    p4 = pvalue(p4, accuracy = .05)
+  ) %>% 
+  kable(align = "c", digits = 2, #create table
+     caption = "Table X. Social Capital Variables Regressed on Democratic Margin for Each Time Point",
+     col.names = c("Term", "B", "SE", "p", "B", "SE", "p", "B", "SE", "p", "B", "SE", "p")) %>% 
+  kable_classic() %>% 
+  add_header_above(c(" " = 1, "2000" = 3, "2004" = 3, "2008" = 3, "2012" = 3), bold = T) %>%
+  footnote("The headers indicate election years.", footnote_as_chunk = T)  
 ```
 
-
-```{r}
+```{r visualization part 1}
 #Scatterplot of social capital over time (individual points represent states). Line fitted to show any trends over time
 aggregate_states <- df %>%
   filter((year_elctn == 2000 & party == "republican") | 
@@ -388,61 +514,71 @@ aggregate_states %>%
 
 #Scatterplot of different types of social capital over time (individual points represent aggregate for entire country). Lines fitted for each type to show trends over time
 filter_df <- df %>%
-    filter((year_elctn == 2000 & party == "republican") | 
+  filter((year_elctn == 2000 & party == "republican") | 
            (year_elctn == 2008 & party == "democrat") | 
            (year_elctn == 2012 & party == "democrat") | 
            (year_elctn == 2016 & party == "republican")) 
-aggregate_country <- rowsum(filter_df[9:17], filter_df$year_sc)
+aggregate_country <- filter_df %>%
+  group_by(year_sc) %>%
+  summarize(bowl=sum(bowl)/sum(pop)*10000,
+            civic=sum(civic)/sum(pop)*10000,
+            golf=sum(golf)/sum(pop)*10000,
+            relig=sum(relig)/sum(pop)*10000,
+            sport=sum(sport)/sum(pop)*10000,
+            pol=sum(pol)/sum(pop)*10000,
+            prof=sum(prof)/sum(pop)*10000,
+            bus=sum(bus)/sum(pop)*10000,
+            labor=sum(labor)/sum(pop)*10000)
 aggregate_country <- aggregate_country %>%
-  mutate(Year = c(1997,2005,2009,2014)) %>%
+  mutate(year_sc = c(1997,2005,2009,2014)) %>%
   pivot_longer(cols=bowl:labor,names_to = "type_sc", values_to = "count")
 aggregate_country %>%
   filter(type_sc == "relig" | type_sc=="labor" | type_sc=="civic") %>%
-  ggplot(mapping=aes(x=as.character(Year),y=count,color=type_sc)) +
-  geom_point() +
+  ggplot(mapping=aes(x=as.character(year_sc),y=count,color=type_sc)) +
+  geom_point(show.legend=FALSE) +
   labs(title="Changes in Social Capital in U.S.",
        x="Year",
        y="Count",
        color="Type of Capital") +
   facet_wrap(~type_sc,scales="free")
-#spell out types of social capital
 
 #Scatterplot of proportion votes for winning party by social capital for each state
 aggregate_election <- df %>%
-  filter((year_elctn == 2000 & party == "republican") | 
-           (year_elctn == 2008 & party == "democrat") | 
-           (year_elctn == 2012 & party == "democrat") | 
-           (year_elctn == 2016 & party == "republican")) %>%
+  filter(party %in% c("republican","democrat")) %>%
   mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
   group_by(state_po,year_elctn,party) %>%
   summarize(aggregate_capital=(sum(aggregate_capital) / sum(pop)) * 1000, 
             prop_votes = sum(candidatevotes) / sum(totalvotes))
 aggregate_election %>%
+  filter(state_po != "DC") %>%
+  mutate(year_elctn = factor(year_elctn, levels = c("2000",
+                                                    "2008",
+                                                    "2012",
+                                                    "2016"))) %>%
+  mutate(year_elctn = fct_recode(year_elctn,
+                                 "2000 - Republican" = "2000",
+                                 "2008 - Democrat" = "2008",
+                                 "2012 - Democrat" = "2012",
+                                 "2016 - Republican" = "2016")) %>%
   ggplot(mapping=aes(x=aggregate_capital,y=prop_votes,color=party)) +
-  geom_point() +
-  geom_smooth(se=FALSE,method=lm,color="black") +
-  facet_wrap(~year_elctn) +
-  labs(title="Votes for Winning Party by Social Capital in U.S. States",
+  geom_point(alpha=0.5) +
+  geom_smooth(se=FALSE,method=lm) +
+  scale_color_manual(values=c("blue4","red4")) +
+  facet_wrap(~year_elctn,scales="free") +
+  labs(title="Proportion Party Votes by Social Capital in U.S. States",
        x="Aggregate Social Capital",
        y="Proportion of Votes",
-       color="Winning Party")
-#maybe add losing party lines
+       color="Party")
 
-
-
-  
 ```
 
 ```{r visualization part 2}
-#install.packages("usmap")
-library(usmap)
-
-#percentage of democratic voters
-df2014 <- df2 %>% 
-  filter(year_elctn == 2016)
-
 #US Election Results 2016
+<<<<<<< HEAD
 plot_usmap(data = df2014, regions = "counties", values = "demmargin") +
+=======
+plot_usmap(data = df_wide_16, regions = "states", values = "dem_margin", labels = TRUE, label_color = "white") +
+>>>>>>> main
   scale_fill_gradient2(low = "red", 
                        mid = "white", 
                        midpoint = 0, 
@@ -450,12 +586,9 @@ plot_usmap(data = df2014, regions = "counties", values = "demmargin") +
                        name = "Republican - Democrat Margin (2016)") + 
   #scale_fill_continuous(low = "red", high = "blue", name = "Percentage of Democratic Votes (2016)", label = scales::comma) + 
   theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
-  theme(legend.position = "bottom") 
+  theme(legend.position = "bottom")
 
-df2008 <- df2 %>% 
-  filter(year_elctn == 2008)
-
-plot_usmap(data = df2008, regions = "counties", values = "demmargin") +
+plot_usmap(data = df_wide_08, regions = "counties", values = "dem_margin") +
   scale_fill_gradient2(low = "red", 
                        mid = "white", 
                        midpoint = 0, 
@@ -465,7 +598,9 @@ plot_usmap(data = df2008, regions = "counties", values = "demmargin") +
   theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
   theme(legend.position = "bottom")
 
+df_usmap <- bind_rows(df_wide_00, df_wide_08, df_wide_12, df_wide_16)
 
+<<<<<<< HEAD
 #Pipes don't really work with usmap package...
 
 
@@ -496,13 +631,30 @@ plot_usmap(data = df_usmap_soccap_2014, regions = "counties", values = "civic") 
   theme(legend.position = "bottom")
 
 
+=======
+df_usmap <- df_usmap %>% 
+  filter(state_po != "AL" & year_elctn %in% c(2000, 2008, 2012, 2016))
 
+# unique(df_usmap$year_elctn) We probably do not need this one in the manuscript, so I (MK) commented it out.
 
+plot_usmap(data = df_usmap, regions = "counties", values = "dem_margin") +
+  scale_fill_gradient2(low = "red", 
+                       mid = "white", 
+                       midpoint = 0, 
+                       high = "blue", 
+                       name = "Republican - Democrat Margin (2016)") + 
+  #scale_fill_continuous(low = "red", high = "blue", name = "Percentage of Democratic Votes (2016)", label = scales::comma) + 
+  theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
+  theme(legend.position = "bottom") + 
+  facet_wrap(~year_elctn, ncol = 2)
+
+#Pipes don't really work with usmap package...
+>>>>>>> main
 
 
 
 #Oregon election 016
-plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "demmargin", labels = TRUE) +
+plot_usmap(data = df_wide_16, regions = "counties", include = c("OR"), values = "dem_margin", labels = TRUE) +
     scale_fill_gradient2(low = "red", 
                          mid = "white", 
                          midpoint = 0, 
@@ -512,7 +664,7 @@ plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "dem
   theme(legend.position = "bottom")
 
 #US Social Capital 2014
-plot_usmap(data = df2014, regions = "counties", values = "assn") +
+plot_usmap(data = df_wide_16, regions = "counties", values = "assn") +
   scale_fill_continuous(low = "white", high = "blue", name = "Social Capital Index (2014)", label = scales::comma
   ) + 
   theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
@@ -520,16 +672,16 @@ plot_usmap(data = df2014, regions = "counties", values = "assn") +
 
 
 #Oregon social capital 2014
-plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "assn") +
+plot_usmap(data = df_wide_16, regions = "counties", include = c("OR"), values = "assn") +
   scale_fill_continuous(low = "white", high = "blue", name = "Social Capital Index (2014)", label = scales::comma
   ) + 
   theme(panel.background = element_rect(color = "black", fill = "lightblue")) + 
   theme(legend.position = "bottom")
-
-
 ```
 
 # Results
+
+
 
 
 # Discussion
@@ -538,6 +690,7 @@ plot_usmap(data = df2014, regions = "counties", include = c("OR"), values = "ass
 \newpage
 
 # References
+
 
 \begingroup
 \setlength{\parindent}{-0.5in}

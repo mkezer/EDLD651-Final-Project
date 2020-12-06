@@ -2,155 +2,209 @@
 \ifnextchar[{\eatarg}{}
 
 
-\caption{(\#tab:descriptives tables)<b>Table 1</b><br /> <i>A summary table for total votes and population by state.</i>}
+\caption{(\#tab:descriptives table 1)A summary table for votes by candidate and year of election.}
 \centering
-\begin{tabular}[t]{c|c|c|c|c|c}
+\begin{tabular}[t]{c|c|c|c|c}
 \hline
-\multicolumn{2}{c|}{ } & \multicolumn{2}{c|}{Total Votes} & \multicolumn{2}{c}{Population} \\
-\cline{3-4} \cline{5-6}
-Sate & N & M & SD & M & SD\\
+Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
 \hline
-AK & 9 & 7036 & 399 & 103142 & 147915\\
+2000 & Dem & 3107 & 16218 & 57150\\
 \hline
-AL & 871 & 29358 & 44897 & 68880 & 100915\\
+2000 & Green & 3107 & -- & --\\
 \hline
-AR & 975 & 13892 & 21091 & 37270 & 53303\\
+2000 & Rep & 3107 & 16049 & 38632\\
 \hline
-AZ & 195 & 142569 & 322062 & 388108 & 871560\\
+2000 & -- & 3107 & 339 & 954\\
 \hline
-CA & 754 & 220437 & 459793 & 616298 & 1378441\\
+2008 & Dem & 3108 & 22157 & 76972\\
 \hline
-CO & 822 & 36534 & 73810 & 73782 & 148933\\
+2008 & Rep & 3108 & 19167 & 44840\\
 \hline
-CT & 104 & 195334 & 149300 & 436423 & 343039\\
+2008 & -- & 3108 & 577 & 1848\\
 \hline
-DC & 13 & 263095 & 45450 & 594503 & 38658\\
+2012 & Dem & 3108 & 20974 & 73998\\
 \hline
-DE & 39 & 131235 & 82538 & 282679 & 173390\\
+2012 & Rep & 3108 & 19409 & 44596\\
 \hline
-FL & 867 & 115569 & 169852 & 255262 & 407373\\
+2012 & -- & 3108 & 838 & 2952\\
 \hline
-GA & 2067 & 22355 & 50236 & 56445 & 119008\\
+2016 & Dem & 3115 & 21071 & 80496\\
 \hline
-HI & 12 & 107234 & 108643 & 355042 & 387067\\
+2016 & Rep & 3115 & 20160 & 43157\\
 \hline
-IA & 1287 & 15010 & 25994 & 30214 & 50322\\
+2016 & -- & 3115 & 2449 & 7509\\
 \hline
-ID & 572 & 13985 & 27273 & 32809 & 60062\\
-\hline
-IL & 1326 & 51236 & 206027 & 123386 & 528245\\
-\hline
-IN & 1196 & 27700 & 45113 & 68419 & 113414\\
-\hline
-KS & 1365 & 11003 & 31922 & 26361 & 70262\\
-\hline
-KY & 1560 & 14628 & 32859 & 34967 & 71505\\
-\hline
-LA & 832 & 30059 & 40531 & 70716 & 97338\\
-\hline
-MA & 182 & 216390 & 187781 & 461167 & 393704\\
-\hline
-MD & 312 & 104048 & 124062 & 232448 & 279564\\
-\hline
-ME & 208 & 44053 & 39268 & 81514 & 69147\\
-\hline
-MI & 1079 & 56095 & 121993 & 119410 & 266776\\
-\hline
-MN & 1131 & 31945 & 79109 & 58910 & 140710\\
-\hline
-MO & 1495 & 22511 & 56795 & 50415 & 120811\\
-\hline
-MS & 1066 & 14372 & 15444 & 35349 & 40073\\
-\hline
-MT & 728 & 8345 & 14035 & 17035 & 28321\\
-\hline
-NC & 1300 & 40245 & 64517 & 88395 & 128695\\
-\hline
-ND & 689 & 5958 & 11698 & 12703 & 23887\\
-\hline
-NE & 1209 & 8360 & 26145 & 19121 & 59315\\
-\hline
-NH & 130 & 67499 & 59447 & 127581 & 113121\\
-\hline
-NJ & 273 & 171456 & 100109 & 409943 & 244355\\
-\hline
-NM & 429 & 22450 & 44793 & 58889 & 108629\\
-\hline
-NV & 221 & 53214 & 148530 & 139917 & 406978\\
-\hline
-NY & 806 & 117084 & 179490 & 309171 & 523250\\
-\hline
-OH & 1144 & 60444 & 100851 & 130137 & 213474\\
-\hline
-OK & 1001 & 17671 & 39645 & 46882 & 103204\\
-\hline
-OR & 468 & 49127 & 75535 & 101274 & 152892\\
-\hline
-PA & 871 & 83990 & 125901 & 186731 & 265667\\
-\hline
-RI & 65 & 88910 & 77936 & 209705 & 212422\\
-\hline
-SC & 598 & 39297 & 43409 & 94492 & 100130\\
-\hline
-SD & 858 & 5361 & 10472 & 11987 & 23049\\
-\hline
-TN & 1235 & 25105 & 48954 & 63588 & 121499\\
-\hline
-TX & 3302 & 30513 & 104070 & 91653 & 329871\\
-\hline
-UT & 377 & 32856 & 72857 & 87151 & 195646\\
-\hline
-VA & 1739 & 26244 & 52883 & 56799 & 110636\\
-\hline
-VT & 182 & 21953 & 17867 & 43996 & 34415\\
-\hline
-WA & 507 & 75086 & 156389 & 163043 & 324691\\
-\hline
-WI & 936 & 40049 & 67282 & 76912 & 129381\\
-\hline
-WV & 715 & 12424 & 12600 & 33325 & 32664\\
-\hline
-WY & 299 & 10556 & 9243 & 23186 & 21346\\
-\hline
-\multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note: } N = number of counties with recorded data per the four time points (2000, 2008, 2012, 2016).}\\
+\multicolumn{5}{l}{\rule{0pt}{1em}\textit{Note: } N = total number of counties in the US reporting data.}\\
 \end{tabular}
 \end{table*}
 \begin{table*}[hbt]
 \ifnextchar[{\eatarg}{}
 
 
-\caption{(\#tab:descriptives tables)<b>Table 2</b><br /> <i>A summary table for votes by candidate and year of election.</i>}
+\caption{\label{tab:regression}Table X. Correlation between social capital variables (2014) and democratic margin (2016)}
 \centering
-\begin{tabular}[t]{c|c|c|c|c}
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
 \hline
-Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
+  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11\\
 \hline
-2000 & democrat & 3107 & 16218 & 57150\\
+1. Bowling & - &  &  &  &  &  &  &  &  &  & \\
 \hline
-2000 & green & 3107 & NA & NA\\
+2. Civic & .16* & - &  &  &  &  &  &  &  &  & \\
 \hline
-2000 & republican & 3107 & 16049 & 38632\\
+3. Golf & .18* & .17* & - &  &  &  &  &  &  &  & \\
 \hline
-2000 & NA & 3107 & 339 & 954\\
+4. Religious & .18* & .25* & .35* & - &  &  &  &  &  &  & \\
 \hline
-2008 & democrat & 3108 & 22157 & 76972\\
+5. Sport & -.01 & .00 & -.02 & .00 & - &  &  &  &  &  & \\
 \hline
-2008 & republican & 3108 & 19167 & 44840\\
+6. Political & -.03 & .00 & -.03 & .00 & .01 & - &  &  &  &  & \\
 \hline
-2008 & NA & 3108 & 577 & 1848\\
+7. Professional & -.01 & .08* & -.04* & -.03 & .02 & .20* & - &  &  &  & \\
 \hline
-2012 & democrat & 3108 & 20974 & 73998\\
+8. Business & .10* & .14* & .14* & .31* & -.02 & .09* & .16* & - &  &  & \\
 \hline
-2012 & republican & 3108 & 19409 & 44596\\
+9. Labor & .01 & .13* & -.03 & -.05* & .02 & .05* & .11* & -.02 & - &  & \\
 \hline
-2012 & NA & 3108 & 838 & 2952\\
+10. NonProfit & .22* & .35* & .28* & .37* & .02 & .09* & .14* & .33* & .00 & - & \\
 \hline
-2016 & democrat & 3115 & 21071 & 80496\\
+11. Social Capital Index & .29* & .46* & .43* & .68* & .03 & .09* & .13* & .44* & .03 & .85* & -\\
 \hline
-2016 & republican & 3115 & 20160 & 43157\\
+12. Democratic Margin & -.09* & -.04* & -.14* & -.33* & .02 & .09* & .19* & -.09* & .13* & -.07* & -.14*\\
 \hline
-2016 & NA & 3115 & 2449 & 7509\\
+\multicolumn{12}{l}{\rule{0pt}{1em}\textit{Note: } * p < .05; ** p < .01; *** p < .001}\\
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{tab:regression}Table X. Correlation between social capital variables (2009) and democratic margin (2012)}
+\centering
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
 \hline
-\multicolumn{5}{l}{\rule{0pt}{1em}\textit{Note: } N = total number of counties in the US reporting data.}\\
+  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11\\
+\hline
+1. Bowling & - &  &  &  &  &  &  &  &  &  & \\
+\hline
+2. Civic & .21* & - &  &  &  &  &  &  &  &  & \\
+\hline
+3. Golf & .23* & .18* & - &  &  &  &  &  &  &  & \\
+\hline
+4. Religious & .23* & .23* & .42* & - &  &  &  &  &  &  & \\
+\hline
+5. Sport & -.02 & -.01 & -.02 & .00 & - &  &  &  &  &  & \\
+\hline
+6. Political & .00 & .05* & -.04* & -.01 & .01 & - &  &  &  &  & \\
+\hline
+7. Professional & .06* & .05* & -.04* & -.01 & .01 & .24* & - &  &  &  & \\
+\hline
+8. Business & .12* & .21* & .17* & .26* & -.02 & .15* & .22* & - &  &  & \\
+\hline
+9. Labor & .04* & .13* & -.05* & -.03 & .01 & .06* & .11* & -.04* & - &  & \\
+\hline
+10. NonProfit & .29* & .38* & .33* & .41* & .01 & .09* & .16* & .33* & .01 & - & \\
+\hline
+11. Social Capital Index & .36* & .47* & .48* & .65* & .03 & .10* & .16* & .41* & .05* & .86* & -\\
+\hline
+12. Democratic Margin & -.05* & .02 & -.10* & -.27* & .02 & .06* & .12* & -.12* & .19* & -.05* & -.08*\\
+\hline
+\multicolumn{12}{l}{\rule{0pt}{1em}\textit{Note: } * p < .05; ** p < .01; *** p < .001}\\
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{tab:regression}Table X. Correlation between social capital variables (2005) and democratic margin (2008)}
+\centering
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
+\hline
+  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11\\
+\hline
+1. Bowling & - &  &  &  &  &  &  &  &  &  & \\
+\hline
+2. Civic & .29* & - &  &  &  &  &  &  &  &  & \\
+\hline
+3. Golf & .23* & .18* & - &  &  &  &  &  &  &  & \\
+\hline
+4. Religious & .22* & .24* & .34* & - &  &  &  &  &  &  & \\
+\hline
+5. Sport & -.04* & .04* & -.05* & -.09* & - &  &  &  &  &  & \\
+\hline
+6. Political & -.02 & .04* & -.05* & -.01 & .05* & - &  &  &  &  & \\
+\hline
+7. Professional & .02 & .12* & -.03 & .03 & .12* & .21* & - &  &  &  & \\
+\hline
+8. Business & .11* & .13* & .16* & .26* & -.01 & .12* & .17* & - &  &  & \\
+\hline
+9. Labor & .02 & .15* & -.04* & -.01 & .14* & .12* & .10* & -.02 & - &  & \\
+\hline
+10. NonProfit & .30* & .37* & .29* & .40* & .02 & .06* & .18* & .30* & .02 & - & \\
+\hline
+11. Social Capital Index & .39* & .48* & .42* & .63* & .01 & .07* & .18* & .35* & .11* & .81* & -\\
+\hline
+12. Democratic Margin & -.04* & .08* & -.07* & -.23* & .14* & .06* & .12* & -.14* & .23* & -.03 & -.05*\\
+\hline
+\multicolumn{12}{l}{\rule{0pt}{1em}\textit{Note: } * p < .05; ** p < .01; *** p < .001}\\
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{tab:regression}Table X. Correlation between social capital variables (1997) and democratic margin (2000)}
+\centering
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
+\hline
+  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11\\
+\hline
+1. Bowling & - &  &  &  &  &  &  &  &  &  & \\
+\hline
+2. Civic & .25* & - &  &  &  &  &  &  &  &  & \\
+\hline
+3. Golf & .22* & .18* & - &  &  &  &  &  &  &  & \\
+\hline
+4. Religious & .23* & .21* & .17* & - &  &  &  &  &  &  & \\
+\hline
+5. Sport & -.01 & .04* & .01 & .01 & - &  &  &  &  &  & \\
+\hline
+6. Political & -.02 & .05* & -.01 & -.06* & .04* & - &  &  &  &  & \\
+\hline
+7. Professional & .03 & .12* & -.03 & -.01 & .06* & .33* & - &  &  &  & \\
+\hline
+8. Business & .10* & .14* & .05* & .09* & .01 & .17* & .22* & - &  &  & \\
+\hline
+9. Labor & .03 & .14* & -.01 & -.04* & .03 & .10* & .08* & -.02 & - &  & \\
+\hline
+10. NonProfit & .39* & .44* & .24* & .39* & .04* & .06* & .18* & .30* & .00 & - & \\
+\hline
+11. Social Capital Index & .45* & .51* & .31* & .60* & .08* & .06* & .17* & .31* & .07* & .87* & -\\
+\hline
+12. Democratic Margin & -.15* & -.06* & -.13* & -.20* & .01 & .08* & .07* & -.08* & .25* & -.23* & -.26*\\
+\hline
+\multicolumn{12}{l}{\rule{0pt}{1em}\textit{Note: } * p < .05; ** p < .01; *** p < .001}\\
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{tab:regression}Table X. Social Capital Variables Regressed on Democratic Margin for Each Time Point}
+\centering
+\begin{tabular}[t]{c|c|c|c|c|c|c|c|c|c|c|c|c}
+\hline
+\multicolumn{1}{c|}{\textbf{ }} & \multicolumn{3}{c|}{\textbf{2000}} & \multicolumn{3}{c|}{\textbf{2004}} & \multicolumn{3}{c|}{\textbf{2008}} & \multicolumn{3}{c}{\textbf{2012}} \\
+\cline{2-4} \cline{5-7} \cline{8-10} \cline{11-13}
+Term & B & SE & p & B & SE & p & B & SE & p & B & SE & p\\
+\hline
+Intercept & -0.12 & 0.01 & <0.05 & -0.09 & 0.01 & <0.05 & -0.11 & 0.01 & <0.05 & -0.17 & 0.01 & <0.05\\
+\hline
+Religious & -0.09 & 0.01 & <0.05 & -0.15 & 0.01 & <0.05 & -0.16 & 0.01 & <0.05 & -0.21 & 0.01 & <0.05\\
+\hline
+Civic & -0.09 & 0.03 & <0.05 & 0.20 & 0.03 & <0.05 & 0.11 & 0.03 & <0.05 & 0.08 & 0.04 & 0.05\\
+\hline
+Labor & 0.89 & 0.06 & <0.05 & 1.03 & 0.08 & <0.05 & 0.90 & 0.09 & <0.05 & 0.65 & 0.10 & <0.05\\
+\hline
+\multicolumn{13}{l}{\rule{0pt}{1em}\textit{Note: } The headers indicate election years.}\\
 \end{tabular}
 \end{table*}
