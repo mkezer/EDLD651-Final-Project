@@ -194,8 +194,6 @@ Two or three sentences to provide a \textbf{broader perspective}, readily compre
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Social science literature has extensively examined the relationship between social capital and politics (e.g.~Morales \& Guigni, 2016; Jottier \& Heyndels, 2012; La Due Lake \& Huckfeldt, 1998). However, relatively little is known on the impact of social capital election results.
-
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
 
@@ -204,358 +202,24 @@ We report how we determined our sample size, all data exclusions (if any), all m
 \hypertarget{data}{%
 \subsection{Data}\label{data}}
 
-\begin{itemize}
-\tightlist
-\item
-  County Presidential Election Returns 2000-2016 (MIT Election Data and Science Lab, 2018)
-
-  \begin{itemize}
-  \tightlist
-  \item
-    County level returns for presidential elections from 2000 to 2016
-  \item
-    Election results across the years in one dataset \& in tidy format
-  \end{itemize}
-\item
-  The production of social capital in US counties (Rupasingha, Goetz, \& Freshwater, 2006, with updates)
-
-  \begin{itemize}
-  \tightlist
-  \item
-    County level count of various establishments defined by NAICS code
-  \item
-    Different variables measured across years; new dataset for each year
-  \end{itemize}
-\end{itemize}
+The present study uses secondary datasets. First, \emph{The production of social capital in US counties constitutes the social capital data} (Rupasingha, Goetz, \& Freshwater, 2006, with updates){[}link{]}. Second, \emph{County Presidential Election Returns 2000-2016} (MIT Election Data and Science Lab, 2018) is used for presidential election results. Both datasets provide data on county level.
 
 \hypertarget{data-preparation}{%
 \subsection{Data Preparation}\label{data-preparation}}
 
-\hypertarget{load-data-and-clean-names}{%
-\subsubsection{Load data and clean names}\label{load-data-and-clean-names}}
-
-We first load the datasets and clean the variable names.
-
-\hypertarget{clean-data}{%
-\subsubsection{Clean data}\label{clean-data}}
-
-\hypertarget{election-data}{%
-\paragraph{Election data}\label{election-data}}
-
-\begin{itemize}
-\item
-  We start with the election data as it is more comprehensive in terms of the number of counties. First, we select the variables of interests. Then, we select the election year (i.e., 2000, 2008, 2012, 2016) that we will match with social capital data.
-\item
-  The name of the year variable is changed in a way that shows it is the year of election (so that it is not mixed with the same year variable in social capital data).
-\item
-  We create new datasets for each presidential election we are interested in. These will be later merged with corresponding social capital data.
-\end{itemize}
-
-\hypertarget{social-capital-data}{%
-\paragraph{Social capital data}\label{social-capital-data}}
-
-\begin{itemize}
-\item
-  For each social capital dataset (i.e., 1997, 2005, 2009, 2014), we first add state code for some counties that do not readily contain that information. Then, we create two variables out of the area name such that we have different variables for county names and state codes.
-\item
-  We select the relevant variables and clean the variable names.
-\item
-  We create a year variable indicating when the data were collected.
-\item
-  Finally, we reorder variables so that the order of the variables is the same across datasets. This will be useful when we want to merge social capital data across year so that we can get descriptive statistics for each year simultaneously and that we can visualize the changes across years in social capital.
-\end{itemize}
-
-\hypertarget{merge-datasets}{%
-\subsubsection{Merge Datasets}\label{merge-datasets}}
-
-\begin{itemize}
-\item
-  First, we merge social capital data across years for reasons explained above, and call it \texttt{s\_capital}.
-\item
-  Next, we merge corresponding election and social capital data for 4 time points. \textbf{In doing so,} we keep the rows that exist in both election and social capital data. For instance, if we do not have the election information for a county, we do not include it in the merged dataset even if we have that county's social capital data. These datasets are called \texttt{df\_year}. \emph{Year} denotes the year of election. Also, we remove the duplicate variables (i.e., state and county names) and fix the names. We did not remove them earlier because we first wanted to merge the social capital data with all the variables.
-\item
-  Finally, we merge all election and social capital data in the same dataset (i.e., \texttt{df}). In addition, we created another dataset using \texttt{pivot\_wider()} to have variables for the candidate votes per political party. Then, we removed the intermediate objects (i.e., all data frames except for \texttt{df} and \texttt{df\_wide}).
-\end{itemize}
+To prepare the data for analysis, we started with the election data as it is more comprehensive in terms of the number of counties. First, we selected the variables of interests. Then, we selected the election years (i.e., 2000, 2008, 2012, 2016) that match with social capital data. The name of the year variable was changed in a way that shows it is the year of election so that it is not mixed with the same year variable in social capital data. Next, we create new datasets for each presidential election we are interested in. These will be later merged with corresponding social capital data.\\
+For each social capital dataset (i.e., 1997, 2005, 2009, 2014), we first added state code for some counties that do not readily contain that information. Then, we created two variables out of the area name such that we have different variables for county names and state codes. Then, we selected the relevant variables and cleaned the variable names. We only selected the variables that were available for all time points that we chose. Next, we created a year variable indicating when the data were collected.\\
+Finally, we reorder the variables so that they are the same across datasets, and merged the four datasets to create one dataset that contains all of the data from each dataset.
 
 \hypertarget{data-analysis}{%
 \subsection{Data analysis}\label{data-analysis}}
 
-\begin{verbatim}
-##                  bowl        civic          golf         relig        sport
-## bowl       1.00000000  0.163331564  0.1843690062  1.754235e-01 -0.011262877
-## civic      0.16333156  1.000000000  0.1658962995  2.547000e-01 -0.003264050
-## golf       0.18436901  0.165896299  1.0000000000  3.491323e-01 -0.021985208
-## relig      0.17542352  0.254699957  0.3491322736  1.000000e+00  0.002806421
-## sport     -0.01126288 -0.003264050 -0.0219852075  2.806421e-03  1.000000000
-## pol       -0.02966700  0.001966347 -0.0334108615 -9.423555e-05  0.012883481
-## prof      -0.01392921  0.076733734 -0.0417492547 -3.323368e-02  0.021631055
-## bus        0.09723730  0.140544743  0.1370127533  3.110755e-01 -0.020948989
-## labor      0.01396846  0.127298046 -0.0318697416 -4.609051e-02  0.017101150
-## respn      0.04573144  0.033975898  0.0008135967 -8.286148e-03 -0.004274877
-## pvote      0.08361274  0.095880533  0.1007224264  4.908534e-02  0.028533722
-## pop       -0.06101167 -0.070326839 -0.1026103152 -2.262784e-01  0.023425173
-## nccs       0.22185326  0.347937372  0.2808439095  3.743616e-01  0.017981863
-## assn       0.29451849  0.484150132  0.4950591900  9.183900e-01  0.023813113
-## demmargin -0.09156467 -0.037419358 -0.1379312816 -3.337933e-01  0.024754801
-##                     pol        prof         bus         labor         respn
-## bowl      -2.966700e-02 -0.01392921  0.09723730  0.0139684639  0.0457314391
-## civic      1.966347e-03  0.07673373  0.14054474  0.1272980463  0.0339758984
-## golf      -3.341086e-02 -0.04174925  0.13701275 -0.0318697416  0.0008135967
-## relig     -9.423555e-05 -0.03323368  0.31107552 -0.0460905051 -0.0082861484
-## sport      1.288348e-02  0.02163105 -0.02094899  0.0171011497 -0.0042748774
-## pol        1.000000e+00  0.20178507  0.08837989  0.0511035445 -0.0353395859
-## prof       2.017851e-01  1.00000000  0.16314793  0.1102856692  0.0756318706
-## bus        8.837989e-02  0.16314793  1.00000000 -0.0188081662 -0.1678024962
-## labor      5.110354e-02  0.11028567 -0.01880817  1.0000000000  0.1920688496
-## respn     -3.533959e-02  0.07563187 -0.16780250  0.1920688496  1.0000000000
-## pvote      4.581321e-02  0.04152891  0.07735125 -0.0036691656  0.1131580514
-## pop        4.668483e-02  0.08947146 -0.09489972  0.0586595869  0.1039281594
-## nccs       8.661840e-02  0.13549486  0.32688972 -0.0002338711 -0.1209083839
-## assn       6.319277e-02  0.09392249  0.47070855  0.0830621339  0.0133341334
-## demmargin  8.501235e-02  0.18630848 -0.09135165  0.1315740835  0.0595954442
-##                  pvote         pop          nccs        assn   demmargin
-## bowl       0.083612738 -0.06101167  0.2218532641  0.29451849 -0.09156467
-## civic      0.095880533 -0.07032684  0.3479373723  0.48415013 -0.03741936
-## golf       0.100722426 -0.10261032  0.2808439095  0.49505919 -0.13793128
-## relig      0.049085341 -0.22627840  0.3743615599  0.91838999 -0.33379330
-## sport      0.028533722  0.02342517  0.0179818630  0.02381311  0.02475480
-## pol        0.045813214  0.04668483  0.0866183961  0.06319277  0.08501235
-## prof       0.041528912  0.08947146  0.1354948632  0.09392249  0.18630848
-## bus        0.077351254 -0.09489972  0.3268897173  0.47070855 -0.09135165
-## labor     -0.003669166  0.05865959 -0.0002338711  0.08306213  0.13157408
-## respn      0.113158051  0.10392816 -0.1209083839  0.01333413  0.05959544
-## pvote      1.000000000  0.02826091  0.2303456902  0.11604985  0.10013568
-## pop        0.028260911  1.00000000 -0.0958799517 -0.19781990  0.35179190
-## nccs       0.230345690 -0.09587995  1.0000000000  0.49110261 -0.06627689
-## assn       0.116049854 -0.19781990  0.4911026061  1.00000000 -0.25818469
-## demmargin  0.100135681  0.35179190 -0.0662768883 -0.25818469  1.00000000
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Call:
-## lm(formula = demmargin ~ 1 + bowl + civic + golf + relig + sport + 
-##     pol + prof + bus + labor + pvote + respn + pop, data = df_anal_2016)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -1.90456 -0.18538 -0.04293  0.15323  1.21563 
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -4.604e-01  4.802e-02  -9.588  < 2e-16 ***
-## bowl        -2.034e-01  9.204e-02  -2.210   0.0272 *  
-## civic        6.436e-02  3.853e-02   1.671   0.0949 .  
-## golf        -4.419e-02  4.695e-02  -0.941   0.3467    
-## relig       -1.583e-01  1.110e-02 -14.253  < 2e-16 ***
-## sport        1.861e-01  2.800e-01   0.665   0.5064    
-## pol          4.993e-01  2.240e-01   2.229   0.0259 *  
-## prof         1.165e+00  1.454e-01   8.011 1.60e-15 ***
-## bus         -4.153e-02  4.610e-02  -0.901   0.3677    
-## labor        4.958e-01  9.433e-02   5.256 1.58e-07 ***
-## pvote        3.632e-01  5.692e-02   6.381 2.02e-10 ***
-## respn       -2.638e-02  4.800e-02  -0.550   0.5826    
-## pop          2.653e-07  1.607e-08  16.504  < 2e-16 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.283 on 3102 degrees of freedom
-## Multiple R-squared:  0.2362, Adjusted R-squared:  0.2333 
-## F-statistic: 79.94 on 12 and 3102 DF,  p-value: < 2.2e-16
-\end{verbatim}
-
-\begin{verbatim}
-## # A tibble: 51 x 6
-##    state_po     n m_totalvotes sd_totalvotes mean_pop   sd_pop
-##    <chr>    <int>        <dbl>         <dbl>    <dbl>    <dbl>
-##  1 AK           3        7036.          460.  103142.  170798.
-##  2 AL         268       29724.        45394.   69187.  101303.
-##  3 AR         300       14026.        21417.   37486.   53831.
-##  4 AZ          60      145927.       330585.  394133.  889795.
-##  5 CA         232      223051.       465584.  620980. 1387279.
-##  6 CO         253       37272.        75235.   74612.  150559.
-##  7 CT          32      196409.       151721.  437902.  347809.
-##  8 DC           4      268195.        47994.  596734    43662.
-##  9 DE          12      133073.        85452.  285361.  178905.
-## 10 FL         267      118431.       173570.  260031.  415642.
-## # ... with 41 more rows
-\end{verbatim}
-
-\begin{verbatim}
-## # A tibble: 13 x 5
-## # Groups:   year_elctn [4]
-##    year_elctn party     n m_candidatevotes sd_candidatevotes
-##         <int> <fct> <int>            <dbl>             <dbl>
-##  1       2000 Dem    3107           16218.            57150.
-##  2       2000 Green  3107              NA                NA 
-##  3       2000 Rep    3107           16049.            38632.
-##  4       2000 <NA>   3107             339.              954.
-##  5       2008 Dem    3108           22157.            76972.
-##  6       2008 Rep    3108           19167.            44840.
-##  7       2008 <NA>   3108             577.             1848.
-##  8       2012 Dem    3108           20974.            73998.
-##  9       2012 Rep    3108           19409.            44596.
-## 10       2012 <NA>   3108             838.             2952.
-## 11       2016 Dem    3115           21071.            80496.
-## 12       2016 Rep    3115           20160.            43157.
-## 13       2016 <NA>   3115            2449.             7509.
-\end{verbatim}
-
-\begin{verbatim}
-## # A tibble: 36 x 7
-## # Groups:   county, relig, civic, labor, democrat [36]
-##    county    relig civic labor democrat republican voter_turnout
-##    <chr>     <dbl> <dbl> <dbl>    <int>      <int>         <dbl>
-##  1 Baker        11     5     1     2195       5618          64.8
-##  2 Benton       50    13     3    19444      15825          63.3
-##  3 Clackamas   184    32    13    76421      77539          62.8
-##  4 Clatsop      35    12     7     8296       6950          60.8
-##  5 Columbia     29     5     3    10331       9369          62.0
-##  6 Coos         40     9     7    11610      15626          59.9
-##  7 Crook        14     3     0     2474       5363          59.5
-##  8 Curry        13     1     1     4090       6551          66.8
-##  9 Deschutes    62    29     8    22061      32132          63.7
-## 10 Douglas      77    12     4    14193      30294          59.6
-## # ... with 26 more rows
-\end{verbatim}
-
-\begin{verbatim}
-## # A tibble: 36 x 7
-## # Groups:   county, relig, civic, labor, democrat [36]
-##    county    relig civic labor democrat republican voter_turnout
-##    <chr>     <dbl> <dbl> <dbl>    <int>      <int>         <dbl>
-##  1 Baker        20     8     1     1797       6218          83.1
-##  2 Benton       66    13     5    29193      13445          85.7
-##  3 Clackamas   215    20    18   102095      88392          82.5
-##  4 Clatsop      31    11     3     9252       8138          82.2
-##  5 Columbia     26     4     2    10167      13217          82.2
-##  6 Coos         53     7     5    10448      17865          82.2
-##  7 Crook        20     3     0     2637       8511          83.2
-##  8 Curry        15     1     0     4300       7212          84.3
-##  9 Deschutes    92    22     7    42444      45692          84.1
-## 10 Douglas      90     7     3    14096      34582          79.6
-## # ... with 26 more rows
-\end{verbatim}
+First, we provide the descriptive statistics in Table 1-X. Next, we visualize the data. Finally, we present regression models in which elections results are predicted by different types of social capital.
+We used R \autocite[Version 3.6.1;][]{R-base} and the R-packages \emph{broom} \autocite[Version 0.7.0;][]{R-broom}, \emph{corx} \autocite[Version 1.0.6.1;][]{R-corx}, \emph{dplyr} \autocite[Version 1.0.2;][]{R-dplyr}, \emph{forcats} \autocite[Version 0.5.0;][]{R-forcats}, \emph{ggplot2} \autocite[Version 3.3.2;][]{R-ggplot2}, \emph{gtsummary} \autocite[Version 1.3.5;][]{R-gtsummary}, \emph{here} \autocite[Version 0.1;][]{R-here}, \emph{janitor} \autocite[Version 2.0.1;][]{R-janitor}, \emph{kableExtra} \autocite[Version 1.3.1;][]{R-kableExtra}, \emph{knitr} \autocite[Version 1.29;][]{R-knitr}, \emph{magrittr} \autocite[Version 1.5;][]{R-magrittr}, \emph{papaja} \autocite[Version 0.1.0.9997;][]{R-papaja}, \emph{purrr} \autocite[Version 0.3.4;][]{R-purrr}, \emph{readr} \autocite[Version 1.3.1;][]{R-readr}, \emph{rio} \autocite[Version 0.5.16;][]{R-rio}, \emph{scales} \autocite[Version 1.1.1;][]{R-scales}, \emph{sjlabelled} \autocite[Version 1.1.7;][]{R-sjlabelled}, \emph{sjmisc} \autocite[Version 2.8.5;][]{R-sjmisc}, \emph{stringr} \autocite[Version 1.4.0;][]{R-stringr}, \emph{tibble} \autocite[Version 3.0.4;][]{R-tibble}, \emph{tidyr} \autocite[Version 1.1.2;][]{R-tidyr}, \emph{tidyverse} \autocite[Version 1.3.0;][]{R-tidyverse}, and \emph{usmap} \autocite[Version 0.5.1;][]{R-usmap} for all our analyses.
 
 \begin{table}
 
-\caption{(\#tab:descriptives tables)<b>Table 1</b><br /> <i>A summary table for total votes and population by state.</i>}
-\centering
-\begin{tabular}[t]{c|c|c|c|c|c}
-\hline
-\multicolumn{2}{c|}{ } & \multicolumn{2}{c|}{Total Votes} & \multicolumn{2}{c}{Population} \\
-\cline{3-4} \cline{5-6}
-Sate & N & M & SD & M & SD\\
-\hline
-AK & 3 & 7036 & 460 & 103142 & 170798\\
-\hline
-AL & 268 & 29724 & 45394 & 69187 & 101303\\
-\hline
-AR & 300 & 14026 & 21417 & 37486 & 53831\\
-\hline
-AZ & 60 & 145927 & 330585 & 394133 & 889795\\
-\hline
-CA & 232 & 223051 & 465584 & 620980 & 1387279\\
-\hline
-CO & 253 & 37272 & 75235 & 74612 & 150559\\
-\hline
-CT & 32 & 196409 & 151721 & 437902 & 347809\\
-\hline
-DC & 4 & 268195 & 47994 & 596734 & 43662\\
-\hline
-DE & 12 & 133073 & 85452 & 285361 & 178905\\
-\hline
-FL & 267 & 118431 & 173570 & 260031 & 415642\\
-\hline
-GA & 636 & 22857 & 51210 & 57121 & 120420\\
-\hline
-HI & 4 & 107234 & 120109 & 355042 & 427919\\
-\hline
-IA & 396 & 15153 & 26357 & 30298 & 50767\\
-\hline
-ID & 176 & 14201 & 27837 & 33216 & 61206\\
-\hline
-IL & 408 & 51632 & 207620 & 123712 & 528335\\
-\hline
-IN & 368 & 28016 & 45752 & 68726 & 113969\\
-\hline
-KS & 420 & 11068 & 32305 & 26466 & 70945\\
-\hline
-KY & 480 & 14775 & 33166 & 35136 & 71897\\
-\hline
-LA & 256 & 30265 & 40734 & 70853 & 97369\\
-\hline
-MA & 56 & 218333 & 190389 & 462537 & 397378\\
-\hline
-MD & 96 & 105686 & 125998 & 233911 & 281901\\
-\hline
-ME & 64 & 44329 & 39811 & 81772 & 69901\\
-\hline
-MI & 332 & 56520 & 122899 & 119512 & 266186\\
-\hline
-MN & 348 & 32271 & 79906 & 59257 & 141434\\
-\hline
-MO & 460 & 22676 & 57042 & 50644 & 121028\\
-\hline
-MS & 328 & 14558 & 15660 & 35473 & 40323\\
-\hline
-MT & 224 & 8429 & 14226 & 17130 & 28610\\
-\hline
-NC & 400 & 41172 & 66022 & 89380 & 130861\\
-\hline
-ND & 212 & 6001 & 11857 & 12740 & 24158\\
-\hline
-NE & 372 & 8432 & 26489 & 19203 & 59844\\
-\hline
-NH & 40 & 68382 & 60667 & 128300 & 114741\\
-\hline
-NJ & 84 & 173096 & 101198 & 411491 & 246050\\
-\hline
-NM & 132 & 22809 & 45608 & 59314 & 109938\\
-\hline
-NV & 68 & 54664 & 153035 & 142929 & 417902\\
-\hline
-NY & 248 & 117671 & 180993 & 309859 & 525415\\
-\hline
-OH & 352 & 61025 & 101857 & 130303 & 213470\\
-\hline
-OK & 308 & 17808 & 40041 & 47139 & 103956\\
-\hline
-OR & 144 & 49670 & 76632 & 102065 & 154506\\
-\hline
-PA & 268 & 84879 & 127302 & 187084 & 266098\\
-\hline
-RI & 20 & 89501 & 79885 & 210091 & 216763\\
-\hline
-SC & 184 & 40065 & 44227 & 95374 & 101465\\
-\hline
-SD & 264 & 5409 & 10619 & 12046 & 23307\\
-\hline
-TN & 380 & 25376 & 49406 & 64063 & 122210\\
-\hline
-TX & 1016 & 30953 & 105483 & 92814 & 333875\\
-\hline
-UT & 116 & 33379 & 74041 & 88323 & 198237\\
-\hline
-VA & 535 & 26730 & 53718 & 57289 & 111708\\
-\hline
-VT & 56 & 22031 & 18096 & 44108 & 34787\\
-\hline
-WA & 156 & 76026 & 158419 & 164504 & 328036\\
-\hline
-WI & 288 & 40379 & 67838 & 77226 & 129823\\
-\hline
-WV & 220 & 12478 & 12682 & 33346 & 32720\\
-\hline
-WY & 92 & 10645 & 9351 & 23345 & 21584\\
-\hline
-\multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note: } N = number of counties with recorded data per the four time points (2000, 2008, 2012, 2016).}\\
-\end{tabular}
-\end{table}
-
-\begin{table}
-
-\caption{(\#tab:descriptives tables)<b>Table 2</b><br /> <i>A summary table for votes by candidate and year of election.</i>}
+\caption{(\#tab:descriptives table 1)A summary table for votes by candidate and year of election.}
 \centering
 \begin{tabular}[t]{c|c|c|c|c}
 \hline
@@ -593,213 +257,173 @@ Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
 
 \begin{table}
 
-\caption{(\#tab:descriptives tables)<b>Table 3</b><br /> <i>A summary table for the year 2000: Selected social capital and voting behavior in Oregon counties.</i>}
+\caption{\label{tab:regression}Table X. Correlation between social capital variables (2014) and democratic margin (2016)}
 \centering
-\begin{tabular}[t]{c|c|c|c|c|c|c}
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
 \hline
-County & Religious Organizations & Civic Associations & Labor Organizations & Votes Democrat & Votes Republican & Voter Turnout (\%)\\
+  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11\\
 \hline
-Baker & 11 & 5 & 1 & 2195 & 5618 & 64.8\\
+1. Bowling & - &  &  &  &  &  &  &  &  &  & \\
 \hline
-Benton & 50 & 13 & 3 & 19444 & 15825 & 63.3\\
+2. Civic & .16* & - &  &  &  &  &  &  &  &  & \\
 \hline
-Clackamas & 184 & 32 & 13 & 76421 & 77539 & 62.8\\
+3. Golf & .18* & .17* & - &  &  &  &  &  &  &  & \\
 \hline
-Clatsop & 35 & 12 & 7 & 8296 & 6950 & 60.8\\
+4. Religious & .18* & .25* & .35* & - &  &  &  &  &  &  & \\
 \hline
-Columbia & 29 & 5 & 3 & 10331 & 9369 & 62.0\\
+5. Sport & -.01 & .00 & -.02 & .00 & - &  &  &  &  &  & \\
 \hline
-Coos & 40 & 9 & 7 & 11610 & 15626 & 59.9\\
+6. Political & -.03 & .00 & -.03 & .00 & .01 & - &  &  &  &  & \\
 \hline
-Crook & 14 & 3 & 0 & 2474 & 5363 & 59.5\\
+7. Professional & -.01 & .08* & -.04* & -.03 & .02 & .20* & - &  &  &  & \\
 \hline
-Curry & 13 & 1 & 1 & 4090 & 6551 & 66.8\\
+8. Business & .10* & .14* & .14* & .31* & -.02 & .09* & .16* & - &  &  & \\
 \hline
-Deschutes & 62 & 29 & 8 & 22061 & 32132 & 63.7\\
+9. Labor & .01 & .13* & -.03 & -.05* & .02 & .05* & .11* & -.02 & - &  & \\
 \hline
-Douglas & 77 & 12 & 4 & 14193 & 30294 & 59.6\\
+10. NonProfit & .22* & .35* & .28* & .37* & .02 & .09* & .14* & .33* & .00 & - & \\
 \hline
-Gilliam & 1 & 1 & 0 & 359 & 679 & 74.1\\
+11. Social Capital Index & .29* & .46* & .43* & .68* & .03 & .09* & .13* & .44* & .03 & .85* & -\\
 \hline
-Grant & 4 & 1 & 0 & 589 & 3078 & 67.5\\
+12. Democratic Margin & -.09* & -.04* & -.14* & -.33* & .02 & .09* & .19* & -.09* & .13* & -.07* & -.14*\\
 \hline
-Harney & 7 & 2 & 0 & 766 & 2799 & 70.1\\
-\hline
-Hood River & 15 & 5 & 2 & 4072 & 3721 & 55.9\\
-\hline
-Jackson & 90 & 26 & 14 & 33153 & 46052 & 60.3\\
-\hline
-Jefferson & 11 & 1 & 0 & 2681 & 3838 & 56.6\\
-\hline
-Josephine & 35 & 12 & 0 & 11864 & 22186 & 60.0\\
-\hline
-Klamath & 45 & 15 & 6 & 7541 & 18855 & 50.7\\
-\hline
-Lake & 6 & 2 & 0 & 707 & 2830 & 70.9\\
-\hline
-Lane & 184 & 51 & 30 & 78583 & 61578 & 62.9\\
-\hline
-Lincoln & 32 & 17 & 1 & 10861 & 8446 & 60.7\\
-\hline
-Linn & 84 & 21 & 14 & 16682 & 25359 & 57.0\\
-\hline
-Malheur & 22 & 3 & 0 & 2336 & 7624 & 52.5\\
-\hline
-Marion & 156 & 30 & 25 & 49430 & 57443 & 58.3\\
-\hline
-Morrow & 5 & 3 & 0 & 1197 & 2224 & 53.8\\
-\hline
-Multnomah & 386 & 92 & 103 & 188441 & 83677 & 58.0\\
-\hline
-Polk & 39 & 9 & 2 & 11921 & 14988 & 61.8\\
-\hline
-Sherman & 0 & 0 & 0 & 326 & 679 & 82.0\\
-\hline
-Tillamook & 22 & 5 & 1 & 5762 & 5775 & 62.8\\
-\hline
-Umatilla & 47 & 10 & 4 & 7809 & 14140 & 48.1\\
-\hline
-Union & 25 & 5 & 5 & 3577 & 7836 & 65.4\\
-\hline
-Wallowa & 4 & 3 & 0 & 836 & 3279 & 79.3\\
-\hline
-Wasco & 24 & 4 & 1 & 4616 & 5356 & 60.7\\
-\hline
-Washington & 171 & 29 & 21 & 90662 & 86091 & 58.7\\
-\hline
-Wheeler & 0 & 0 & 0 & 202 & 584 & 69.0\\
-\hline
-Yamhill & 62 & 5 & 2 & 14254 & 19193 & 58.3\\
-\hline
+\multicolumn{12}{l}{\rule{0pt}{1em}\textit{Note: } * p < .05; ** p < .01; *** p < .001}\\
 \end{tabular}
 \end{table}
 
 \begin{table}
 
-\caption{(\#tab:descriptives tables)<b>Table 4</b><br /> <i>A summary table for 2016: Selected social capital and voting behavior in Oregon counties.</i>}
+\caption{\label{tab:regression}Table X. Correlation between social capital variables (2009) and democratic margin (2012)}
 \centering
-\begin{tabular}[t]{c|c|c|c|c|c|c}
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
 \hline
-County & Religious Organizations & Civic Associations & Labor Organizations & Democrat & Republican & Voter Turnout (\%)\\
+  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11\\
 \hline
-Baker & 20 & 8 & 1 & 1797 & 6218 & 83.1\\
+1. Bowling & - &  &  &  &  &  &  &  &  &  & \\
 \hline
-Benton & 66 & 13 & 5 & 29193 & 13445 & 85.7\\
+2. Civic & .21* & - &  &  &  &  &  &  &  &  & \\
 \hline
-Clackamas & 215 & 20 & 18 & 102095 & 88392 & 82.5\\
+3. Golf & .23* & .18* & - &  &  &  &  &  &  &  & \\
 \hline
-Clatsop & 31 & 11 & 3 & 9252 & 8138 & 82.2\\
+4. Religious & .23* & .23* & .42* & - &  &  &  &  &  &  & \\
 \hline
-Columbia & 26 & 4 & 2 & 10167 & 13217 & 82.2\\
+5. Sport & -.02 & -.01 & -.02 & .00 & - &  &  &  &  &  & \\
 \hline
-Coos & 53 & 7 & 5 & 10448 & 17865 & 82.2\\
+6. Political & .00 & .05* & -.04* & -.01 & .01 & - &  &  &  &  & \\
 \hline
-Crook & 20 & 3 & 0 & 2637 & 8511 & 83.2\\
+7. Professional & .06* & .05* & -.04* & -.01 & .01 & .24* & - &  &  &  & \\
 \hline
-Curry & 15 & 1 & 0 & 4300 & 7212 & 84.3\\
+8. Business & .12* & .21* & .17* & .26* & -.02 & .15* & .22* & - &  &  & \\
 \hline
-Deschutes & 92 & 22 & 7 & 42444 & 45692 & 84.1\\
+9. Labor & .04* & .13* & -.05* & -.03 & .01 & .06* & .11* & -.04* & - &  & \\
 \hline
-Douglas & 90 & 7 & 3 & 14096 & 34582 & 79.6\\
+10. NonProfit & .29* & .38* & .33* & .41* & .01 & .09* & .16* & .33* & .01 & - & \\
 \hline
-Gilliam & 2 & 1 & 0 & 239 & 671 & 85.6\\
+11. Social Capital Index & .36* & .47* & .48* & .65* & .03 & .10* & .16* & .41* & .05* & .86* & -\\
 \hline
-Grant & 8 & 1 & 0 & 739 & 3210 & 86.9\\
+12. Democratic Margin & -.05* & .02 & -.10* & -.27* & .02 & .06* & .12* & -.12* & .19* & -.05* & -.08*\\
 \hline
-Harney & 7 & 1 & 0 & 683 & 2912 & 83.5\\
-\hline
-Hood River & 23 & 6 & 1 & 6510 & 3272 & 84.4\\
-\hline
-Jackson & 112 & 19 & 13 & 44447 & 53870 & 80.9\\
-\hline
-Jefferson & 15 & 1 & 0 & 2980 & 5483 & 81.4\\
-\hline
-Josephine & 52 & 8 & 2 & 13453 & 26923 & 77.6\\
-\hline
-Klamath & 46 & 8 & 3 & 7210 & 20435 & 81.2\\
-\hline
-Lake & 6 & 3 & 0 & 639 & 3022 & 87.4\\
-\hline
-Lane & 209 & 30 & 27 & 102753 & 67141 & 80.0\\
-\hline
-Lincoln & 35 & 8 & 1 & 12501 & 10039 & 83.3\\
-\hline
-Linn & 94 & 12 & 9 & 17995 & 33488 & 81.2\\
-\hline
-Malheur & 22 & 2 & 2 & 2246 & 7194 & 79.7\\
-\hline
-Marion & 191 & 19 & 21 & 57788 & 63377 & 79.5\\
-\hline
-Morrow & 5 & 2 & 0 & 1017 & 2721 & 78.7\\
-\hline
-Multnomah & 443 & 85 & 85 & 292561 & 67954 & 81.7\\
-\hline
-Polk & 49 & 4 & 0 & 16420 & 18940 & 80.8\\
-\hline
-Sherman & 4 & 0 & 0 & 202 & 732 & 84.1\\
-\hline
-Tillamook & 25 & 6 & 0 & 5768 & 6538 & 83.5\\
-\hline
-Umatilla & 56 & 10 & 4 & 7673 & 17059 & 75.4\\
-\hline
-Union & 31 & 4 & 7 & 3249 & 8431 & 77.1\\
-\hline
-Wallowa & 9 & 1 & 0 & 1116 & 2848 & 86.4\\
-\hline
-Wasco & 22 & 6 & 1 & 4781 & 5833 & 80.2\\
-\hline
-Washington & 224 & 26 & 14 & 153251 & 83197 & 81.1\\
-\hline
-Wheeler & 0 & 0 & 0 & 155 & 591 & 89.7\\
-\hline
-Yamhill & 85 & 4 & 3 & 19301 & 23250 & 82.8\\
-\hline
+\multicolumn{12}{l}{\rule{0pt}{1em}\textit{Note: } * p < .05; ** p < .01; *** p < .001}\\
 \end{tabular}
 \end{table}
 
-\begin{tabular}{l|l|l|l}
+\begin{table}
+
+\caption{\label{tab:regression}Table X. Correlation between social capital variables (2005) and democratic margin (2008)}
+\centering
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
 \hline
-**Characteristic** & **exp(Beta)** & **95\% CI** & **p-value**\\
+  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11\\
 \hline
-bowl & -0.20 & -0.38, -0.02 & 0.027\\
+1. Bowling & - &  &  &  &  &  &  &  &  &  & \\
 \hline
-civic & 0.06 & -0.01, 0.14 & 0.095\\
+2. Civic & .29* & - &  &  &  &  &  &  &  &  & \\
 \hline
-golf & -0.04 & -0.14, 0.05 & 0.3\\
+3. Golf & .23* & .18* & - &  &  &  &  &  &  &  & \\
 \hline
-relig & -0.16 & -0.18, -0.14 & <0.001\\
+4. Religious & .22* & .24* & .34* & - &  &  &  &  &  &  & \\
 \hline
-sport & 0.19 & -0.36, 0.74 & 0.5\\
+5. Sport & -.04* & .04* & -.05* & -.09* & - &  &  &  &  &  & \\
 \hline
-pol & 0.50 & 0.06, 0.94 & 0.026\\
+6. Political & -.02 & .04* & -.05* & -.01 & .05* & - &  &  &  &  & \\
 \hline
-prof & 1.16 & 0.88, 1.45 & <0.001\\
+7. Professional & .02 & .12* & -.03 & .03 & .12* & .21* & - &  &  &  & \\
 \hline
-bus & -0.04 & -0.13, 0.05 & 0.4\\
+8. Business & .11* & .13* & .16* & .26* & -.01 & .12* & .17* & - &  &  & \\
 \hline
-labor & 0.50 & 0.31, 0.68 & <0.001\\
+9. Labor & .02 & .15* & -.04* & -.01 & .14* & .12* & .10* & -.02 & - &  & \\
 \hline
-pvote & 0.36 & 0.25, 0.47 & <0.001\\
+10. NonProfit & .30* & .37* & .29* & .40* & .02 & .06* & .18* & .30* & .02 & - & \\
 \hline
-respn & -0.03 & -0.12, 0.07 & 0.6\\
+11. Social Capital Index & .39* & .48* & .42* & .63* & .01 & .07* & .18* & .35* & .11* & .81* & -\\
 \hline
-pop & 0.00 & 0.00, 0.00 & <0.001\\
+12. Democratic Margin & -.04* & .08* & -.07* & -.23* & .14* & .06* & .12* & -.14* & .23* & -.03 & -.05*\\
 \hline
+\multicolumn{12}{l}{\rule{0pt}{1em}\textit{Note: } * p < .05; ** p < .01; *** p < .001}\\
 \end{tabular}
+\end{table}
 
-\includegraphics{Script_files/figure-latex/unnamed-chunk-1-1.pdf} \includegraphics{Script_files/figure-latex/unnamed-chunk-1-2.pdf} \includegraphics{Script_files/figure-latex/unnamed-chunk-1-3.pdf}
+\begin{table}
 
-\begin{verbatim}
-## Warning: package 'usmap' was built under R version 3.6.3
-\end{verbatim}
+\caption{\label{tab:regression}Table X. Correlation between social capital variables (1997) and democratic margin (2000)}
+\centering
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
+\hline
+  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11\\
+\hline
+1. Bowling & - &  &  &  &  &  &  &  &  &  & \\
+\hline
+2. Civic & .25* & - &  &  &  &  &  &  &  &  & \\
+\hline
+3. Golf & .22* & .18* & - &  &  &  &  &  &  &  & \\
+\hline
+4. Religious & .23* & .21* & .17* & - &  &  &  &  &  &  & \\
+\hline
+5. Sport & -.01 & .04* & .01 & .01 & - &  &  &  &  &  & \\
+\hline
+6. Political & -.02 & .05* & -.01 & -.06* & .04* & - &  &  &  &  & \\
+\hline
+7. Professional & .03 & .12* & -.03 & -.01 & .06* & .33* & - &  &  &  & \\
+\hline
+8. Business & .10* & .14* & .05* & .09* & .01 & .17* & .22* & - &  &  & \\
+\hline
+9. Labor & .03 & .14* & -.01 & -.04* & .03 & .10* & .08* & -.02 & - &  & \\
+\hline
+10. NonProfit & .39* & .44* & .24* & .39* & .04* & .06* & .18* & .30* & .00 & - & \\
+\hline
+11. Social Capital Index & .45* & .51* & .31* & .60* & .08* & .06* & .17* & .31* & .07* & .87* & -\\
+\hline
+12. Democratic Margin & -.15* & -.06* & -.13* & -.20* & .01 & .08* & .07* & -.08* & .25* & -.23* & -.26*\\
+\hline
+\multicolumn{12}{l}{\rule{0pt}{1em}\textit{Note: } * p < .05; ** p < .01; *** p < .001}\\
+\end{tabular}
+\end{table}
 
-\includegraphics{Script_files/figure-latex/visualization part 2-1.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-2.pdf}
+\begin{table}
 
-\begin{verbatim}
-## [1] 2000 2008 2012 2016
-\end{verbatim}
+\caption{\label{tab:regression}Table X. Social Capital Variables Regressed on Democratic Margin for Each Time Point}
+\centering
+\begin{tabular}[t]{c|c|c|c|c|c|c|c|c|c|c|c|c}
+\hline
+\multicolumn{1}{c|}{\textbf{ }} & \multicolumn{3}{c|}{\textbf{2000}} & \multicolumn{3}{c|}{\textbf{2004}} & \multicolumn{3}{c|}{\textbf{2008}} & \multicolumn{3}{c}{\textbf{2012}} \\
+\cline{2-4} \cline{5-7} \cline{8-10} \cline{11-13}
+Term & B & SE & p & B & SE & p & B & SE & p & B & SE & p\\
+\hline
+Intercept & -0.12 & 0.01 & <0.05 & -0.09 & 0.01 & <0.05 & -0.11 & 0.01 & <0.05 & -0.17 & 0.01 & <0.05\\
+\hline
+Religious & -0.09 & 0.01 & <0.05 & -0.15 & 0.01 & <0.05 & -0.16 & 0.01 & <0.05 & -0.21 & 0.01 & <0.05\\
+\hline
+Civic & -0.09 & 0.03 & <0.05 & 0.20 & 0.03 & <0.05 & 0.11 & 0.03 & <0.05 & 0.08 & 0.04 & 0.05\\
+\hline
+Labor & 0.89 & 0.06 & <0.05 & 1.03 & 0.08 & <0.05 & 0.90 & 0.09 & <0.05 & 0.65 & 0.10 & <0.05\\
+\hline
+\multicolumn{13}{l}{\rule{0pt}{1em}\textit{Note: } The headers indicate election years.}\\
+\end{tabular}
+\end{table}
 
-\includegraphics{Script_files/figure-latex/visualization part 2-3.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-4.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-5.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-6.pdf}
+\includegraphics{Script_files/figure-latex/visualization part 1-1.pdf} \includegraphics{Script_files/figure-latex/visualization part 1-2.pdf} \includegraphics{Script_files/figure-latex/visualization part 1-3.pdf}
+
+\includegraphics{Script_files/figure-latex/visualization part 2-1.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-2.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-3.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-4.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-5.pdf} \includegraphics{Script_files/figure-latex/visualization part 2-6.pdf}
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -811,8 +435,6 @@ pop & 0.00 & 0.00, 0.00 & <0.001\\
 
 \hypertarget{references}{%
 \section{References}\label{references}}
-
-We used R \autocite[Version 3.6.1;][]{R-base} and the R-packages \emph{broom} \autocite[Version 0.7.0;][]{R-broom}, \emph{dplyr} \autocite[Version 1.0.2;][]{R-dplyr}, \emph{forcats} \autocite[Version 0.5.0;][]{R-forcats}, \emph{ggplot2} \autocite[Version 3.3.2;][]{R-ggplot2}, \emph{gtsummary} \autocite[Version 1.3.5;][]{R-gtsummary}, \emph{here} \autocite[Version 0.1;][]{R-here}, \emph{janitor} \autocite[Version 2.0.1;][]{R-janitor}, \emph{kableExtra} \autocite[Version 1.3.1;][]{R-kableExtra}, \emph{knitr} \autocite[Version 1.29;][]{R-knitr}, \emph{magrittr} \autocite[Version 1.5;][]{R-magrittr}, \emph{papaja} \autocite[Version 0.1.0.9997;][]{R-papaja}, \emph{purrr} \autocite[Version 0.3.4;][]{R-purrr}, \emph{readr} \autocite[Version 1.3.1;][]{R-readr}, \emph{rio} \autocite[Version 0.5.16;][]{R-rio}, \emph{sjlabelled} \autocite[Version 1.1.7;][]{R-sjlabelled}, \emph{stringr} \autocite[Version 1.4.0;][]{R-stringr}, \emph{tibble} \autocite[Version 3.0.4;][]{R-tibble}, \emph{tidyr} \autocite[Version 1.1.2;][]{R-tidyr}, and \emph{tidyverse} \autocite[Version 1.3.0;][]{R-tidyverse} for all our analyses.
 
 \begingroup
 \setlength{\parindent}{-0.5in}
