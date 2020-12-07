@@ -263,11 +263,92 @@ df_wide  %<>% #remove NA variable
   select(-`NA`)
 
 rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Chris' review)
+
+#create df_wides for each election
+##2016
+df_wide_16 <- df_wide %>% filter(year_elctn == 2016) #filter
+  
+df_wide_16 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (democrat - republican) / (democrat + republican)
+    )
+
+df_wide_16 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
+
+##2012
+df_wide_12 <- df_wide %>% filter(year_elctn == 2012) #filter
+  
+df_wide_12 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (democrat - republican) / (democrat + republican)
+    )
+
+df_wide_12 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
+
+##2008
+df_wide_08 <- df_wide %>% filter(year_elctn == 2008) #filter
+  
+df_wide_08 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (democrat - republican) / (democrat + republican)
+    )
+
+df_wide_08 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
+
+##2000
+df_wide_00 <- df_wide %>% filter(year_elctn == 2000) #filter
+  
+df_wide_00 %<>% # Create democrat margin variable
+  mutate(
+    dem_margin = (democrat - republican) / (democrat + republican)
+    )
+
+df_wide_00 %<>% # Social capital variables with per capita measures
+  mutate(bowl = bowl/pop * 1000,
+         civic = civic/pop * 1000,
+         golf = golf/pop * 1000,
+         relig = relig/pop * 1000,
+         sport = sport/pop * 1000,
+         pol = pol/pop * 1000,
+         prof = prof/pop * 1000,
+         bus = bus/pop * 1000,
+         labor = labor/pop * 1000,
+         nccs = nccs /pop * 1000)
 ```
 
 ## Data analysis
-  First, we provide the descriptive statistics regarding election results in Table 1. Next, we visualize the distribution of the votes across U.S. Finally, we present several plots of our analyses and regression models in which elections results are predicted by an aggragate social capital variable as well as by different types of social capital.
-  We used `r cite_r("r-references.bib")` for all our analyses.
+  First, we provide the descriptive statistics regarding election results in Table 1. Next, we visualize the distribution of the votes across U.S. Finally, we present several plots of our analyses and regression models in which elections results are predicted by an aggragate social capital variable as well as by different types of social capital.  
+  We used `r cite_r("r-references.bib")` for all our analyses.  
 
 ```{r descriptives set up, include = FALSE}
 (table_01 <- df_wide %>% 
@@ -307,7 +388,7 @@ rm(list=setdiff(ls(), c("df", "df_wide"))) #remove intermediate objects (from Ch
   We sought to answer our research questions with different visualizations. First, we explored how social capital changes over the four time points in our study (1997, 2005, 2009, and 2014). Next, we explored how U.S. presidential election results over the years (2000, 2008, 2012, and 2016) change depending on social capital in the preceding years. To supplement these analyses, we also consider geographic trends for election results and social capital across the U.S. and the state of Oregon.  
 
 # Results
-  We start with a description of the presidential elections analyzed in this study, and continue with our main questions. Table 1 shows votes by candidate and year of election. Figure 1 visualizes the distributions of the votes in a U.S. map.
+  We start with a description of the presidential elections analyzed in this study, and continue with our main questions. Table 1 shows votes by candidate and year of election. Figure 1 visualizes the distributions of the votes in a U.S. map. Figure 2 shows the distribution of votes for the state of Oregon.
 
 ```{r descriptives table 1}
 options(knitr.kable.NA = '--')
@@ -324,7 +405,7 @@ options(knitr.kable.NA = '--')
 ```
 
 ```{r visualization election results}
-#US Election Results 2016
+#US Election Results
 
 #2000 Election Results
 elec_usmap_00 <- plot_usmap(data = df_wide_00, regions = "counties", values = "dem_margin") +
@@ -851,7 +932,7 @@ Figure: This graph shows the relationship between aggregate social capital (same
   This set of plots reveals trends between aggregate social capital and proportion of political party votes. Data for Washington, D.C. was not included in these plots as it was an outlier. This figure reveals that as aggregate social capital increases, proportion of democrat votes decreases and proportion of republican votes increases.  
   
   Next, to test this relationship, we regressed democratic margin on aggregate social capital. Table 2 displays the results. Across all election years, social capital negatively predicts democratic margin, all ps < .05. In the 2012 & 2016 elections, this relationship seems to be stronger. However, this relationship is inconsistent with the theoretical view that suggests a positive relationship between social capital and democratic margin [e.g., @giuliano2020]. Therefore, we look at how different types of social capital predict democratic margin. Table 3 presents the results. Consistent with our earlier finding, religious social capital is also negatively associated with democratic margin across elections. However, we found that civic social capital is positively associated with democratic margin in all elections except for the 2000 election. In a similar vein, labor social capital has a positive and strong relationship with democratic margin across all elections.
-  
+
 ```{r regression}
 #create aggregate social capital per capita & democratic margin
 df_wide %<>% 
@@ -896,25 +977,6 @@ model_agg %>%
 
 ``` {r regression2}
 # Social Capital 2014 & Election Results 2016
-df_wide_16 <- df_wide %>% filter(year_elctn == 2016) #filter
-  
-df_wide_16 %<>% # Create democrat margin variable
-  mutate(
-    dem_margin = (democrat - republican) / (democrat + republican)
-    )
-
-df_wide_16 %<>% # Social capital variables with per capita measures
-  mutate(bowl = bowl/pop * 1000,
-         civic = civic/pop * 1000,
-         golf = golf/pop * 1000,
-         relig = relig/pop * 1000,
-         sport = sport/pop * 1000,
-         pol = pol/pop * 1000,
-         prof = prof/pop * 1000,
-         bus = bus/pop * 1000,
-         labor = labor/pop * 1000,
-         nccs = nccs /pop * 1000)
-
 df_wide_16 %>% # correlation table
   select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
          Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
@@ -928,25 +990,6 @@ model_2016 <- lm(dem_margin ~ relig + civic+ labor, # regression model
                  data = df_wide_16)
 
 # Social Capital 2009 & Election Results 2012
-df_wide_12 <- df_wide %>% filter(year_elctn == 2012) #filter
-  
-df_wide_12 %<>% # Create democrat margin variable
-  mutate(
-    dem_margin = (democrat - republican) / (democrat + republican)
-    )
-
-df_wide_12 %<>% # Social capital variables with per capita measures
-  mutate(bowl = bowl/pop * 1000,
-         civic = civic/pop * 1000,
-         golf = golf/pop * 1000,
-         relig = relig/pop * 1000,
-         sport = sport/pop * 1000,
-         pol = pol/pop * 1000,
-         prof = prof/pop * 1000,
-         bus = bus/pop * 1000,
-         labor = labor/pop * 1000,
-         nccs = nccs /pop * 1000)
-
 df_wide_12 %>% # correlation table
   select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
          Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
@@ -960,25 +1003,6 @@ model_2012 <- lm(dem_margin ~ relig + civic + labor, # regression model
                  data = df_wide_12)
 
 # Social Capital 2005 & Election Results 2008
-df_wide_08 <- df_wide %>% filter(year_elctn == 2008) #filter
-  
-df_wide_08 %<>% # Create democrat margin variable
-  mutate(
-    dem_margin = (democrat - republican) / (democrat + republican)
-    )
-
-df_wide_08 %<>% # Social capital variables with per capita measures
-  mutate(bowl = bowl/pop * 1000,
-         civic = civic/pop * 1000,
-         golf = golf/pop * 1000,
-         relig = relig/pop * 1000,
-         sport = sport/pop * 1000,
-         pol = pol/pop * 1000,
-         prof = prof/pop * 1000,
-         bus = bus/pop * 1000,
-         labor = labor/pop * 1000,
-         nccs = nccs /pop * 1000)
-
 df_wide_08 %>% # correlation table
   select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
          Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
@@ -992,25 +1016,6 @@ model_2008 <- lm(dem_margin ~ relig + civic + labor, # regression model
                  data = df_wide_08)
 
 # Social Capital 1997 & Election Results 2000
-df_wide_00 <- df_wide %>% filter(year_elctn == 2000) #filter
-  
-df_wide_00 %<>% # Create democrat margin variable
-  mutate(
-    dem_margin = (democrat - republican) / (democrat + republican)
-    )
-
-df_wide_00 %<>% # Social capital variables with per capita measures
-  mutate(bowl = bowl/pop * 1000,
-         civic = civic/pop * 1000,
-         golf = golf/pop * 1000,
-         relig = relig/pop * 1000,
-         sport = sport/pop * 1000,
-         pol = pol/pop * 1000,
-         prof = prof/pop * 1000,
-         bus = bus/pop * 1000,
-         labor = labor/pop * 1000,
-         nccs = nccs /pop * 1000)
-
 df_wide_00 %>% # correlation table
   select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
          Business = bus, Labor = labor, NonProfit = nccs, `Social Capital Index` = sk, -starts_with("candidate"), 
