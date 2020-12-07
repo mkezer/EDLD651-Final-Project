@@ -41,7 +41,43 @@ Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
 \ifnextchar[{\eatarg}{}
 
 
-\caption{\label{tab:regression}Table X. Correlation between social capital variables (2014) and democratic margin (2016)}
+\caption{\label{tab:regression}Table 2. Democratic Margin Predicted by Aggregate Social Capital}
+\centering
+\begin{tabular}[t]{r|r|r|r}
+\hline
+Term & B & SE & p\\
+\hline
+\multicolumn{4}{l}{\textbf{2000 Election}}\\
+\hline
+\hspace{1em}Intercept & -0.08 & 0.01 & <0.05\\
+\hline
+\hspace{1em}Social\_Capital\_(aggregate) & -0.07 & 0.01 & \vphantom{1} <0.05\\
+\hline
+\multicolumn{4}{l}{\textbf{2008 Election}}\\
+\hline
+\hspace{1em}Intercept & -0.07 & 0.01 & <0.05\\
+\hline
+\hspace{1em}Social\_Capital\_(aggregate) & -0.07 & 0.01 & <0.05\\
+\hline
+\multicolumn{4}{l}{\textbf{2012 Election}}\\
+\hline
+\hspace{1em}Intercept & -0.10 & 0.01 & <0.05\\
+\hline
+\hspace{1em}Social\_Capital\_(aggregate) & -0.09 & 0.01 & <0.05\\
+\hline
+\multicolumn{4}{l}{\textbf{2016 Election}}\\
+\hline
+\hspace{1em}Intercept & -0.16 & 0.01 & <0.05\\
+\hline
+\hspace{1em}Social\_Capital\_(aggregate) & -0.13 & 0.01 & <0.05\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{tab:regression2}Table 3. Correlation between social capital variables (2014) and democratic margin (2016)}
 \centering
 \begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
 \hline
@@ -78,7 +114,7 @@ Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
 \ifnextchar[{\eatarg}{}
 
 
-\caption{\label{tab:regression}Table X. Correlation between social capital variables (2009) and democratic margin (2012)}
+\caption{\label{tab:regression2}Table X. Correlation between social capital variables (2009) and democratic margin (2012)}
 \centering
 \begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
 \hline
@@ -115,7 +151,7 @@ Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
 \ifnextchar[{\eatarg}{}
 
 
-\caption{\label{tab:regression}Table X. Correlation between social capital variables (2005) and democratic margin (2008)}
+\caption{\label{tab:regression2}Table X. Correlation between social capital variables (2005) and democratic margin (2008)}
 \centering
 \begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
 \hline
@@ -152,7 +188,7 @@ Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
 \ifnextchar[{\eatarg}{}
 
 
-\caption{\label{tab:regression}Table X. Correlation between social capital variables (1997) and democratic margin (2000)}
+\caption{\label{tab:regression2}Table X. Correlation between social capital variables (1997) and democratic margin (2000)}
 \centering
 \begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c|c|c}
 \hline
@@ -189,7 +225,7 @@ Year & Party & N & Mean Candidate Votes & SD Candidate Votes\\
 \ifnextchar[{\eatarg}{}
 
 
-\caption{\label{tab:regression}Table X. Social Capital Variables Regressed on Democratic Margin for Each Time Point}
+\caption{\label{tab:regression2}Table X. Social Capital Variables Regressed on Democratic Margin for Each Time Point}
 \centering
 \begin{tabular}[t]{c|c|c|c|c|c|c|c|c|c|c|c|c}
 \hline

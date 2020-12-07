@@ -401,7 +401,8 @@ options(knitr.kable.NA = '--')
            general = "N = total number of counties in the US reporting data.")) 
 
 ```
-```{r visualization election results}
+
+```{r visualization US election results, fig.width = 5, fig.height = 9, fig.margin = TRUE}
 #US Election Results
 
 #2000 Election Results
@@ -410,7 +411,7 @@ elec_usmap_00 <- plot_usmap(data = df_wide_00, regions = "counties", values = "d
                        mid = "white", 
                        midpoint = 0, 
                        high = "blue", 
-                       name = "2000") + 
+                       name = "Republican-Democratic margin") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2000")
@@ -421,9 +422,9 @@ elec_usmap_08 <- plot_usmap(data = df_wide_08, regions = "states", values = "dem
                        mid = "white", 
                        midpoint = 0, 
                        high = "blue", 
-                       name = "2008") + 
+                       name = "Republican-Democratic margin") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
-  theme(legend.position = "none") + 
+  theme(legend.position = "bottom") + 
   labs(title = "2008")
 
 #2012 Election Results 
@@ -432,7 +433,7 @@ elec_usmap_12 <- plot_usmap(data = df_wide_12, regions = "states", values = "dem
                        mid = "white", 
                        midpoint = 0, 
                        high = "blue", 
-                       name = "2012") + 
+                       name = "Republican-Democratic margin") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2012")
@@ -443,78 +444,94 @@ elec_usmap_16 <- plot_usmap(data = df_wide_16, regions = "states", values = "dem
                        mid = "white", 
                        midpoint = 0, 
                        high = "blue",
-                       name = "2016") + 
+                       name = "Republican-Democratic margin") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
-  theme(legend.position = "none") + 
+  theme(legend.position = "bottom") + 
   labs(title = "2016")
 
-#Arrange 4 Election Maps in 1 plot
-elec_usmap_all <- ggarrange(elec_usmap_00,
+#Arrange 4 Election Maps in 2 figures
+elec_usmap_p1 <- ggarrange(elec_usmap_00,
           elec_usmap_08,
-          elec_usmap_12,
+          ncol = 1)
+
+elec_usmap_p2 <- ggarrange(elec_usmap_12,
           elec_usmap_16,
-          ncol = 2,
-          nrow = 2)
+          ncol = 1)
 
 #Annotate Combined US Election Maps
-annotate_figure(elec_usmap_all,
+annotate_figure(elec_usmap_p1,
                 top = text_grob("Figure 1. Results of US Presential Elections", face = "bold", size = 12),
                 bottom = text_grob("Red and blue colors indicate Republican and Democratic lead", hjust = 1, x = 1, face = "italic", size = 10))
 
+annotate_figure(elec_usmap_p2,
+                top = text_grob("Figure 1. Results of US Presential Elections, cont'd", face = "bold", size = 12),
+                bottom = text_grob("Red and blue colors indicate Republican and Democratic lead", hjust = 1, x = 1, face = "italic", size = 10))
 
+```
+
+
+```{r visualization Oregon election results, fig.width = 5, fig.height = 9}
 #Oregon election Maps
-elec_ormap_00 <- plot_usmap(data = df_wide_00, regions = "counties", include = c("OR"), values = "dem_margin", labels = FALSE) +
+elec_ormap_00 <- plot_usmap(data = df_wide_00, regions = "counties", include = c("OR"), values = "dem_margin", labels = TRUE) +
     scale_fill_gradient2(low = "red", 
                          mid = "white", 
                          midpoint = 0, 
                          high = "blue", 
-                         name = "2000") +
+                         name = "Republican-Democratic margin") +
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2000")
 
-elec_ormap_08 <- plot_usmap(data = df_wide_08, regions = "counties", include = c("OR"), values = "dem_margin", labels = FALSE) +
+elec_ormap_08 <- plot_usmap(data = df_wide_08, regions = "counties", include = c("OR"), values = "dem_margin", labels = TRUE) +
     scale_fill_gradient2(low = "red", 
                          mid = "white", 
                          midpoint = 0, 
                          high = "blue", 
-                         name = "2008") +
+                         name = "Republican-Democratic margin") +
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") +
   labs(title = "2008")
 
-elec_ormap_12 <- plot_usmap(data = df_wide_12, regions = "counties", include = c("OR"), values = "dem_margin", labels = FALSE) +
+elec_ormap_12 <- plot_usmap(data = df_wide_12, regions = "counties", include = c("OR"), values = "dem_margin", labels = TRUE) +
     scale_fill_gradient2(low = "red", 
                          mid = "white", 
                          midpoint = 0, 
                          high = "blue", 
-                         name = "2012") +
+                         name = "Republican-Democratic margin") +
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2012")
 
-elec_ormap_16 <- plot_usmap(data = df_wide_16, regions = "counties", include = c("OR"), values = "dem_margin", labels = FALSE) +
+elec_ormap_16 <- plot_usmap(data = df_wide_16, regions = "counties", include = c("OR"), values = "dem_margin", labels = TRUE) +
     scale_fill_gradient2(low = "red", 
                          mid = "white", 
                          midpoint = 0, 
                          high = "blue", 
-                         name = "Republican - Democrat Margin (2016)") +
+                         name = "Republican-Democratic margin") +
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2016")
 
-#Arrange 4 oregon Election Maps in 1 plot
-elec_ormap_all <- ggarrange(elec_ormap_00,
+#Arrange 4 Oregon Election Maps in 2 figures
+elec_ormap_p1 <- ggarrange(elec_ormap_00,
           elec_ormap_08,
-          elec_ormap_12,
+          ncol = 1,
+          nrow = 2) 
+
+elec_ormap_p2 <- ggarrange(elec_ormap_12,
           elec_ormap_16,
-          ncol = 2,
+          ncol = 1,
           nrow = 2)
 
 #Annotate Combined US Election Maps 
-annotate_figure(elec_ormap_all,
+annotate_figure(elec_ormap_p1,
                 top = text_grob("Figure 2. Results of US Presential Elections in Oregon", face = "bold", size = 12),
                 bottom = text_grob("Red and blue colors indicate Republican and Democratic lead", hjust = 1, x = 1, face = "italic", size = 10))
+
+annotate_figure(elec_ormap_p2,
+                top = text_grob("Figure 2. Results of US Presential Elections in Oregon, cont'd", face = "bold", size = 12),
+                bottom = text_grob("Red and blue colors indicate Republican and Democratic lead", hjust = 1, x = 1, face = "italic", size = 10))
+
 ```
 
 ## How does social capital change over time?
@@ -590,7 +607,7 @@ Figure 4: These scatterplots show the changes in religion, civic, and labor soci
 
  We then explored geographic trends for specific types of social capital. Figures 5a-7b visualize the distribution of the specific types of social capital on a U.S. map.
 
-```{r visualization religious capital maps}
+```{r visualization religious capital US map, fig.width = 5, fig.height = 9}
 #Religious Social Capital 
 rel_usmap_00 <- plot_usmap(data = df_wide_00, regions = "counties", values = "relig") +
   scale_fill_continuous(low = "white", 
@@ -605,10 +622,12 @@ rel_usmap_08 <- plot_usmap(data = df_wide_08, regions = "counties", values = "re
                         high = "red", 
                         name = "Social Capital Index (2014)", 
                         label = scales::comma
-  ) + 
+  ) +
+  
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2008")
+
 
 rel_usmap_12 <- plot_usmap(data = df_wide_12, regions = "counties", values = "relig") +
   scale_fill_continuous(low = "white", 
@@ -632,42 +651,50 @@ rel_usmap_16 <- plot_usmap(data = df_wide_12, regions = "counties", values = "re
 
 
 #Combine 4 US Religious Social Capital Maps in 1 plot
-rel_usmap_all <- ggarrange(rel_usmap_00,
+rel_usmap_p1 <- ggarrange(rel_usmap_00,
           rel_usmap_08,
-          rel_usmap_12,
-          rel_usmap_16,
-          ncol = 2,
+          ncol = 1,
           nrow = 2)
 
-#Annotate Combined US Religious Social Capital Maps 
-annotate_figure(rel_usmap_all,
-                top = text_grob("Figure 5a. Distribution of Religious Social Capital in US", face = "bold", size = 12),
+rel_usmap_p2 <- ggarrange(rel_usmap_12,
+          rel_usmap_16,
+          ncol = 1,
+          nrow = 2)
+
+
+#Annotate Combined US Religious Social Capital Maps
+annotate_figure(rel_usmap_p1,
+                top = text_grob("Figure 5a. Religious Social Capital in US", face = "bold", size = 12),
+                bottom = text_grob("Thicker color indicates higher per capita count of religious establishments", hjust = 1, x = 1, face = "italic", size = 10))
+
+annotate_figure(rel_usmap_p2,
+                top = text_grob("Figure 5a. Religious Social Capital in US, cont'd", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of religious establishments", hjust = 1, x = 1, face = "italic", size = 10))
 
 
 #Oregon Religious Social Capital Maps
-rel_ormap_00 <- plot_usmap(data = df_wide_00, regions = "counties", include = c("OR"), values = "relig", labels = FALSE) +
+rel_ormap_00 <- plot_usmap(data = df_wide_00, regions = "counties", include = c("OR"), values = "relig", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "red") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2000")
 
-rel_ormap_08 <- plot_usmap(data = df_wide_08, regions = "counties", include = c("OR"), values = "relig", labels = FALSE) +
+rel_ormap_08 <- plot_usmap(data = df_wide_08, regions = "counties", include = c("OR"), values = "relig", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "red") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2008")
 
-rel_ormap_12 <- plot_usmap(data = df_wide_12, regions = "counties", include = c("OR"), values = "relig", labels = FALSE) +
+rel_ormap_12 <- plot_usmap(data = df_wide_12, regions = "counties", include = c("OR"), values = "relig", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "red") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2012")
 
-rel_ormap_16 <- plot_usmap(data = df_wide_16, regions = "counties", include = c("OR"), values = "relig", labels = FALSE) +
+rel_ormap_16 <- plot_usmap(data = df_wide_16, regions = "counties", include = c("OR"), values = "relig", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "red") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
@@ -676,19 +703,32 @@ rel_ormap_16 <- plot_usmap(data = df_wide_16, regions = "counties", include = c(
 
 
 #Combine 4 Oregon Religious Social Capital Maps in 1 plot
-rel_ormap_all <- ggarrange(rel_ormap_00,
+rel_ormap_p1 <- ggarrange(rel_ormap_00,
           rel_ormap_08,
-          rel_ormap_12,
-          rel_ormap_16,
-          ncol = 2,
+          ncol = 1,
           nrow = 2)
 
+rel_ormap_p2 <- ggarrange(rel_ormap_12,
+          rel_ormap_16,
+          ncol = 1,
+          nrow = 2)
+
+
 #Annotate Combined Oregon Religious Social Capital Maps 
-annotate_figure(rel_ormap_all,
-                top = text_grob("Figure 5b. Distribution of Religious Social Capital in Oregon", face = "bold", size = 12),
+annotate_figure(rel_ormap_p1,
+                top = text_grob("Figure 5b. Religious Social Capital in Oregon", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of religious establishments", hjust = 1, x = 1, face = "italic", size = 10))
+
+annotate_figure(rel_ormap_p2,
+                top = text_grob("Figure 5b. Religious Social Capital in Oregon, cont'd", face = "bold", size = 12),
+                bottom = text_grob("Thicker color indicates higher per capita count of religious establishments", hjust = 1, x = 1, face = "italic", size = 10))
+
+
+
+
 ```
-```{r visualization civic social capital maps}
+
+```{r visualization civic social capital maps, fig.width = 5, fig.height = 9}
 
 #Civic Social Capital 
 civ_usmap_00 <- plot_usmap(data = df_wide_00, regions = "counties", values = "civic") +
@@ -730,43 +770,50 @@ civ_usmap_16 <- plot_usmap(data = df_wide_12, regions = "counties", values = "ci
   labs(title = "2016")
 
 
-#Combine 4 US Civic Social Capital Maps in 1 plot
-civ_usmap_all <- ggarrange(civ_usmap_00,
+#Combine 4 US Civic Social Capital Maps in 2 figures
+civ_usmap_p1 <- ggarrange(civ_usmap_00,
           civ_usmap_08,
-          civ_usmap_12,
-          civ_usmap_16,
-          ncol = 2,
+          ncol = 1,
           nrow = 2)
 
-#Annotate Combined US Civic  Social Capital Maps 
-annotate_figure(civ_usmap_all,
-                top = text_grob("Figure 6a. Distribution of Civic Social Capital in US", face = "bold", size = 12),
+civ_usmap_p2 <- ggarrange(civ_usmap_12,
+          civ_usmap_16,
+          ncol = 1,
+          nrow = 2)
+
+#Annotate Combined US Civic Social Capital Maps 
+annotate_figure(civ_usmap_p1,
+                top = text_grob("Figure 6a. Civic Social Capital in US", face = "bold", size = 12),
+                bottom = text_grob("Thicker color indicates higher per capita count of civic establishments", hjust = 1, x = 1, face = "italic", size = 10))
+
+annotate_figure(civ_usmap_p2,
+                top = text_grob("Figure 6a. Civic Social Capital in US, cont'd", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of civic establishments", hjust = 1, x = 1, face = "italic", size = 10))
 
 
 #Oregon Civic Social Capital Maps
-civ_ormap_00 <- plot_usmap(data = df_wide_00, regions = "counties", include = c("OR"), values = "civic", labels = FALSE) +
+civ_ormap_00 <- plot_usmap(data = df_wide_00, regions = "counties", include = c("OR"), values = "civic", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "blue") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2000")
 
-civ_ormap_08 <- plot_usmap(data = df_wide_08, regions = "counties", include = c("OR"), values = "civic", labels = FALSE) +
+civ_ormap_08 <- plot_usmap(data = df_wide_08, regions = "counties", include = c("OR"), values = "civic", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "blue") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2008")
 
-civ_ormap_12 <- plot_usmap(data = df_wide_12, regions = "counties", include = c("OR"), values = "civic", labels = FALSE) +
+civ_ormap_12 <- plot_usmap(data = df_wide_12, regions = "counties", include = c("OR"), values = "civic", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "blue") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2012")
 
-civ_ormap_16 <- plot_usmap(data = df_wide_16, regions = "counties", include = c("OR"), values = "civic", labels = FALSE) +
+civ_ormap_16 <- plot_usmap(data = df_wide_16, regions = "counties", include = c("OR"), values = "civic", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "blue") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
@@ -774,21 +821,29 @@ civ_ormap_16 <- plot_usmap(data = df_wide_16, regions = "counties", include = c(
   labs(title = "2016")
 
 
-#Combine 4 Oregon Civic Social Capital Maps in 1 plot
-civ_ormap_all <- ggarrange(civ_ormap_00,
+#Combine 4 Oregon Civic Social Capital Maps in 2 figures
+civ_ormap_p1 <- ggarrange(civ_ormap_00,
           civ_ormap_08,
-          civ_ormap_12,
+          ncol = 1,
+          nrow = 2)
+
+civ_ormap_p2 <- ggarrange(civ_ormap_12,
           civ_ormap_16,
-          ncol = 2,
+          ncol = 1,
           nrow = 2)
 
 #Annotate Combined Oregon Civic Social Capital Maps 
-annotate_figure(civ_ormap_all,
-                top = text_grob("Figure 6b. Distribution of Civic Social Capital in Oregon", face = "bold", size = 12),
+annotate_figure(civ_ormap_p1,
+                top = text_grob("Figure 6b. Civic Social Capital in Oregon", face = "bold", size = 12),
+                bottom = text_grob("Thicker color indicates higher per capita count of civic establishments", hjust = 1, x = 1, face = "italic", size = 10))
+
+annotate_figure(civ_ormap_p2,
+                top = text_grob("Figure 6b. Civic Social Capital in Oregon, cont'd", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of civic establishments", hjust = 1, x = 1, face = "italic", size = 10))
 
 ```
-```{r visualization labor social capital maps}
+
+```{r visualization labor social capital maps, fig.width = 5, fig.height = 9}
 
 #Labor Social Capital 
 lab_usmap_00 <- plot_usmap(data = df_wide_00, regions = "counties", values = "labor") +
@@ -831,42 +886,49 @@ lab_usmap_16 <- plot_usmap(data = df_wide_12, regions = "counties", values = "la
 
 
 #Combine 4 US labor Social Capital Maps in 1 plot
-lab_usmap_all <- ggarrange(lab_usmap_00,
+lab_usmap_p1 <- ggarrange(lab_usmap_00,
           lab_usmap_08,
-          lab_usmap_12,
+          ncol = 1,
+          nrow = 2)
+
+lab_usmap_p2 <- ggarrange(lab_usmap_12,
           lab_usmap_16,
-          ncol = 2,
+          ncol = 1,
           nrow = 2)
 
 #Annotate Combined US labor Social Capital Maps 
-annotate_figure(lab_usmap_all,
-                top = text_grob("Figure 7a. Distribution of Labor Social Capital in US", face = "bold", size = 12),
+annotate_figure(lab_usmap_p1,
+                top = text_grob("Figure 7a. Labor Social Capital in US", face = "bold", size = 12),
+                bottom = text_grob("Thicker color indicates higher per capita count of labor establishments", hjust = 1, x = 1, face = "italic", size = 10))
+
+annotate_figure(lab_usmap_p2,
+                top = text_grob("Figure 7b. Labor Social Capital in US, cont'd", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of labor establishments", hjust = 1, x = 1, face = "italic", size = 10))
 
 
 #Oregon labor Social Capital Maps
-lab_ormap_00 <- plot_usmap(data = df_wide_00, regions = "counties", include = c("OR"), values = "labor", labels = FALSE) +
+lab_ormap_00 <- plot_usmap(data = df_wide_00, regions = "counties", include = c("OR"), values = "labor", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "brown") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2000")
 
-lab_ormap_08 <- plot_usmap(data = df_wide_08, regions = "counties", include = c("OR"), values = "labor", labels = FALSE) +
+lab_ormap_08 <- plot_usmap(data = df_wide_08, regions = "counties", include = c("OR"), values = "labor", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "brown") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2008")
 
-lab_ormap_12 <- plot_usmap(data = df_wide_12, regions = "counties", include = c("OR"), values = "labor", labels = FALSE) +
+lab_ormap_12 <- plot_usmap(data = df_wide_12, regions = "counties", include = c("OR"), values = "labor", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "brown") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
   theme(legend.position = "none") + 
   labs(title = "2012")
 
-lab_ormap_16 <- plot_usmap(data = df_wide_16, regions = "counties", include = c("OR"), values = "labor", labels = FALSE) +
+lab_ormap_16 <- plot_usmap(data = df_wide_16, regions = "counties", include = c("OR"), values = "labor", labels = TRUE) +
   scale_fill_gradient2(low = "white", 
                         high = "brown") + 
   theme(panel.background = element_rect(color = "black", fill = "white")) + 
@@ -874,17 +936,25 @@ lab_ormap_16 <- plot_usmap(data = df_wide_16, regions = "counties", include = c(
   labs(title = "2016")
 
 
-#Combine 4 Oregon Labor Social Capital Maps in 1 plot
-lab_ormap_all <- ggarrange(lab_ormap_00,
+#Combine 4 Oregon Labor Social Capital Maps in 2 figures
+lab_ormap_p1 <- ggarrange(lab_ormap_00,
           lab_ormap_08,
-          lab_ormap_12,
-          lab_ormap_16,
-          ncol = 2,
+          ncol = 1,
           nrow = 2)
 
+lab_ormap_p2 <- ggarrange(lab_ormap_12,
+          lab_ormap_16,
+          ncol = 1,
+          nrow = 2)
+
+
 #Annotate Combined Oregon Labor Social Capital Maps 
-annotate_figure(lab_ormap_all,
-                top = text_grob("Figure 7b. Distribution of Labor Social Capital in Oregon", face = "bold", size = 12),
+annotate_figure(lab_ormap_p1,
+                top = text_grob("Figure 7b. Labor Social Capital in Oregon", face = "bold", size = 12),
+                bottom = text_grob("Thicker color indicates higher per capita count of labor establishments", hjust = 1, x = 1, face = "italic", size = 10))
+
+annotate_figure(lab_ormap_p2,
+                top = text_grob("Figure 7b. Labor Social Capital in Oregon, cont'd", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of labor establishments", hjust = 1, x = 1, face = "italic", size = 10))
 ```
 

@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.2)  5 DEC 2020 23:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.12.6)  6 DEC 2020 21:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Script.tex
 (./Script.tex
 LaTeX2e <2020-10-01> patch level 2
-L3 programming layer <2020-10-27> xparse <2020-03-03> (c:/Users/Hyeonjin/AppDat
+L3 programming layer <2020-12-03> xparse <2020-03-03> (c:/Users/Hyeonjin/AppDat
 a/Roaming/TinyTeX/texmf-dist/tex/latex/apa6/apa6.cls
 Document Class: apa6 2020/01/13 v2.34 APA formatting (6th edition)
 
@@ -16,14 +16,14 @@ Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
-\c@part=\count175
-\c@section=\count176
-\c@subsection=\count177
-\c@subsubsection=\count178
-\c@paragraph=\count179
-\c@subparagraph=\count180
-\c@figure=\count181
-\c@table=\count182
+\c@part=\count177
+\c@section=\count178
+\c@subsection=\count179
+\c@subsubsection=\count180
+\c@paragraph=\count181
+\c@subparagraph=\count182
+\c@figure=\count183
+\c@table=\count184
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
@@ -31,7 +31,7 @@ File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolb
 ox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count183
+\etb@tempcnta=\count185
 )
 Class apa6 Info: No bibliography package was specified; defaulting to (but not 
 loading) Biblatex on input line 213.
@@ -95,9 +95,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 ty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
-\Gm@cnth=\count184
-\Gm@cntv=\count185
-\c@Gm@tempcnt=\count186
+\Gm@cnth=\count186
+\Gm@cntv=\count187
+\c@Gm@tempcnt=\count188
 \Gm@bindingoffset=\dimen139
 \Gm@wd@mp=\dimen140
 \Gm@odd@mp=\dimen141
@@ -146,12 +146,12 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen156
 \cmidrulekern=\dimen157
 \defaultaddspace=\dimen158
-\@cmidla=\count187
-\@cmidlb=\count188
+\@cmidla=\count189
+\@cmidlb=\count190
 \@aboverulesep=\dimen159
 \@belowrulesep=\dimen160
-\@thisruleclass=\count189
-\@lastruleclass=\count190
+\@thisruleclass=\count191
+\@lastruleclass=\count192
 \@thisrulewidth=\dimen161
 )
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttable/
@@ -186,11 +186,11 @@ Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
 \caption@hangindent=\dimen168
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count191
-\c@continuedfloat=\count192
+\c@caption@flags=\count193
+\c@continuedfloat=\count194
 Package caption Info: threeparttable package is loaded.
 )
-\c@APAenum=\count193
+\c@APAenum=\count195
 \@text@par@indent=\skip59
 \gr@box=\box48
 \gr@boxwidth=\skip60
@@ -203,7 +203,7 @@ Package: bm 2019/07/24 v1.2d Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 209.
 )
-\c@appendix=\count194
+\c@appendix=\count196
 
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyhdr/fancyh
 dr.sty
@@ -223,12 +223,12 @@ s
 at.sty
 Package: endfloat 2019/04/15 v2.7 LaTeX2e package puts figures and tables at en
 d (jdm)
-\c@posttable=\count195
+\c@posttable=\count197
 \efloat@postttt=\write3
-\@ef@tttopen=\count196
-\c@postfigure=\count197
+\@ef@tttopen=\count198
+\c@postfigure=\count199
 \efloat@postfff=\write4
-\@ef@fffopen=\count198
+\@ef@fffopen=\count266
 ))
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amssym
 b.sty
@@ -270,13 +270,13 @@ LaTeX Info: Redefining \boldsymbol on input line 28.
 sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count199
+\inf@bad=\count267
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count266
-\leftroot@=\count267
+\uproot@=\count268
+\leftroot@=\count269
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count268
-\DOTSCASE@=\count269
+\classnum@=\count270
+\DOTSCASE@=\count271
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -285,15 +285,15 @@ LaTeX Info: Redefining \cdots on input line 620.
 \big@size=\dimen171
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count270
-\c@MaxMatrixCols=\count271
+\macc@depth=\count272
+\c@MaxMatrixCols=\count273
 \dotsspace@=\muskip16
-\c@parentequation=\count272
-\dspbrk@lvl=\count273
+\c@parentequation=\count274
+\dspbrk@lvl=\count275
 \tag@help=\toks19
-\row@=\count274
-\column@=\count275
-\maxfields@=\count276
+\row@=\count276
+\column@=\count277
+\maxfields@=\count278
 \andhelp@=\toks20
 \eqnshift@=\dimen172
 \alignsep@=\dimen173
@@ -399,8 +399,8 @@ ions.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen178
-\Hy@linkcounter=\count277
-\Hy@pagecounter=\count278
+\Hy@linkcounter=\count279
+\Hy@pagecounter=\count280
 
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc
 .def
@@ -416,7 +416,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 cmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count279
+\Hy@SavedSpaceFactor=\count281
 Package hyperref Info: Option `unicode' set `true' on input line 4338.
 
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.
@@ -432,7 +432,7 @@ Package hyperref Info: Plain pages OFF on input line 4479.
 Package hyperref Info: Backreferencing OFF on input line 4484.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4717.
-\c@Hy@tempcnt=\count280
+\c@Hy@tempcnt=\count282
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -449,7 +449,7 @@ gintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count281
+\Fld@menulength=\count283
 \Field@Width=\dimen180
 \Fld@charsize=\dimen181
 Package hyperref Info: Hyper figures OFF on input line 6347.
@@ -468,9 +468,9 @@ Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
 ge
 with kernel methods
 )
-\Hy@abspage=\count282
-\c@Item=\count283
-\c@Hfootnote=\count284
+\Hy@abspage=\count284
+\c@Item=\count285
+\c@Hfootnote=\count286
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -484,8 +484,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
 e
 with kernel methods
 )
-\Fld@listcount=\count285
-\c@bookmark@seq@number=\count286
+\Fld@listcount=\count287
+\c@bookmark@seq@number=\count288
 
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/
 rerunfilecheck.sty
@@ -521,16 +521,16 @@ Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
 \LTright=\skip76
 \LTpre=\skip77
 \LTpost=\skip78
-\LTchunksize=\count287
+\LTchunksize=\count289
 \LTcapwidth=\dimen182
 \LT@head=\box51
 \LT@firsthead=\box52
 \LT@foot=\box53
 \LT@lastfoot=\box54
-\LT@cols=\count288
-\LT@rows=\count289
-\c@LT@tables=\count290
-\c@LT@chunks=\count291
+\LT@cols=\count290
+\LT@rows=\count291
+\c@LT@tables=\count292
+\c@LT@chunks=\count293
 \LT@p@ftn=\toks25
 )
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/lscape
@@ -541,7 +541,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 ow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@colwidth=\skip79
-\multirow@cntb=\count292
+\multirow@cntb=\count294
 \multirow@dima=\skip80
 \bigstrutjot=\dimen183
 )
@@ -564,7 +564,7 @@ Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
 \TX@old@col=\dimen188
 \TX@target=\dimen189
 \TX@delta=\dimen190
-\TX@cols=\count293
+\TX@cols=\count295
 \TX@ftn=\toks27
 )
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttablex
@@ -586,12 +586,12 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/csquotes/csquot
 es.sty
 Package: csquotes 2019-12-06 v5.2j context-sensitive quotations (JAW)
-\csq@reset=\count294
-\csq@gtype=\count295
-\csq@glevel=\count296
-\csq@qlevel=\count297
-\csq@maxlvl=\count298
-\csq@tshold=\count299
+\csq@reset=\count296
+\csq@gtype=\count297
+\csq@glevel=\count298
+\csq@qlevel=\count299
+\csq@maxlvl=\count300
+\csq@tshold=\count301
 \csq@ltx@everypar=\toks28
 
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/csquotes/csquot
@@ -612,7 +612,7 @@ Package: babel 2020/10/27 3.51 The Babel package
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.d
 ef
 File: babel.def 2020/10/27 3.51 Babel common definitions
-\babel@savecnt=\count300
+\babel@savecnt=\count302
 \U@D=\dimen191
 \l@babelnohyphens=\language3
 
@@ -620,7 +620,7 @@ File: babel.def 2020/10/27 3.51 Babel common definitions
 l.def)
 \bbl@readstream=\read2
 )
-\bbl@dirlevel=\count301
+\bbl@dirlevel=\count303
 
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel-english
 /english.ldf
@@ -647,7 +647,7 @@ Package: biblatex 2020/08/23 v3.15a programmable bibliographies (PK/MW)
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/logreq/logreq.s
 ty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count302
+\lrq@indent=\count304
 
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/logreq/logreq.d
 ef
@@ -656,48 +656,48 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@tabx@nest=\count303
-\c@listtotal=\count304
-\c@listcount=\count305
-\c@liststart=\count306
-\c@liststop=\count307
-\c@citecount=\count308
-\c@citetotal=\count309
-\c@multicitecount=\count310
-\c@multicitetotal=\count311
-\c@instcount=\count312
-\c@maxnames=\count313
-\c@minnames=\count314
-\c@maxitems=\count315
-\c@minitems=\count316
-\c@citecounter=\count317
-\c@maxcitecounter=\count318
-\c@savedcitecounter=\count319
-\c@uniquelist=\count320
-\c@uniquename=\count321
-\c@refsection=\count322
-\c@refsegment=\count323
-\c@maxextratitle=\count324
-\c@maxextratitleyear=\count325
-\c@maxextraname=\count326
-\c@maxextradate=\count327
-\c@maxextraalpha=\count328
-\c@abbrvpenalty=\count329
-\c@highnamepenalty=\count330
-\c@lownamepenalty=\count331
-\c@maxparens=\count332
-\c@parenlevel=\count333
-\blx@tempcnta=\count334
-\blx@tempcntb=\count335
-\blx@tempcntc=\count336
-\blx@maxsection=\count337
-\blx@maxsegment@0=\count338
-\blx@notetype=\count339
-\blx@parenlevel@text=\count340
-\blx@parenlevel@foot=\count341
-\blx@sectionciteorder@0=\count342
-\blx@entrysetcounter=\count343
-\blx@biblioinstance=\count344
+\c@tabx@nest=\count305
+\c@listtotal=\count306
+\c@listcount=\count307
+\c@liststart=\count308
+\c@liststop=\count309
+\c@citecount=\count310
+\c@citetotal=\count311
+\c@multicitecount=\count312
+\c@multicitetotal=\count313
+\c@instcount=\count314
+\c@maxnames=\count315
+\c@minnames=\count316
+\c@maxitems=\count317
+\c@minitems=\count318
+\c@citecounter=\count319
+\c@maxcitecounter=\count320
+\c@savedcitecounter=\count321
+\c@uniquelist=\count322
+\c@uniquename=\count323
+\c@refsection=\count324
+\c@refsegment=\count325
+\c@maxextratitle=\count326
+\c@maxextratitleyear=\count327
+\c@maxextraname=\count328
+\c@maxextradate=\count329
+\c@maxextraalpha=\count330
+\c@abbrvpenalty=\count331
+\c@highnamepenalty=\count332
+\c@lownamepenalty=\count333
+\c@maxparens=\count334
+\c@parenlevel=\count335
+\blx@tempcnta=\count336
+\blx@tempcntb=\count337
+\blx@tempcntc=\count338
+\blx@maxsection=\count339
+\blx@maxsegment@0=\count340
+\blx@notetype=\count341
+\blx@parenlevel@text=\count342
+\blx@parenlevel@foot=\count343
+\blx@sectionciteorder@0=\count344
+\blx@entrysetcounter=\count345
+\blx@biblioinstance=\count346
 \labelnumberwidth=\skip85
 \labelalphawidth=\skip86
 \biblabelsep=\skip87
@@ -709,9 +709,9 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \blx@bcfin=\read3
 \blx@bcfout=\write5
 \blx@langwohyphens=\language4
-\c@mincomprange=\count345
-\c@maxcomprange=\count346
-\c@mincompwidth=\count347
+\c@mincomprange=\count347
+\c@maxcomprange=\count348
+\c@mincompwidth=\count349
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -721,74 +721,74 @@ File: blx-dm.def 2020/08/23 v3.15a biblatex localization (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count348
-\c@savedafterword=\count349
-\c@annotator=\count350
-\c@savedannotator=\count351
-\c@author=\count352
-\c@savedauthor=\count353
-\c@bookauthor=\count354
-\c@savedbookauthor=\count355
-\c@commentator=\count356
-\c@savedcommentator=\count357
-\c@editor=\count358
-\c@savededitor=\count359
-\c@editora=\count360
-\c@savededitora=\count361
-\c@editorb=\count362
-\c@savededitorb=\count363
-\c@editorc=\count364
-\c@savededitorc=\count365
-\c@foreword=\count366
-\c@savedforeword=\count367
-\c@holder=\count368
-\c@savedholder=\count369
-\c@introduction=\count370
-\c@savedintroduction=\count371
-\c@namea=\count372
-\c@savednamea=\count373
-\c@nameb=\count374
-\c@savednameb=\count375
-\c@namec=\count376
-\c@savednamec=\count377
-\c@translator=\count378
-\c@savedtranslator=\count379
-\c@shortauthor=\count380
-\c@savedshortauthor=\count381
-\c@shorteditor=\count382
-\c@savedshorteditor=\count383
-\c@labelname=\count384
-\c@savedlabelname=\count385
-\c@institution=\count386
-\c@savedinstitution=\count387
-\c@lista=\count388
-\c@savedlista=\count389
-\c@listb=\count390
-\c@savedlistb=\count391
-\c@listc=\count392
-\c@savedlistc=\count393
-\c@listd=\count394
-\c@savedlistd=\count395
-\c@liste=\count396
-\c@savedliste=\count397
-\c@listf=\count398
-\c@savedlistf=\count399
-\c@location=\count400
-\c@savedlocation=\count401
-\c@organization=\count402
-\c@savedorganization=\count403
-\c@origlocation=\count404
-\c@savedoriglocation=\count405
-\c@origpublisher=\count406
-\c@savedorigpublisher=\count407
-\c@publisher=\count408
-\c@savedpublisher=\count409
-\c@language=\count410
-\c@savedlanguage=\count411
-\c@origlanguage=\count412
-\c@savedoriglanguage=\count413
-\c@pageref=\count414
-\c@savedpageref=\count415
+\c@afterword=\count350
+\c@savedafterword=\count351
+\c@annotator=\count352
+\c@savedannotator=\count353
+\c@author=\count354
+\c@savedauthor=\count355
+\c@bookauthor=\count356
+\c@savedbookauthor=\count357
+\c@commentator=\count358
+\c@savedcommentator=\count359
+\c@editor=\count360
+\c@savededitor=\count361
+\c@editora=\count362
+\c@savededitora=\count363
+\c@editorb=\count364
+\c@savededitorb=\count365
+\c@editorc=\count366
+\c@savededitorc=\count367
+\c@foreword=\count368
+\c@savedforeword=\count369
+\c@holder=\count370
+\c@savedholder=\count371
+\c@introduction=\count372
+\c@savedintroduction=\count373
+\c@namea=\count374
+\c@savednamea=\count375
+\c@nameb=\count376
+\c@savednameb=\count377
+\c@namec=\count378
+\c@savednamec=\count379
+\c@translator=\count380
+\c@savedtranslator=\count381
+\c@shortauthor=\count382
+\c@savedshortauthor=\count383
+\c@shorteditor=\count384
+\c@savedshorteditor=\count385
+\c@labelname=\count386
+\c@savedlabelname=\count387
+\c@institution=\count388
+\c@savedinstitution=\count389
+\c@lista=\count390
+\c@savedlista=\count391
+\c@listb=\count392
+\c@savedlistb=\count393
+\c@listc=\count394
+\c@savedlistc=\count395
+\c@listd=\count396
+\c@savedlistd=\count397
+\c@liste=\count398
+\c@savedliste=\count399
+\c@listf=\count400
+\c@savedlistf=\count401
+\c@location=\count402
+\c@savedlocation=\count403
+\c@organization=\count404
+\c@savedorganization=\count405
+\c@origlocation=\count406
+\c@savedoriglocation=\count407
+\c@origpublisher=\count408
+\c@savedorigpublisher=\count409
+\c@publisher=\count410
+\c@savedpublisher=\count411
+\c@language=\count412
+\c@savedlanguage=\count413
+\c@origlanguage=\count414
+\c@savedoriglanguage=\count415
+\c@pageref=\count416
+\c@savedpageref=\count417
 \shorthandwidth=\skip93
 \shortjournalwidth=\skip94
 \shortserieswidth=\skip95
@@ -812,16 +812,16 @@ File: blx-compat.def 2020/08/23 v3.15a biblatex compatibility (PK/MW)
 )
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.
 sty
-Package: expl3 2020-10-27 L3 programming layer (loader) 
+Package: expl3 2020-12-03 L3 programming layer (loader) 
 
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3bac
 kend-pdftex.def
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count416
+\l__kernel_color_stack_int=\count418
 \l__pdf_internal_box=\box57
 ))
 Package biblatex Info: expl3
-(biblatex)             2020-10-27 L3 programming layer (loader) 
+(biblatex)             2020-12-03 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
 Package biblatex Info: Trying to load expl3 case changing code...
@@ -843,19 +843,19 @@ Package biblatex Info: ... file 'biblatex.def' found.
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/biblat
 ex.def
 File: biblatex.def 2020/08/23 v3.15a biblatex compatibility (PK/MW)
-\c@textcitecount=\count417
-\c@textcitetotal=\count418
-\c@textcitemaxnames=\count419
-\c@biburlbigbreakpenalty=\count420
-\c@biburlbreakpenalty=\count421
-\c@biburlnumpenalty=\count422
-\c@biburlucpenalty=\count423
-\c@biburllcpenalty=\count424
+\c@textcitecount=\count419
+\c@textcitetotal=\count420
+\c@textcitemaxnames=\count421
+\c@biburlbigbreakpenalty=\count422
+\c@biburlbreakpenalty=\count423
+\c@biburlnumpenalty=\count424
+\c@biburlucpenalty=\count425
+\c@biburllcpenalty=\count426
 \biburlbigskip=\muskip18
 \biburlnumskip=\muskip19
 \biburlucskip=\muskip20
 \biburllcskip=\muskip21
-\c@smartand=\count425
+\c@smartand=\count427
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
@@ -869,8 +869,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/bbx/st
 andard.bbx
 File: standard.bbx 2020/08/23 v3.15a biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count426
-\c@bbx:relatedtotal=\count427
+\c@bbx:relatedcount=\count428
+\c@bbx:relatedtotal=\count429
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
@@ -903,38 +903,38 @@ Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
 (./Script.aux
 
-LaTeX Warning: Label `tab:regression' multiply defined.
+LaTeX Warning: Label `tab:regression2' multiply defined.
 
 
-LaTeX Warning: Label `tab:regression' multiply defined.
+LaTeX Warning: Label `tab:regression2' multiply defined.
 
 
-LaTeX Warning: Label `tab:regression' multiply defined.
+LaTeX Warning: Label `tab:regression2' multiply defined.
 
 
-LaTeX Warning: Label `tab:regression' multiply defined.
+LaTeX Warning: Label `tab:regression2' multiply defined.
 
 )
 \openout1 = `Script.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -994,7 +994,7 @@ on.sty
 Package: ltcaption 2020/05/30 v1.4b longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 167.
+Package hyperref Info: Link coloring OFF on input line 146.
 
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/namere
 f.sty
@@ -1008,11 +1008,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 g/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count428
+\c@section@level=\count430
 )
-LaTeX Info: Redefining \ref on input line 167.
-LaTeX Info: Redefining \pageref on input line 167.
-LaTeX Info: Redefining \nameref on input line 167.
+LaTeX Info: Redefining \ref on input line 146.
+LaTeX Info: Redefining \pageref on input line 146.
+LaTeX Info: Redefining \nameref on input line 146.
 (./Script.out) (./Script.out)
 \@outlinefile=\write6
 \openout6 = `Script.out'.
@@ -1031,43 +1031,100 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Script.bbl' found.
-(./Script.bbl)
-Package biblatex Info: Reference section=0 on input line 167.
-Package biblatex Info: Reference segment=0 on input line 167.
+(./Script.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                data6science
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                giuliano2020
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                jottier2012
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                la1998
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                lee2020
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                morales2016
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                putnam2000
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                rupasingha2006
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
+Package biblatex Info: Reference section=0 on input line 146.
+Package biblatex Info: Reference segment=0 on input line 146.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-69.
+48.
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-69.
+48.
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-169.
+148.
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-169.
+148.
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 169.
+(Font)              <12> on input line 148.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 169.
+(Font)              <8> on input line 148.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 169.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 169
+(Font)              <6> on input line 148.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 148
 .
 
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.f
 d
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 169
+LaTeX Font Info:    Trying to load font information for U+msb on input line 148
 .
 
 (c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.f
@@ -1076,197 +1133,286 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updma
 p/pdftex.map}
 
-] [2] [3]
+] [2]
+Underfull \vbox (badness 1122) has occurred while \output is active []
+
+[3] [4] [5]
 \openout3 = `Script.ttt'.
 
 (Script.ttt)
-<Script_files/figure-latex/visualization part 1-1.pdf, id=82, 469.755pt x 325.2
-15pt>
-File: Script_files/figure-latex/visualization part 1-1.pdf Graphic file (type p
-df)
-<use Script_files/figure-latex/visualization part 1-1.pdf>
-Package pdftex.def Info: Script_files/figure-latex/visualization part 1-1.pdf  
-used on input line 400.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Script_files/figure-latex/visualization part 1-2.pdf, id=83, 469.755pt x 325.2
-15pt>
-File: Script_files/figure-latex/visualization part 1-2.pdf Graphic file (type p
-df)
-<use Script_files/figure-latex/visualization part 1-2.pdf>
-Package pdftex.def Info: Script_files/figure-latex/visualization part 1-2.pdf  
-used on input line 400.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Script_files/figure-latex/visualization part 1-3.pdf, id=84, 469.755pt x 325.2
-15pt>
-File: Script_files/figure-latex/visualization part 1-3.pdf Graphic file (type p
-df)
-<use Script_files/figure-latex/visualization part 1-3.pdf>
-Package pdftex.def Info: Script_files/figure-latex/visualization part 1-3.pdf  
-used on input line 400.
+<Script_files/figure-latex/visualization US election results-1.pdf, id=128, 361
+.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization US election results-1.pdf Graphic
+ file (type pdf)
+<use Script_files/figure-latex/visualization US election results-1.pdf>
+Package pdftex.def Info: Script_files/figure-latex/visualization US election re
+sults-1.pdf  used on input line 228.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+<Script_files/figure-latex/visualization US election results-2.pdf, id=129, 361
+.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization US election results-2.pdf Graphic
+ file (type pdf)
+<use Script_files/figure-latex/visualization US election results-2.pdf>
+Package pdftex.def Info: Script_files/figure-latex/visualization US election re
+sults-2.pdf  used on input line 228.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[6]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[7 <./Script_files/figure-latex/visualization US election results-1.pdf>]
+<Script_files/figure-latex/visualization Oregon election results-1.pdf, id=147,
+ 361.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization Oregon election results-1.pdf Gra
+phic file (type pdf)
+<use Script_files/figure-latex/visualization Oregon election results-1.pdf>
+Package pdftex.def Info: Script_files/figure-latex/visualization Oregon electio
+n results-1.pdf  used on input line 230.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+<Script_files/figure-latex/visualization Oregon election results-2.pdf, id=148,
+ 361.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization Oregon election results-2.pdf Gra
+phic file (type pdf)
+<use Script_files/figure-latex/visualization Oregon election results-2.pdf>
+Package pdftex.def Info: Script_files/figure-latex/visualization Oregon electio
+n results-2.pdf  used on input line 230.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[8 <./Script_files/figure-latex/visualization US election results-2.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[9 <./Script_files/figure-latex/visualization Oregon election results-1.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[10 <./Script_files/figure-latex/visualization Oregon election results-2.pdf>]
+<Script_files/figure-latex/violin-1.pdf, id=185, 469.755pt x 325.215pt>
+File: Script_files/figure-latex/violin-1.pdf Graphic file (type pdf)
+<use Script_files/figure-latex/violin-1.pdf>
+Package pdftex.def Info: Script_files/figure-latex/violin-1.pdf  used on input 
+line 237.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (28.90639pt too wide) in paragraph at lines 400--401
+Overfull \hbox (28.90639pt too wide) in paragraph at lines 237--239
 [][] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1082) has occurred while \output is active []
 
-[4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[5 <./Script_files/figure-latex/visualization part 1-1.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[6 <./Script_files/figure-latex/visualization part 1-2.pdf>]
-<Script_files/figure-latex/visualization election results-1.pdf, id=131, 469.75
-5pt x 325.215pt>
-File: Script_files/figure-latex/visualization election results-1.pdf Graphic fi
-le (type pdf)
-<use Script_files/figure-latex/visualization election results-1.pdf>
-Package pdftex.def Info: Script_files/figure-latex/visualization election resul
-ts-1.pdf  used on input line 402.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Script_files/figure-latex/visualization election results-2.pdf, id=132, 469.75
-5pt x 325.215pt>
-File: Script_files/figure-latex/visualization election results-2.pdf Graphic fi
-le (type pdf)
-<use Script_files/figure-latex/visualization election results-2.pdf>
-Package pdftex.def Info: Script_files/figure-latex/visualization election resul
-ts-2.pdf  used on input line 402.
+[11 <./Script_files/figure-latex/violin-1.pdf>]
+<Script_files/figure-latex/scatterplot-1.pdf, id=195, 469.755pt x 325.215pt>
+File: Script_files/figure-latex/scatterplot-1.pdf Graphic file (type pdf)
+<use Script_files/figure-latex/scatterplot-1.pdf>
+Package pdftex.def Info: Script_files/figure-latex/scatterplot-1.pdf  used on i
+nput line 246.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (28.90639pt too wide) in paragraph at lines 402--403
+Overfull \hbox (28.90639pt too wide) in paragraph at lines 246--248
 [][] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1521) has occurred while \output is active []
 
-[7 <./Script_files/figure-latex/visualization part 1-3.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[8 <./Script_files/figure-latex/visualization election results-1.pdf>]
-<Script_files/figure-latex/visualization religious capital maps-1.pdf, id=158, 
-469.755pt x 325.215pt>
-File: Script_files/figure-latex/visualization religious capital maps-1.pdf Grap
-hic file (type pdf)
-<use Script_files/figure-latex/visualization religious capital maps-1.pdf>
+[12 <./Script_files/figure-latex/scatterplot-1.pdf>]
+<Script_files/figure-latex/visualization religious capital US map-1.pdf, id=205
+, 361.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization religious capital US map-1.pdf Gr
+aphic file (type pdf)
+<use Script_files/figure-latex/visualization religious capital US map-1.pdf>
 Package pdftex.def Info: Script_files/figure-latex/visualization religious capi
-tal maps-1.pdf  used on input line 404.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Script_files/figure-latex/visualization religious capital maps-2.pdf, id=159, 
-469.755pt x 325.215pt>
-File: Script_files/figure-latex/visualization religious capital maps-2.pdf Grap
-hic file (type pdf)
-<use Script_files/figure-latex/visualization religious capital maps-2.pdf>
+tal US map-1.pdf  used on input line 251.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+<Script_files/figure-latex/visualization religious capital US map-2.pdf, id=206
+, 361.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization religious capital US map-2.pdf Gr
+aphic file (type pdf)
+<use Script_files/figure-latex/visualization religious capital US map-2.pdf>
 Package pdftex.def Info: Script_files/figure-latex/visualization religious capi
-tal maps-2.pdf  used on input line 404.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (28.90639pt too wide) in paragraph at lines 404--405
-[][] 
- []
-
+tal US map-2.pdf  used on input line 251.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+<Script_files/figure-latex/visualization religious capital US map-3.pdf, id=207
+, 361.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization religious capital US map-3.pdf Gr
+aphic file (type pdf)
+<use Script_files/figure-latex/visualization religious capital US map-3.pdf>
+Package pdftex.def Info: Script_files/figure-latex/visualization religious capi
+tal US map-3.pdf  used on input line 251.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+<Script_files/figure-latex/visualization religious capital US map-4.pdf, id=208
+, 361.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization religious capital US map-4.pdf Gr
+aphic file (type pdf)
+<use Script_files/figure-latex/visualization religious capital US map-4.pdf>
+Package pdftex.def Info: Script_files/figure-latex/visualization religious capi
+tal US map-4.pdf  used on input line 251.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[9 <./Script_files/figure-latex/visualization election results-2.pdf>]
+[13]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[10 <./Script_files/figure-latex/visualization religious capital maps-1.pdf>]
-<Script_files/figure-latex/visualization civic social capital maps-1.pdf, id=18
-3, 469.755pt x 325.215pt>
+[14 <./Script_files/figure-latex/visualization religious capital US map-1.pdf>]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[15 <./Script_files/figure-latex/visualization religious capital US map-2.pdf>]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[16 <./Script_files/figure-latex/visualization religious capital US map-3.pdf>]
+<Script_files/figure-latex/visualization civic social capital maps-1.pdf, id=24
+7, 361.35pt x 650.43pt>
 File: Script_files/figure-latex/visualization civic social capital maps-1.pdf G
 raphic file (type pdf)
 <use Script_files/figure-latex/visualization civic social capital maps-1.pdf>
 Package pdftex.def Info: Script_files/figure-latex/visualization civic social c
-apital maps-1.pdf  used on input line 406.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Script_files/figure-latex/visualization civic social capital maps-2.pdf, id=18
-4, 469.755pt x 325.215pt>
+apital maps-1.pdf  used on input line 253.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+<Script_files/figure-latex/visualization civic social capital maps-2.pdf, id=24
+8, 361.35pt x 650.43pt>
 File: Script_files/figure-latex/visualization civic social capital maps-2.pdf G
 raphic file (type pdf)
 <use Script_files/figure-latex/visualization civic social capital maps-2.pdf>
 Package pdftex.def Info: Script_files/figure-latex/visualization civic social c
-apital maps-2.pdf  used on input line 406.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (28.90639pt too wide) in paragraph at lines 406--407
-[][] 
- []
-
+apital maps-2.pdf  used on input line 253.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+<Script_files/figure-latex/visualization civic social capital maps-3.pdf, id=24
+9, 361.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization civic social capital maps-3.pdf G
+raphic file (type pdf)
+<use Script_files/figure-latex/visualization civic social capital maps-3.pdf>
+Package pdftex.def Info: Script_files/figure-latex/visualization civic social c
+apital maps-3.pdf  used on input line 253.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+<Script_files/figure-latex/visualization civic social capital maps-4.pdf, id=25
+0, 361.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization civic social capital maps-4.pdf G
+raphic file (type pdf)
+<use Script_files/figure-latex/visualization civic social capital maps-4.pdf>
+Package pdftex.def Info: Script_files/figure-latex/visualization civic social c
+apital maps-4.pdf  used on input line 253.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[11 <./Script_files/figure-latex/visualization religious capital maps-2.pdf>]
+[17 <./Script_files/figure-latex/visualization religious capital US map-4.pdf>]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[12 <./Script_files/figure-latex/visualization civic social capital maps-1.pdf>
+[18 <./Script_files/figure-latex/visualization civic social capital maps-1.pdf>
 ]
-<Script_files/figure-latex/visualization labor social capital maps-1.pdf, id=20
-7, 469.755pt x 325.215pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[19 <./Script_files/figure-latex/visualization civic social capital maps-2.pdf>
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[20 <./Script_files/figure-latex/visualization civic social capital maps-3.pdf>
+]
+<Script_files/figure-latex/visualization labor social capital maps-1.pdf, id=29
+6, 361.35pt x 650.43pt>
 File: Script_files/figure-latex/visualization labor social capital maps-1.pdf G
 raphic file (type pdf)
 <use Script_files/figure-latex/visualization labor social capital maps-1.pdf>
 Package pdftex.def Info: Script_files/figure-latex/visualization labor social c
-apital maps-1.pdf  used on input line 408.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Script_files/figure-latex/visualization labor social capital maps-2.pdf, id=20
-8, 469.755pt x 325.215pt>
+apital maps-1.pdf  used on input line 255.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+<Script_files/figure-latex/visualization labor social capital maps-2.pdf, id=29
+7, 361.35pt x 650.43pt>
 File: Script_files/figure-latex/visualization labor social capital maps-2.pdf G
 raphic file (type pdf)
 <use Script_files/figure-latex/visualization labor social capital maps-2.pdf>
 Package pdftex.def Info: Script_files/figure-latex/visualization labor social c
-apital maps-2.pdf  used on input line 408.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (28.90639pt too wide) in paragraph at lines 408--409
-[][] 
- []
-
+apital maps-2.pdf  used on input line 255.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+<Script_files/figure-latex/visualization labor social capital maps-3.pdf, id=29
+8, 361.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization labor social capital maps-3.pdf G
+raphic file (type pdf)
+<use Script_files/figure-latex/visualization labor social capital maps-3.pdf>
+Package pdftex.def Info: Script_files/figure-latex/visualization labor social c
+apital maps-3.pdf  used on input line 255.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
+<Script_files/figure-latex/visualization labor social capital maps-4.pdf, id=29
+9, 361.35pt x 650.43pt>
+File: Script_files/figure-latex/visualization labor social capital maps-4.pdf G
+raphic file (type pdf)
+<use Script_files/figure-latex/visualization labor social capital maps-4.pdf>
+Package pdftex.def Info: Script_files/figure-latex/visualization labor social c
+apital maps-4.pdf  used on input line 255.
+(pdftex.def)             Requested size: 361.34912pt x 650.4284pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[13 <./Script_files/figure-latex/visualization civic social capital maps-2.pdf>
+[21 <./Script_files/figure-latex/visualization civic social capital maps-4.pdf>
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[14 <./Script_files/figure-latex/visualization labor social capital maps-1.pdf>
-] [15 <./Script_files/figure-latex/visualization labor social capital maps-2.pd
-f>] [16] [17
+[22 <./Script_files/figure-latex/visualization labor social capital maps-1.pdf>
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-] [18] AED endfloat: Processing end Figures and Tables [19] (./Script.ttt
-Overfull \hbox (58.88524pt too wide) in paragraph at lines 46--76
+[23 <./Script_files/figure-latex/visualization labor social capital maps-2.pdf>
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[24 <./Script_files/figure-latex/visualization labor social capital maps-3.pdf>
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[25 <./Script_files/figure-latex/visualization labor social capital maps-4.pdf>
+]
+<Script_files/figure-latex/scatter and line-1.pdf, id=358, 469.755pt x 325.215p
+t>
+File: Script_files/figure-latex/scatter and line-1.pdf Graphic file (type pdf)
+<use Script_files/figure-latex/scatter and line-1.pdf>
+Package pdftex.def Info: Script_files/figure-latex/scatter and line-1.pdf  used
+ on input line 261.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Overfull \hbox (28.90639pt too wide) in paragraph at lines 261--263
+[][] 
+ []
+
+[26 <./Script_files/figure-latex/scatter and line-1.pdf>] [27] [28] [29] [30
+
+] [31] AED endfloat: Processing end Figures and Tables [32] (./Script.ttt
+Overfull \hbox (58.88524pt too wide) in paragraph at lines 82--112
  [][] 
  []
 
 
-Overfull \hbox (54.96857pt too wide) in paragraph at lines 83--113
+Overfull \hbox (54.96857pt too wide) in paragraph at lines 119--149
  [][] 
  []
 
 
-Overfull \hbox (53.01021pt too wide) in paragraph at lines 120--150
+Overfull \hbox (53.01021pt too wide) in paragraph at lines 156--186
  [][] 
  []
 
 
-Overfull \hbox (60.84355pt too wide) in paragraph at lines 157--187
+Overfull \hbox (60.84355pt too wide) in paragraph at lines 193--223
  [][] 
  []
 
 
-Overfull \hbox (40.50877pt too wide) in paragraph at lines 194--210
+Overfull \hbox (40.50877pt too wide) in paragraph at lines 230--246
  [][] 
  []
 
-) [20
+) [33
 
 
-] [21] [22] [23] [24] (./Script.aux)
+] [34] [35] [36] [37] [38] (./Script.aux)
 Package rerunfilecheck Info: File `Script.out' has not changed.
-(rerunfilecheck)             Checksum: 7141D663DB8A37DF2D75203859EF1580;784.
+(rerunfilecheck)             Checksum: EF733E2FDBFAB927F18A6F8E311BBB96;1537.
 
 LaTeX Warning: There were undefined references.
 
@@ -1281,11 +1427,11 @@ Package logreq Info: Writing requests to 'Script.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21499 strings out of 481433
- 361325 string characters out of 5918562
- 1126097 words of memory out of 5000000
- 37843 multiletter control sequences out of 15000+600000
- 578331 words of font info for 64 fonts, out of 8000000 for 9000
+ 21571 strings out of 481331
+ 364813 string characters out of 5915972
+ 1131222 words of memory out of 5000000
+ 37993 multiletter control sequences out of 15000+600000
+ 446673 words of font info for 62 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  80i,12n,85p,2245b,1645s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-e
@@ -1295,10 +1441,10 @@ lm/lmbx12.pfb><c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1
 nts/type1/public/lm/lmr12.pfb><c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/texmf-
 dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/Hyeonjin/AppData/Roaming/TinyTeX/
 texmf-dist/fonts/type1/public/lm/lmri12.pfb>
-Output written on Script.pdf (24 pages, 3911806 bytes).
+Output written on Script.pdf (38 pages, 4165142 bytes).
 PDF statistics:
- 353 PDF objects out of 1000 (max. 8388607)
- 297 compressed objects within 3 object streams
- 74 named destinations out of 1000 (max. 500000)
- 120 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 501 PDF objects out of 1000 (max. 8388607)
+ 411 compressed objects within 5 object streams
+ 95 named destinations out of 1000 (max. 500000)
+ 184 words of extra memory for PDF output out of 10000 (max. 10000000)
 

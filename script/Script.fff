@@ -1,0 +1,10 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\includegraphics[width=0.3\linewidth]{Script_files/figure-latex/visualization US election results-1} \caption{ }(\#fig:visualization US election results-1)
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\includegraphics[width=0.3\linewidth]{Script_files/figure-latex/visualization US election results-2} \caption{ }(\#fig:visualization US election results-2)
+\end{figure*}
