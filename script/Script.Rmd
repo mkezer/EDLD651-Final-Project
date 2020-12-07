@@ -47,7 +47,7 @@ abstract: |
   
   
   <!-- https://tinyurl.com/ybremelq -->
-keywords          : "keywords"
+keywords          : "social capital, presidential elections"
 wordcount         : "X"
 bibliography      : ["r-references.bib"]
 floatsintext      : no
@@ -549,12 +549,8 @@ aggregate_states %>%
 Figure 3: Violin plots of aggregate social capital for each state are shown for the years: 1997, 2005, 2009, and 2014. Overlaid are boxplots representing each distribution’s minimum, maximum, medium, and first and third quartiles. Aggregate social capital variables (described above) were multiplied by 1000 to avoid small decimal values and improve readability.  
 
   This graph shows relatively consistent aggregate social capital over the years. It is important to note that the lower outlier in the year 1997, and the upper outliers in years 2005, 2009, and 2014 are values for Washington, D.C. Without this value, distributions would be nearly identical across all time points.  
-	As a secondary measure of aggregate social capital, we considered the provided values from our dataset. These values summed all types of social capital, divided by population per 10,000, and divided by 10 (1st factor). These values were used to visualize geographic trends for social capital in the year 2014.  
-	
-	[insert US map 2014 social capital]
-  [insert Oregon map 2014 social capital]  
-  
-  We next considered how specific types of social capital change over time. A regression analysis revealed religious, civic, and labor types of social capital had the greatest impact on the proportion of democratic votes in the election of XXX. As such, we focused on XXX types of social capital trends over time.
+	As a secondary measure of aggregate social capital, we considered the provided values from our dataset. These values summed all types of social capital, divided by population per 10,000, and divided by 10 (1st factor). These values were used to visualize geographic trends.  
+  We next considered how specific types of social capital change over time. A regression analysis revealed religious, civic, and labor types of social capital had the greatest impact on the proportion of democratic votes in the elections. As such, we focused on the aforementioned types of social capital trends over time.
   We also considered how specific types of social capital change over time. A regression analysis revealed religious, civic, and labor types of social capital had the greatest impact on the proportion of democratic votes in the election of XXX. As such, we focused on XXX types of social capital trends over time.  
 
 ```{r scatterplot}
@@ -1071,10 +1067,14 @@ reg_table %>%
 
 # Discussion
     This project sought to study trends in U.S. social capital and presidential election results. It is thought that fluctuations in social capital may inform political involvement. As such, we observed changes in social capital over time and subsequent election results for the two major political parties (democrat and republican).  
-	Initial analysis considered how aggregate social capital changes over time. Aggregate capital was largely stable over the four time points used in this project (1997, 2005, 2009, and 2014). As such, it is unlikely aggregate capital has much impact on election results, as presidential winners typically alternate between the two major political parties. GEOGRAPHICAL TRENDS  
+	Initial analysis considered how aggregate social capital changes over time. Aggregate capital was largely stable over the four time points used in this project (1997, 2005, 2009, and 2014). As such, it is unlikely aggregate capital has much impact on election results, as presidential winners typically alternate between the two major political parties. 
+	
+GEOGRAPHICAL TRENDS  
+	
 	A secondary analysis considered individual types of social capital. A regression analysis implicated LABOR, CIVIL, and RELIGION social capital as most correlated with election results. However, our analysis of these types of social capital revealed a somewhat linear decrease in labor and civil social capital, and larger fluctuations of religion social capital. As such, none of these types of social capital corresponded directly with election results in the following years. Moreover, while aggregate social capital always negatively predicted democratic margin, this was not the case for individual types of social capital. That is, religion social capital was negatively associated with democratic margin, whereas civic and labor social capital were mostly positively related to the outcome. This finding underlines the importance of investigating different types of social capital with regard to election results.  
 
 GEOGRAPHICAL TRENDS  
+
 	Finally, we observed the direct relationship between aggregate social capital and proportion of votes for the major political party votes. Consistent with our earlier analysis, social capital did not appear to fluctuate with winners in any of the selected presidential elections. Rather, social capital was tied to the proportion of party votes regardless of the winner. Higher social capital was associated with a lower proportion of democratic votes and a higher proportion of republican votes.  
 	In summary, our analyses reveal that social capital does indeed correspond with political party votes in presidential elections. However, social capital trends over time do not appear to affect fluctuations in presidential winners. Further geographical considerations lend a more nuanced understanding of how social capital and election results are spread across the U.S. and the state of Oregon.  
 
