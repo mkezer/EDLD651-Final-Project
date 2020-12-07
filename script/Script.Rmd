@@ -461,7 +461,7 @@ elec_usmap_all <- ggarrange(elec_usmap_00,
 
 #Annotate Combined US Election Maps
 annotate_figure(elec_usmap_all,
-                top = text_grob("Results of US Presential Elections", face = "bold", size = 12),
+                top = text_grob("Figure 1. Results of US Presential Elections", face = "bold", size = 12),
                 bottom = text_grob("Red and blue colors indicate Republican and Democratic lead", hjust = 1, x = 1, face = "italic", size = 10))
 
 
@@ -516,7 +516,7 @@ elec_ormap_all <- ggarrange(elec_ormap_00,
 
 #Annotate Combined US Election Maps 
 annotate_figure(elec_ormap_all,
-                top = text_grob("Results of US Presential Elections in Oregon", face = "bold", size = 12),
+                top = text_grob("Figure 2. Results of US Presential Elections in Oregon", face = "bold", size = 12),
                 bottom = text_grob("Red and blue colors indicate Republican and Democratic lead", hjust = 1, x = 1, face = "italic", size = 10))
 ```
 
@@ -533,17 +533,20 @@ aggregate_states <- df %>%
   mutate(aggregate_capital = select(., bowl:labor) %>% rowSums()) %>%
   group_by(state_po,year_sc) %>%
   summarize(aggregate_capital = (sum(aggregate_capital) / sum(pop)) * 1000) 
+
 aggregate_states %>%
   ggplot(mapping=aes(x=as.character(year_sc),
                      y=aggregate_capital)) +
   geom_violin(aes(color=as.character(year_sc)),show.legend=FALSE) +
   geom_boxplot(color="gray70") +
-  labs(title="Social Capital Trends in U.S. States",
+  labs(title="Figure 3. Social Capital Trends in U.S. States",
+       subtitle = "Violin plots of aggregate social capital for each state are shown \nfor the years: 1997, 2005, 2009, and 2014.",
        x="Year",
-       y="Aggregate Social Capital")
+       y="Aggregate Social Capital",
+       caption = "Overlaid are boxplots representing each distribution’s minimum, maximum, medium, and first and third quartiles. \nAggregate social capital variables (described above) were multiplied by 1000 to avoid small decimal values and improve readability.")
 ```
 
-Figure 2: Violin plots of aggregate social capital for each state are shown for the years: 1997, 2005, 2009, and 2014. Overlaid are boxplots representing each distribution’s minimum, maximum, medium, and first and third quartiles. Aggregate social capital variables (described above) were multiplied by 1000 to avoid small decimal values and improve readability.  
+Figure 3: Violin plots of aggregate social capital for each state are shown for the years: 1997, 2005, 2009, and 2014. Overlaid are boxplots representing each distribution’s minimum, maximum, medium, and first and third quartiles. Aggregate social capital variables (described above) were multiplied by 1000 to avoid small decimal values and improve readability.  
 
   This graph shows relatively consistent aggregate social capital over the years. It is important to note that the lower outlier in the year 1997, and the upper outliers in years 2005, 2009, and 2014 are values for Washington, D.C. Without this value, distributions would be nearly identical across all time points.  
 	As a secondary measure of aggregate social capital, we considered the provided values from our dataset. These values summed all types of social capital, divided by population per 10,000, and divided by 10 (1st factor). These values were used to visualize geographic trends for social capital in the year 2014.  
@@ -560,7 +563,8 @@ filter_df <- df %>%
   filter((year_elctn == 2000 & party == "republican") | 
            (year_elctn == 2008 & party == "democrat") | 
            (year_elctn == 2012 & party == "democrat") | 
-           (year_elctn == 2016 & party == "republican")) 
+           (year_elctn == 2016 & party == "republican"))
+
 aggregate_country <- filter_df %>%
   group_by(year_sc) %>%
   summarize(bowl=sum(bowl)/sum(pop)*10000,
@@ -572,23 +576,24 @@ aggregate_country <- filter_df %>%
             prof=sum(prof)/sum(pop)*10000,
             bus=sum(bus)/sum(pop)*10000,
             labor=sum(labor)/sum(pop)*10000)
+
 aggregate_country <- aggregate_country %>%
   mutate(year_sc = c(1997,2005,2009,2014)) %>%
   pivot_longer(cols=bowl:labor,names_to = "type_sc", values_to = "count")
+
 aggregate_country %>%
   filter(type_sc == "relig" | type_sc=="labor" | type_sc=="civic") %>%
   ggplot(mapping=aes(x=as.character(year_sc),y=count,color=type_sc)) +
   geom_point(show.legend=FALSE) +
-  labs(title="Changes in Social Capital in U.S.",
+  labs(title="Figure 4. Changes in Social Capital in U.S.",
        x="Year",
        y="Count",
-       color="Type of Capital") +
+       color="Type of Capital",
+       caption = "Note. Values represent the sum for all states in the U.S., divided by total population.") +
   facet_wrap(~type_sc,scales="free")
 ```
 
-Figure: This graph shows XXX social capital. These values represent the sum for all states in the U.S., divided by total population.  
-
-This set of scatter plots shows … We then explored geographic trends for specific types of social capital. Figure X-X visualizes the distribution of the specific types of social capital on the U.S. map.
+Figure 4 shows the changes in religion, civic, and labor social capital across years. We then explored geographic trends for specific types of social capital. Figure 5a-7b visualizes the distribution of the specific types of social capital on the U.S. map.
 
 ```{r visualization religious capital maps}
 #Religious Social Capital 
@@ -641,7 +646,7 @@ rel_usmap_all <- ggarrange(rel_usmap_00,
 
 #Annotate Combined US Religious Social Capital Maps 
 annotate_figure(rel_usmap_all,
-                top = text_grob("Distribution of Religious Social Capital in US", face = "bold", size = 12),
+                top = text_grob("Figure 5a. Distribution of Religious Social Capital in US", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of religious establishments", hjust = 1, x = 1, face = "italic", size = 10))
 
 
@@ -685,10 +690,8 @@ rel_ormap_all <- ggarrange(rel_ormap_00,
 
 #Annotate Combined Oregon Religious Social Capital Maps 
 annotate_figure(rel_ormap_all,
-                top = text_grob("Distribution of Religious Social Capital in Oregon", face = "bold", size = 12),
+                top = text_grob("Figure 5b. Distribution of Religious Social Capital in Oregon", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of religious establishments", hjust = 1, x = 1, face = "italic", size = 10))
-
-
 ```
 
 ```{r visualization civic social capital maps}
@@ -743,7 +746,7 @@ civ_usmap_all <- ggarrange(civ_usmap_00,
 
 #Annotate Combined US Civic  Social Capital Maps 
 annotate_figure(civ_usmap_all,
-                top = text_grob("Distribution of Civic Social Capital in US", face = "bold", size = 12),
+                top = text_grob("Figure 6a. Distribution of Civic Social Capital in US", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of civic establishments", hjust = 1, x = 1, face = "italic", size = 10))
 
 
@@ -787,7 +790,7 @@ civ_ormap_all <- ggarrange(civ_ormap_00,
 
 #Annotate Combined Oregon Civic Social Capital Maps 
 annotate_figure(civ_ormap_all,
-                top = text_grob("Distribution of Civic Social Capital in Oregon", face = "bold", size = 12),
+                top = text_grob("Figure 6b. Distribution of Civic Social Capital in Oregon", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of civic establishments", hjust = 1, x = 1, face = "italic", size = 10))
 
 ```
@@ -844,7 +847,7 @@ lab_usmap_all <- ggarrange(lab_usmap_00,
 
 #Annotate Combined US labor Social Capital Maps 
 annotate_figure(lab_usmap_all,
-                top = text_grob("Distribution of Labor Social Capital in US", face = "bold", size = 12),
+                top = text_grob("Figure 7a. Distribution of Labor Social Capital in US", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of labor establishments", hjust = 1, x = 1, face = "italic", size = 10))
 
 
@@ -888,14 +891,13 @@ lab_ormap_all <- ggarrange(lab_ormap_00,
 
 #Annotate Combined Oregon Labor Social Capital Maps 
 annotate_figure(lab_ormap_all,
-                top = text_grob("Distribution of Labor Social Capital in Oregon", face = "bold", size = 12),
+                top = text_grob("Figure 7b. Distribution of Labor Social Capital in Oregon", face = "bold", size = 12),
                 bottom = text_grob("Thicker color indicates higher per capita count of labor establishments", hjust = 1, x = 1, face = "italic", size = 10))
-
 ```
 
 
 ## Relationship between social capital and election results
-  Finally, we considered the relationship between social capital and election results. The below graphs show how proportion of votes for the two major parties relates to aggregate social capital in the preceding years.  
+  Finally, we considered the relationship between social capital and election results. Figure 8 shows how proportion of votes for the two major parties relates to aggregate social capital in the preceding years.  
 
 ```{r scatter and line}
 #Scatterplot of proportion votes for winning party by social capital for each state
@@ -905,6 +907,7 @@ aggregate_election <- df %>%
   group_by(state_po,year_elctn,party) %>%
   summarize(aggregate_capital=(sum(aggregate_capital) / sum(pop)) * 1000, 
             prop_votes = sum(candidatevotes) / sum(totalvotes))
+
 aggregate_election %>%
   filter(state_po != "DC") %>%
   mutate(year_elctn = factor(year_elctn, levels = c("2000",
@@ -921,13 +924,12 @@ aggregate_election %>%
   geom_smooth(se=FALSE,method=lm) +
   scale_color_manual(values=c("blue4","red4")) +
   facet_wrap(~year_elctn,scales="free") +
-  labs(title="Proportion Party Votes by Social Capital in U.S. States",
+  labs(title="Figure 8. Proportion Party Votes by Social Capital in U.S. States",
        x="Aggregate Social Capital",
        y="Proportion of Votes",
-       color="Party")
+       color="Party",
+       caption = "The plot shows the relationship between aggregate social capital and \nproportion of votes for political parties (democrat in blue, republican in red) over the years.")
 ```
-
-Figure: This graph shows the relationship between aggregate social capital (same values as Figure 1) and proportion of votes for political parties (democrat in blue, republican in red) over the years.
 
   This set of plots reveals trends between aggregate social capital and proportion of political party votes. Data for Washington, D.C. was not included in these plots as it was an outlier. This figure reveals that as aggregate social capital increases, proportion of democrat votes decreases and proportion of republican votes increases.  
   
