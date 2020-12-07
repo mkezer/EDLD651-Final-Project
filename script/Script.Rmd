@@ -1037,7 +1037,8 @@ model_agg %>%
   pack_rows("2012 Election", 5,6) %>% 
   pack_rows("2016 Election", 7,8)
 ```
-``` {r regression2}
+
+``` {r regression_two}
 # Social Capital 2014 & Election Results 2016
 df_wide_16 %>% # correlation table
   select(Bowling = bowl, Civic = civic, Golf = golf, Religious = relig, Sport = sport, Political = pol, Professional = prof,
